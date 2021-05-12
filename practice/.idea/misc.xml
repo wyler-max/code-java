@@ -11,6 +11,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../learning/pom.xml" />
+        <option value="$PROJECT_DIR$/../learning/springmvc-start/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

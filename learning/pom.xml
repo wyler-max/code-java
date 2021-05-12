@@ -19,7 +19,7 @@
         <module>spring-start</module>
         <module>springboot-start</module>
         <module>springboot-jpa</module>
-        <module>springmvc-start</module>
+        <!--<module>springmvc-start</module>-->
         <module>springmvc-upload-server</module>
         <module>ssm</module>
     </modules>
