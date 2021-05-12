@@ -9,8 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-jpa" />
         <module name="server-comsumer" />
-        <module name="practice-scaffold" />
         <module name="springboot-start" />
+        <module name="practice-scaffold" />
         <module name="springmvc-start" />
         <module name="common-utils" />
         <module name="spring-start" />

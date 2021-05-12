@@ -146,4 +146,16 @@
         </pluginManagement>
     </build>
 
+    <!--<repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <name>aliyun maven repository</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+        </repository>
+    </repositories>-->
+
 </project>
