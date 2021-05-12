@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 属性标签 -->
+    <properties resource="mysql.properties"/>
+
+    <!-- 全局参数配置 -->
+    <settings>
+        <!-- 全局配置，打印 sql 日志 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+        <!-- 延迟加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+
+        <!-- 开启二级缓存的支持 默认即开启-->
+        <setting name="cacheEnabled" value="true"/>
+
+    </settings>
+
+    <!-- 定义别名 -->
+    <typeAliases>
+        <!-- 单个别名定义 -->
+        <!--
+        <typeAlias alias="userReq" type="com.example.mybatis.domain.User"/>
+        -->
+
+        <!-- 批量别名定义，扫描整个包下的类，别名为类名（首字母大写或小写都可以） -->
+        <package name="com.example.mybatis.domain"/>
+        <!--
+        <package name="其他包"/>
+        -->
+    </typeAliases>
+
+    <!-- 配置 mybatis 环境 -->
+    <environments default="mysql">
+        <!-- 配置 mysql 环境 -->
+        <environment id="mysql">
+            <!-- 配置 事务类型 -->
+            <transactionManager type="JDBC"/>
+            <!-- 配置 连接数据库信息：用的是数据源（mybatis 自己的连接池）-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 映射器，告知 mybatis 映射配置的位置 -->
+    <mappers>
+        <!-- 类路径
+        <mapper resource="com/example/mybatis/dao/IUserDao.xml" />
+        -->
+
+        <!-- 接口路径 -->
+        <!--
+        <mapper class="com.example.mybatis.dao.IUserDao" />
+        <mapper class="com.example.mybatis.dao.IUserMapDao" />
+        <mapper class="com.example.mybatis.dao.IAccountDao" />
+        -->
+
+        <!--注册指定包下的所有 mapper 接口-->
+        <!--此种方法要求 mapper 接口名称和 mapper 映射文件名称相同，且放在同一个目录中!!!!!-->
+        <!--例如：需要将 IUserDao.java 和IUserDao.xml 放在同一目录中才能生效-->
+        <package name="com.example.mybatis.dao"/>
+    </mappers>
+
+</configuration>

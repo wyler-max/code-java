@@ -1,0 +1,37 @@
+name: zhangsan
+person:
+  name: person
+  age: 18
+  addr: beijing
+person2: {
+  name: person2,
+  age: 20,
+  addr: shandong
+}
+#集合、字符串
+city:
+  list:
+    - beijing
+    - shandong
+    - shanghai
+    - hangzhou
+city2.list: [beijing, shandong, shanghai, zhanghzou]
+city3: beijing,shandong,shanghai,zhanghzou
+#集合、对象
+student:
+  list:
+    - id: 3
+      name: student1
+      password: 111111
+    - id: 4
+      name: student2
+      password: 222222
+#Map
+maps:
+  item1:
+    key11: value11
+    key12: value12
+  item2:
+    key21: value21
+    key22: value22
+map2: "{ip1: '192.168.0.1:8000', ip2: '192.168.0.2:8000'}"

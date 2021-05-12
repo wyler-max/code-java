@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springmvc-start" />
+        <module name="spring-start" />
+        <module name="springboot-jpa" />
+        <module name="ssm" />
+        <module name="springmvc-upload-server" />
+        <module name="springboot-start" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-start" options="-parameters -extdirs lib" />
+      <module name="springboot-jpa" options="-parameters" />
+      <module name="springboot-start" options="-parameters" />
+      <module name="springmvc-start" options="-parameters" />
+      <module name="springmvc-upload-server" options="-parameters" />
+      <module name="ssm" options="-parameters" />
+    </option>
+  </component>
+</project>

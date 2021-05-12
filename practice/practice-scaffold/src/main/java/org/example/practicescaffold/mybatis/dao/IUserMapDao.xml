@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.practicescaffold.mybatis.dao.IUserMapDao">
+
+    <resultMap id="userMap" type="org.example.practicescaffold.mybatis.domain.UserMap">
+        <id column="id" property="userId"/>
+        <result column="username" property="userName"/>
+        <result column="birthday" property="userBirthday"/>
+        <result column="sex" property="userSex"/>
+        <result column="address" property="userAddress"/>
+    </resultMap>
+
+    <!--<select id="findAll" resultType="com.example.mybatis.domain.UserMap" >
+        select * from userReq
+    </select>-->
+
+    <select id="findAll" resultMap="userMap" >
+        select * from userReq
+    </select>
+
+</mapper>

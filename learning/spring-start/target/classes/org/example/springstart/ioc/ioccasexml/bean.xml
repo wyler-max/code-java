@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置Service -->
+    <bean id="accountService" class="org.example.springstart.ioc.ioccasexml.service.impl.AccountServiceImpl">
+        <!-- 注入dao -->
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+
+    <!--配置Dao对象-->
+    <bean id="accountDao" class="org.example.springstart.ioc.ioccasexml.dao.impl.AccountDaoImpl">
+        <!-- 注入QueryRunner -->
+        <property name="runner" ref="runner"/>
+    </bean>
+
+    <!--配置QueryRunner-->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <!--注入数据源-->
+        <constructor-arg name="ds" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--连接数据库的必备信息-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/spring?characterEncoding=utf-8"/>
+        <property name="userReq" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+</beans>

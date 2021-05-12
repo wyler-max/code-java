@@ -1,0 +1,19 @@
+package org.example.practicecode.designpattern.builderComputer2;
+
+import com.example.designpattern.builderComputer2.HPComputerBuilder;
+import com.example.designpattern.builderComputer2.enums.ComputerMasterEnum;
+import com.example.designpattern.builderComputer2.enums.ComputerScreenEnum;
+
+/**
+ * 生成器模式测试2
+ */
+public class Test {
+    public static void main(String[] args) {
+        HPComputerBuilder hpComputerBuilder = new HPComputerBuilder();
+        hpComputerBuilder.buildComputer();
+
+        hpComputerBuilder.buildMaster(ComputerMasterEnum.I3.getDesc())
+                .buildScreen(ComputerScreenEnum.SCREEN_1080.getDesc())
+                .buildMouse("雷蛇鼠标");
+    }
+}

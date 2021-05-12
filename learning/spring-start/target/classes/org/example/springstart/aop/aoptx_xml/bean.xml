@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 使用 aop 处理事务的 XML case -->
+
+    <!-- 配置Service -->
+    <bean id="accountService" class="org.example.springstart.aop.aoptx_xml.service.impl.AccountServiceImpl">
+        <!-- 注入dao -->
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+
+    <!--配置Dao对象-->
+    <bean id="accountDao" class="org.example.springstart.aop.aoptx_xml.dao.impl.AccountDaoImpl">
+        <!-- 注入QueryRunner -->
+        <property name="runner" ref="runner"/>
+        <!-- 注入ConnectionUtils -->
+        <property name="connectionUtils" ref="connectionUtils"/>
+    </bean>
+
+    <!--配置QueryRunner-->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype"/>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--连接数据库的必备信息-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring"/>
+        <property name="userReq" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <!-- 配置Connection的工具类 ConnectionUtils -->
+    <bean id="connectionUtils" class="org.example.springstart.aop.aoptx_xml.utils.ConnectionUtils">
+        <!-- 注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置事务管理器-->
+    <bean id="txManager" class="org.example.springstart.aop.aoptx_xml.utils.TransactionManager">
+        <!-- 注入ConnectionUtils -->
+        <property name="connectionUtils" ref="connectionUtils"/>
+    </bean>
+
+    <!--配置aop-->
+    <aop:config>
+        <!--
+            配置切入点表达式
+                id属性：
+                    用于指定表达式的唯一标识。
+                 expression属性：
+                    用于指定表达式内容
+
+             此标签写在aop:aspect标签内部，只能当前切面使用
+             此标签写在aop:aspect标签外面，此时就变成了所有切面可用
+        -->
+        <!--
+            切入点表达式说明：
+            表达式语法：
+                execution([修饰符] 返回值类型 包名.类名.方法名(参数))
+            写法说明：
+                全匹配方式：
+                    public void com.example.impl.AccountServiceImpl.saveAccount(com.example.domain.Account)
+                修饰符可以省略：
+                    void com.example.impl.AccountServiceImpl.saveAccount(com.example.domain.Account)
+                返回值可以使用*号，表示任意返回值：
+                    * com.example.impl.AccountServiceImpl.saveAccount(com.example.domain.Account)
+                包名可以使用*号，表示任意包，但是有几级包，需要写几个*
+                    * *.*.*.AccountServiceImpl.saveAccount(com.example.domain.Account)
+                使用..来表示当前包，及其子包
+                    * com..AccountServiceImpl.saveAccount(com.example.domain.Account)
+                类名可以使用*号，表示任意类
+                    * com..*.saveAccount(com.example.domain.Account)
+                方法名可以使用*号，表示任意方法
+                    * com..*.*(com.example.domain.Account)
+                参数列表可以使用*，表示参数可以是任意数据类型，但是必须有参数
+                    * com..*.*(*)
+                参数列表可以使用..表示有无参数均可，有参数可以是任意类型
+                    * com..*.*(..)
+                全通配方式：
+                    * *..*.*(..)
+            注意：
+                通常情况下，我们都是对业务层的方法进行增强，所以切入点表达式都是切到业务层实现类。
+                示例：
+                    execution(* com.example.service.impl.*.*(..))
+        -->
+        <!--配置通用切入点表达式-->
+        <aop:pointcut id="pt1" expression="execution(* com.example.aop.aoptx_xml.service.impl.*.*(..))"/>
+
+        <!--
+            aop:before 配置前置通知：在切入点方法执行之前执行
+            aop:after-returning 配置后置通知：在切入点方法正常执行之后值。它和异常通知永远只能执行一个
+            aop:after-throwing 配置异常通知：在切入点方法执行产生异常之后执行。它和后置通知永远只能执行一个
+            aop:after 配置最终通知：无论切入点方法是否正常执行它都会在其后面执行
+
+            aop:around 配置环绕通知 详细的注释请看Logger类中
+        -->
+        <aop:aspect id="txAdvice" ref="txManager">
+            <!--配置前置通知：开启事务-->
+            <aop:before method="beginTransaction" pointcut-ref="pt1"/>
+            <!--配置后置通知：提交事务-->
+            <aop:after-returning method="commit" pointcut-ref="pt1"/>
+            <!--配置异常通知：回滚事务-->
+            <aop:after-throwing method="rollback" pointcut-ref="pt1"/>
+            <!--配置最终通知：释放连接-->
+            <aop:after method="release" pointcut-ref="pt1"/>
+
+            <!-- 环绕通知处理事务时存在问题：必须使用 ProceedingJoinPoint接口的 proceed()方法，显式地调用切入点方法才能生效 -->
+<!--            <aop:around method="aroundAdvice" pointcut-ref="pt1"/>-->
+        </aop:aspect>
+    </aop:config>
+</beans>

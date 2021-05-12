@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springboot-jpa" />
+        <module name="server-comsumer" />
+        <module name="practice-scaffold" />
+        <module name="springboot-start" />
+        <module name="springmvc-start" />
+        <module name="common-utils" />
+        <module name="spring-start" />
+        <module name="practice-java" />
+        <module name="ssm" />
+        <module name="eureka-server" />
+        <module name="server-provider" />
+        <module name="springmvc-upload-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="java-lab" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="common-utils" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="java-lab" options="-parameters" />
+      <module name="practice-java" options="-parameters" />
+      <module name="practice-scaffold" options="-parameters" />
+      <module name="server-comsumer" options="-parameters" />
+      <module name="server-provider" options="-parameters" />
+      <module name="spring-start" options="-parameters -extdirs lib" />
+      <module name="springboot-jpa" options="-parameters" />
+      <module name="springboot-start" options="-parameters" />
+      <module name="springmvc-start" options="-parameters" />
+      <module name="springmvc-upload-server" options="-parameters" />
+      <module name="ssm" options="-parameters" />
+    </option>
+  </component>
+</project>

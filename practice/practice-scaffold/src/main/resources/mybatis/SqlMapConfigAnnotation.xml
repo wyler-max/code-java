@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 属性标签 -->
+    <properties resource="mysql.properties"/>
+
+    <!-- 全局参数配置 -->
+    <settings>
+        <!-- 全局配置，打印 sql 日志 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+        <!-- 开启二级缓存的支持 -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!-- 定义别名 -->
+    <typeAliases>
+        <package name="com.example.mybatis.domain"/>
+    </typeAliases>
+
+    <!-- 配置 mybatis 环境 -->
+    <environments default="mysql">
+        <!-- 配置 mysql 环境 -->
+        <environment id="mysql">
+            <!-- 配置 事务类型 -->
+            <transactionManager type="JDBC"/>
+            <!-- 配置 连接数据库信息：用的是数据源（mybatis 自己的连接池）-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 映射器，告知 mybatis 映射配置的位置 -->
+    <mappers>
+        <package name="com.example.mybatis.dao"/>
+    </mappers>
+
+</configuration>

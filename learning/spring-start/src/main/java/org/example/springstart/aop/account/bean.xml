@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- aop case 的初始化代码 -->
+
+    <!--配置代理的service-->
+    <bean id="proxyAccountService" factory-bean="beanFactory" factory-method="getAccountService"/>
+    <!--配置beanfactory-->
+    <bean id="beanFactory" class="org.example.springstart.aop.account.factory.BeanFactory">
+        <property name="accountService" ref="accountService"/>
+        <property name="txManager" ref="txManager"/>
+    </bean>
+
+    <!-- 配置Service -->
+    <bean id="accountService" class="org.example.springstart.aop.account.service.impl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao"/>
+    </bean>
+    <!-- 配置Service Old -->
+    <bean id="accountServiceOld" class="org.example.springstart.aop.account.service.impl.AccountServiceImpl_OLD">
+        <property name="accountDao" ref="accountDao"/>
+        <property name="txManage" ref="txManager"/>
+    </bean>
+
+    <bean id="accountDao" class="org.example.springstart.aop.account.dao.impl.AccountDaoImpl">
+        <property name="runner" ref="runner"/>
+        <property name="connectionUtils" ref="connectionUtils"/>
+    </bean>
+
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <!--<constructor-arg name="ds" ref="dataSource"/>-->
+    </bean>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" scope="prototype">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/spring"/>
+        <property name="userReq" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <bean id="connectionUtils" class="org.example.springstart.aop.account.utils.ConnectionUtils">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean id="txManager" class="org.example.springstart.aop.account.utils.TransactionManager">
+        <property name="connectionUtils" ref="connectionUtils"/>
+    </bean>
+</beans>

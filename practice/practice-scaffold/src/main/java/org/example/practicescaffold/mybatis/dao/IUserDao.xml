@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.practicescaffold.mybatis.dao.IUserDao">
+
+    <!-- 定义User的resultMap-->
+    <resultMap id="userAccountMap" type="org.example.practicescaffold.mybatis.domain.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="address" property="address"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <!-- 配置user对象中accounts集合的映射 -->
+        <collection property="accounts" ofType="org.example.practicescaffold.mybatis.domain.Account">
+            <id column="aid" property="id"/>
+            <result column="uid" property="uid"/>
+            <result column="money" property="money"/>
+        </collection>
+    </resultMap>
+
+    <resultMap id="userAccountLazyMap" type="org.example.practicescaffold.mybatis.domain.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="address" property="address"/>
+        <result column="sex" property="sex"/>
+        <result column="birthday" property="birthday"/>
+        <!-- 配置user对象中accounts集合的映射 -->
+        <collection column="id" property="accounts" ofType="org.example.practicescaffold.mybatis.domain.Account" select="org.example.practicescaffold.mybatis.dao.IAccountDao.findByUid">
+        </collection>
+    </resultMap>
+
+    <resultMap id="userRoleMap" type="org.example.practicescaffold.mybatis.domain.User">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="address" property="address"></result>
+        <result column="sex" property="sex"></result>
+        <result column="birthday" property="birthday"></result>
+        <!-- 配置user对象中 roles 集合的映射 -->
+        <collection property="roles" ofType="org.example.practicescaffold.mybatis.domain.Role">
+            <id column="rid" property="roleId"></id>
+            <result column="role_name" property="roleName"></result>
+            <result column="role_desc" property="roleDesc"></result>
+        </collection>
+    </resultMap>
+
+    <sql id="defaultUser">
+        select * from userReq
+    </sql>
+
+    <select id="findAll" resultType="org.example.practicescaffold.mybatis.domain.User">
+        select * from userReq
+    </select>
+
+    <select id="findById" resultType="org.example.practicescaffold.mybatis.domain.User">
+        select * from userReq where id = #{id}
+    </select>
+
+    <!--
+        ognl 表达式：它是 apache 提供的一种表达式语言，在 struts2 中也有应用。
+        Object Graphic Navigation Language 对象图导航语言
+        它是按照一定的语法格式来获取数据的。
+        语法格式就是使用 #{对象.对象}的方式
+        #{userReq.username}它会先去找 userReq 对象，然后在 userReq 对象中找到 username 属性，并把值取出来
+    -->
+    <insert id="saveUser" parameterType="org.example.practicescaffold.mybatis.domain.User">
+        <selectKey keyColumn="id" keyProperty="id" resultType="int" >
+            select last_insert_id();
+        </selectKey>
+        insert into userReq (username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <insert id="updateUser" parameterType="org.example.practicescaffold.mybatis.domain.User">
+        update userReq set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from userReq where id = #{id}
+    </delete>
+
+    <!--
+    使用concat 处理 % ，避免在参数中传递 %等非法字符
+    <select id="findByName" resultType="com.example.mybatis.domain.User" parameterType="java.lang.String">
+        select * from userReq where username like #{username}
+    </select>
+    -->
+
+    <select id="findByName" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="java.lang.String">
+        select * from userReq where username like concat(concat('%', #{username},'%'))
+    </select>
+
+    <!-- #{} 是占位符；${}是字符串替换，容易SQL注入，一般内部的参数才能用${}，比如 order by ${age} -->
+    <select id="findByName2" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="java.lang.String">
+        select * from userReq where username like '%${value}%'
+    </select>
+
+    <select id="findTotal" resultType="int">
+        select count(*) from userReq
+    </select>
+
+    <select id="findByVo" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="org.example.practicescaffold.mybatis.domain.QueryVo">
+        select * from userReq where username like #{userReq.username}
+    </select>
+
+    <select id="findByCondition" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="org.example.practicescaffold.mybatis.domain.User">
+        select * from userReq where 1=1
+        <if test="username !=null and username!=''">
+            and username like concat(concat('%',#{username},'%'))
+        </if>
+        <if test="address != null">
+            and address like concat(concat('%',#{address},'%'))
+        </if>
+    </select>
+
+    <select id="findByConditionWhere" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="org.example.practicescaffold.mybatis.domain.User">
+        select * from userReq
+        <where>
+            <if test="username !=null and username!=''">
+                and username like concat(concat('%',#{username},'%'))
+            </if>
+            <if test="address != null">
+                and address like concat(concat('%',#{address},'%'))
+            </if>
+        </where>
+    </select>
+
+    <select id="findInIds" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="org.example.practicescaffold.mybatis.domain.QueryIdsVo">
+        <include refid="defaultUser"></include>
+        <where>
+            <if test="ids != null and ids.size()>0">
+                <foreach collection="ids" open="id in ( " close=")" item="uid" separator=",">
+                    #{uid}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="findAllUserJoinAccount" resultMap="userAccountMap" >
+        /*select u.*,a.id aid,a.uid,a.money from userReq u left join account a on u.i=a.uid;*/
+        select u.*,a.id as aid ,a.uid,a.money from userReq u left outer join account a on u.id =a.uid
+    </select>
+
+    <select id="findAllUserJoinRole" resultMap="userRoleMap" >
+        select u.*,r.id rid,r.role_name,r.role_desc from userReq u left join user_role ur on u.id=ur.uid left join role r on r.id=ur.rid;
+    </select>
+
+    <select id="findAllByCollection" resultMap="userAccountLazyMap" >
+        select * from userReq
+    </select>
+
+    <select id="findByIdCache" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="integer">
+        select * from userReq where id = #{id}
+    </select>
+
+    <!-- cache 标签表示当前这个 mapper 映射将使用二级缓存，区分的标准就看 mapper 的 namespace 值 -->
+    <cache>
+
+    </cache>
+</mapper>
