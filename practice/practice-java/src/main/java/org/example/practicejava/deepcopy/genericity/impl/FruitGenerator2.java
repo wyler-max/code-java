@@ -1,6 +1,6 @@
 package org.example.practicejava.deepcopy.genericity.impl;
 
-import com.example.javalab.deepcopy.genericity.Generator;
+import org.example.practicejava.deepcopy.genericity.Generator;
 
 import java.util.Random;
 

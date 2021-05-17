@@ -1,8 +1,5 @@
 package org.example.practicecode.designpattern.flyweight;
 
-import com.example.designpattern.flyweight.FlyweightFactory;
-import com.example.designpattern.flyweight.IFlyweight;
-
 /**
  * 享元模式测试类
  */

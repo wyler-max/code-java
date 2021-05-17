@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.chain;
 
-import com.example.designpattern.chain.PurchaseRequest;
-
 /**
  * 决策者抽象类
  */

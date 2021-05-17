@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.factory.abstractFactory;
 
-import com.example.designpattern.factory.abstractFactory.NYPizzaFactory;
-
 /**
  * 纽约披萨店
  */

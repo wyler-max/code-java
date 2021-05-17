@@ -1,9 +1,5 @@
 package org.example.practicecode.designpattern.factory.simpleFactory;
 
-import com.example.designpattern.factory.simpleFactory.SimplePizzaFactory;
-
-import java.text.SimpleDateFormat;
-
 /**
  * @author wangyulin
  * @date 2020/6/9

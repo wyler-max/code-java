@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.component;
 
-import com.example.designpattern.component.Component;
-
 /**
  * 叶子
  */

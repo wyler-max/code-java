@@ -1,9 +1,5 @@
 package org.example.practicecode.designpattern.factory.origin;
 
-import com.example.designpattern.factory.origin.CheesePizza;
-import com.example.designpattern.factory.origin.PepperoniPizza;
-import com.example.designpattern.factory.origin.VeggiePizza;
-
 /**
  * @author wangyulin
  * @date 2020/6/9

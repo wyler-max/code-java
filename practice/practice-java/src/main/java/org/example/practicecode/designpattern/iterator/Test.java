@@ -1,10 +1,5 @@
 package org.example.practicecode.designpattern.iterator;
 
-import com.example.designpattern.iterator.CakeHouseMenu;
-import com.example.designpattern.iterator.DinerMenu;
-import com.example.designpattern.iterator.Iterator;
-import com.example.designpattern.iterator.Waitress;
-
 /**
  * 迭代器模式测试类
  */

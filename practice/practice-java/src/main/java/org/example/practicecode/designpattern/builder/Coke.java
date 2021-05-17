@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.builder;
 
-import com.example.designpattern.builder.ColdDrink;
-
 /**
  * 可口可乐，继承冷饮抽象类
  */

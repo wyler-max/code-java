@@ -1,9 +1,5 @@
 package org.example.practicecode.designpattern.state2;
 
-import com.example.designpattern.state2.HitState;
-import com.example.designpattern.state2.JumpState;
-import com.example.designpattern.state2.Player;
-
 /**
  *
  */

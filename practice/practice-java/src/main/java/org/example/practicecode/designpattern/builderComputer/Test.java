@@ -1,9 +1,5 @@
 package org.example.practicecode.designpattern.builderComputer;
 
-import com.example.designpattern.builderComputer.DELLComputerBuilder;
-import com.example.designpattern.builderComputer.Director;
-import com.example.designpattern.builderComputer.HPComputerBuilder;
-
 /**
  * 生成器模式测试
  */

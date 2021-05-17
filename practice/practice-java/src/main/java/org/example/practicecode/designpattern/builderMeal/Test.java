@@ -1,14 +1,11 @@
 package org.example.practicecode.designpattern.builderMeal;
 
-import com.example.designpattern.builderMeal.ConcreteMealBuilder;
-
 /**
  * 测试类
  */
 public class Test {
     public static void main(String[] args) {
         ConcreteMealBuilder builder = new ConcreteMealBuilder();
-        builder.prepareMainItem("鸡腿")
-                .prepareToy("恐龙🦕");
+        builder.prepareMainItem("鸡腿").prepareToy("恐龙🦕");
     }
 }

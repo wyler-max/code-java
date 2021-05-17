@@ -37,7 +37,7 @@
       <module name="spring-start" options="-parameters -extdirs lib" />
       <module name="springboot-jpa" options="-parameters" />
       <module name="springboot-start" options="-parameters" />
-      <module name="springmvc-start" options="-parameters" />
+      <module name="springmvc-start" options="" />
       <module name="springmvc-upload-server" options="-parameters" />
       <module name="ssm" options="-parameters" />
     </option>

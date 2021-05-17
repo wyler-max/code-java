@@ -1,9 +1,8 @@
 package org.example.practicecode.designpattern.prototype;
 
-import com.example.designpattern.prototype.CopyObject;
-import com.google.common.collect.Lists;
-
 import java.util.List;
+
+import com.google.common.collect.Lists;
 
 /**
  * 测试拷贝深度

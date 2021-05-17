@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.stategy;
 
-import com.example.designpattern.stategy.FlyBehavior;
-
 /**
  * @author wangyulin
  * @date 2020/6/1

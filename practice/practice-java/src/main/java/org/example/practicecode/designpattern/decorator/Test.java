@@ -1,15 +1,9 @@
 package org.example.practicecode.designpattern.decorator;
 
-import com.example.designpattern.decorator.Chocolate;
-import com.example.designpattern.decorator.Decaf;
-import com.example.designpattern.decorator.Drink;
-import com.example.designpattern.decorator.LongBlack;
-
 /**
  * 装饰者测试类
  *
- * 咖啡种类：Espresso、ShortBlack、LongBlack、Decaf
- * 调料（装饰者）：Milk、Soy、Chocolate
+ * 咖啡种类：Espresso、ShortBlack、LongBlack、Decaf 调料（装饰者）：Milk、Soy、Chocolate
  */
 public class Test {
     public static void main(String[] args) {

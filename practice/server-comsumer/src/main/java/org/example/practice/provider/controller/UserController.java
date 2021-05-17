@@ -1,16 +1,21 @@
-package org.example.practice.controller;
+package org.example.practice.provider.controller;
 
-import org.example.practice.feignclient.KnowboxGatewayApi;
-import org.example.practice.feignclient.ServerProviderUserApi;
+import javax.annotation.Resource;
+
+import org.example.practice.provider.feignclient.KnowboxGatewayApi;
+import org.example.practice.provider.feignclient.ServerProviderUserApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 public class UserController {
 
-    @Autowired
+    @Resource
     private ServerProviderUserApi serverProviderUserApi;
     @Autowired
     private KnowboxGatewayApi knowboxGatewayApi;

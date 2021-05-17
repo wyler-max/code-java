@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.observer2;
 
-import com.example.designpattern.observer2.Observer;
-
 /**
  * 具体观察者，微信公众号的具体观察者为用户User
  */

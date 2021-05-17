@@ -1,6 +1,6 @@
 package org.example.practicejava.annotation;
 
-import com.example.javalab.annotation.anno.Hello;
+import org.example.practicejava.annotation.anno.Hello;
 
 import java.lang.reflect.Method;
 

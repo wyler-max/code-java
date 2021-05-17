@@ -1,6 +1,5 @@
 package org.example.practicecode.designpattern.prototype.base;
 
-import com.example.designpattern.prototype.base.ConcretePrototype;
 import org.junit.Test;
 
 /**

@@ -1,11 +1,5 @@
 package org.example.practicecode.designpattern.proxy;
 
-import com.example.designpattern.proxy.BuyHouse;
-import com.example.designpattern.proxy.BuyHouseImpl;
-import com.example.designpattern.proxy.BuyHouseProxy;
-import com.example.designpattern.proxy.BuyHouseProxy21;
-import com.example.designpattern.proxy.BuyHouseProxy31;
-
 import java.lang.reflect.Proxy;
 
 /**
@@ -24,9 +18,8 @@ public class Test {
 
         // 动态代理
         System.out.println("动态代理：========");
-        BuyHouse buyHouseProxy2 = (BuyHouse) Proxy.newProxyInstance(buyHouse.getClass().getClassLoader(),
-                buyHouse.getClass().getInterfaces(),
-                new BuyHouseProxy21(buyHouse));
+        BuyHouse buyHouseProxy2 = (BuyHouse)Proxy.newProxyInstance(buyHouse.getClass().getClassLoader(),
+            buyHouse.getClass().getInterfaces(), new BuyHouseProxy21(buyHouse));
         buyHouseProxy2.buyHouse();
 
         // cglib 代理

@@ -1,9 +1,5 @@
 package org.example.practicecode.designpattern.state;
 
-import com.example.designpattern.state.Context;
-import com.example.designpattern.state.StartState;
-import com.example.designpattern.state.StopState;
-
 /**
  *
  */

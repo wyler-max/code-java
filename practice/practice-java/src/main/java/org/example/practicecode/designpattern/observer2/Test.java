@@ -1,9 +1,5 @@
 package org.example.practicecode.designpattern.observer2;
 
-import com.example.designpattern.observer2.Observer;
-import com.example.designpattern.observer2.User;
-import com.example.designpattern.observer2.WechatServer;
-
 /**
  * 观察者模式测试类
  */

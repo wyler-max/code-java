@@ -1,8 +1,5 @@
 package org.example.practicecode.designpattern.component;
 
-import com.example.designpattern.component.Component;
-import com.example.designpattern.component.Composite;
-
 /**
  * 组合模式测试类
  */

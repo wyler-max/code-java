@@ -1,7 +1,7 @@
 package org.example.practicecode.designpattern.builderMeal;
 
 
-import com.example.designpattern.builderMeal.ChildrenMeal;
+
 
 public abstract class MealBuilder{
     protected ChildrenMeal meal;

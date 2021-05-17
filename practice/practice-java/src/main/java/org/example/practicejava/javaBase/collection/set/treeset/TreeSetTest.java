@@ -1,7 +1,7 @@
 package org.example.practicejava.javaBase.collection.set.treeset;
 
-import com.example.javalab.javaBase.collection.common.CompareByLength;
-import com.example.javalab.javaBase.collection.common.Person;
+import org.example.practicejava.javaBase.collection.common.CompareByLength;
+import org.example.practicejava.javaBase.collection.common.Person;
 import org.junit.Test;
 
 import java.util.TreeSet;

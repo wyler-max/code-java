@@ -1,8 +1,5 @@
 package org.example.practicecode.designpattern.factory.abstractFactory;
 
-import com.example.designpattern.factory.abstractFactory.LDStyleCheesePizza;
-import com.example.designpattern.factory.abstractFactory.LDStyleVeggiePizza;
-
 /**
  * 伦敦披萨工厂
  */

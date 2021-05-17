@@ -1,7 +1,7 @@
 package org.example.practicejava.java8feature;
 
-import com.example.javalab.deepcopy.java8feature.GroupBrandCateBO;
-import com.example.javalab.tmp.Model;
+import org.example.practicejava.deepcopy.java8feature.GroupBrandCateBO;
+import org.example.practicejava.tmp.Model;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 

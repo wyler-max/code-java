@@ -1,4 +1,4 @@
-package org.example.practice.pojo;
+package org.example.practice.provider.pojo;
 
 import lombok.Data;
 

@@ -1,8 +1,5 @@
 package org.example.practicecode.designpattern.chain;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * 采购请求实体类
  */

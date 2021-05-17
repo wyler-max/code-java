@@ -1,15 +1,12 @@
 package org.example.practicecode.designpattern.prototype;
 
-import com.example.designpattern.prototype.EventTemplate;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * 信件实体类
  */
 @Data
-public class Mail implements Cloneable{
+public class Mail implements Cloneable {
     private String receiver;
     private String subject;
     private String content;
@@ -17,6 +14,7 @@ public class Mail implements Cloneable{
 
     /**
      * 构造信件
+     *
      * @param et
      */
     public Mail(EventTemplate et) {
@@ -32,13 +30,14 @@ public class Mail implements Cloneable{
 
     /**
      * 重写clone方法，实现对象拷贝
+     *
      * @return
      */
     @Override
     public Mail clone() {
         Mail mail = null;
         try {
-            mail = (Mail) super.clone();
+            mail = (Mail)super.clone();
         } catch (Exception e) {
             e.printStackTrace();
         }

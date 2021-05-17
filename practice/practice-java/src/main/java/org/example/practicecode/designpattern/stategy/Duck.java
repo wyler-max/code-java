@@ -1,8 +1,5 @@
 package org.example.practicecode.designpattern.stategy;
 
-import com.example.designpattern.stategy.FlyBehavior;
-import com.example.designpattern.stategy.QuackBehavior;
-
 /**
  * @author wangyulin
  * @date 2020/6/1
@@ -12,7 +9,7 @@ public abstract class Duck {
     FlyBehavior flyBehavior;
     QuackBehavior quackBehavior;
 
-    public Duck(){}
+    public Duck() {}
 
     public abstract void display();
 

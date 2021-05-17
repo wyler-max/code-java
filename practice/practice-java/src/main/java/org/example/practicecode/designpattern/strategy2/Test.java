@@ -1,8 +1,8 @@
 package org.example.practicecode.designpattern.strategy2;
 
-import com.example.designpattern.strategy2.AddStrategy;
-import com.example.designpattern.strategy2.Environment;
-import com.example.designpattern.strategy2.SubstractStrategy;
+
+
+
 
 /**
  * 策略模式测试类

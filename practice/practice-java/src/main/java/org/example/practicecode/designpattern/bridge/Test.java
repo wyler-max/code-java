@@ -1,10 +1,5 @@
 package org.example.practicecode.designpattern.bridge;
 
-import com.example.designpattern.bridge.AppStore;
-import com.example.designpattern.bridge.Camera;
-import com.example.designpattern.bridge.Software;
-import com.example.designpattern.bridge.Vivo;
-
 /**
  *
  */

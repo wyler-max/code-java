@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.prototype;
 
-import com.example.designpattern.prototype.EventTemplate;
-
 import java.util.Random;
 
 /**
@@ -10,7 +8,7 @@ import java.util.Random;
 public class Test {
     public static void main(String[] args) {
 
-        //testMail();
+        // testMail();
         testMailClone();
     }
 
@@ -52,11 +50,11 @@ public class Test {
     }
 
     private static String getRandString(int length) {
-        String str="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Random random=new Random();
-        StringBuilder sb=new StringBuilder();
-        for(int i=0;i<length;i++){
-            int number=random.nextInt(62);
+        String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int number = random.nextInt(62);
             sb.append(str.charAt(number));
         }
         return sb.toString();

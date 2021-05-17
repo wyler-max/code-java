@@ -1,8 +1,5 @@
 package org.example.practicecode.designpattern.factory.factoryMethod;
 
-import com.example.designpattern.factory.factoryMethod.NYStyleCheesePizza;
-import com.example.designpattern.factory.factoryMethod.NYStyleVeggiePizza;
-
 /**
  * @author wangyulin
  * @date 2020/6/10

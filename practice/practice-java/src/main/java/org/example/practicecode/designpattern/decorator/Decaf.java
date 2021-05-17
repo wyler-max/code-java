@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.decorator;
 
-import com.example.designpattern.decorator.Coffee;
-
 /**
  * Coffee 实现类
  */

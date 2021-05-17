@@ -1,7 +1,6 @@
 package org.example.practicecode.designpattern.builderComputer2;
 
-
-import com.example.designpattern.builderComputer2.enums.ComputerMasterEnum;
+import org.example.practicecode.designpattern.builderComputer2.enums.ComputerMasterEnum;
 
 /**
  * 生产惠普电脑，定义各个组件

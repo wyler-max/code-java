@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.mediator;
 
-import com.example.designpattern.mediator.User;
-
 /**
  * 中介者模式测试类
  *

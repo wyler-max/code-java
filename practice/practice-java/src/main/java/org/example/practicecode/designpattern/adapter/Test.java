@@ -1,9 +1,5 @@
 package org.example.practicecode.designpattern.adapter;
 
-import com.example.designpattern.adapter.Adapter;
-import com.example.designpattern.adapter.AdapterObject;
-import com.example.designpattern.adapter.ConCreteTarget;
-
 /**
  * @author wangyulin
  * @date 2020/5/28

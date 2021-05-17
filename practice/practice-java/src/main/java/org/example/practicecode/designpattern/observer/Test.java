@@ -1,10 +1,5 @@
 package org.example.practicecode.designpattern.observer;
 
-import com.example.designpattern.observer.CurrentConditionDisplay;
-import com.example.designpattern.observer.ForecastDisplay;
-import com.example.designpattern.observer.StatisticsDisplay;
-import com.example.designpattern.observer.WeatherData;
-
 /**
  * @author wangyulin
  * @date 2020/6/2
@@ -21,8 +16,6 @@ public class Test {
         weatherData.setMeasurements(82, 70, 29.2f);
         System.out.println("===================");
         weatherData.setMeasurements(78, 90, 29.2f);
-
-
 
     }
 }

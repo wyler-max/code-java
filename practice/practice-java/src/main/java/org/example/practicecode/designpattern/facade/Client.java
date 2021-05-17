@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.facade;
 
-import com.example.designpattern.facade.Computer;
-
 /**
  * 外观模式，客户角色
  */

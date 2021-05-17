@@ -1,12 +1,5 @@
 package org.example.practicecode.designpattern.chain;
 
-import com.example.designpattern.chain.Approver;
-import com.example.designpattern.chain.Client;
-import com.example.designpattern.chain.DepartmentApprove;
-import com.example.designpattern.chain.GroupApprove;
-import com.example.designpattern.chain.PresidentApprove;
-import com.example.designpattern.chain.VicePresidentApprove;
-
 /**
  * 责任链模式测试类
  */

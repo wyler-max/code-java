@@ -1,8 +1,5 @@
 package org.example.practicecode.designpattern.template;
 
-import com.example.designpattern.template.BusinessMail;
-import com.example.designpattern.template.PersonalMail;
-
 /**
  * 模板模式测试类
  */

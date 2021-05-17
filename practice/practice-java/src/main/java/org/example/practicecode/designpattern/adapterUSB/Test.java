@@ -1,8 +1,8 @@
 package org.example.practicecode.designpattern.adapterUSB;
 
-import com.example.designpattern.adapterUSB.AdapterUSB2VGA1_Class;
-import com.example.designpattern.adapterUSB.AdapterUSB2VGA2_Object;
-import com.example.designpattern.adapterUSB.AdapterUSB2VGA3_Interface;
+
+
+
 
 /**
  * 适配器测试类：usb 转 vga

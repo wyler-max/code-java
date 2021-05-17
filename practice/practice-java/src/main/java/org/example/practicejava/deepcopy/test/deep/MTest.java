@@ -1,7 +1,7 @@
 package org.example.practicejava.deepcopy.test.deep;
 
-import com.example.javalab.deepcopy.clone.deep.Address;
-import com.example.javalab.deepcopy.clone.deep.Person;
+import org.example.practicejava.deepcopy.clone.deep.Address;
+import org.example.practicejava.deepcopy.clone.deep.Person;
 import org.junit.Test;
 
 public class MTest {

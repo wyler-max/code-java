@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.bridge;
 
-import com.example.designpattern.bridge.Phone;
-
 /**
  *
  */

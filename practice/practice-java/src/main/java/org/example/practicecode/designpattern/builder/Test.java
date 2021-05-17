@@ -1,7 +1,5 @@
 package org.example.practicecode.designpattern.builder;
 
-import com.example.designpattern.builder.MealBuilder;
-
 /**
  * 生成器模式测试
  */

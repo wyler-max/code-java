@@ -1,10 +1,5 @@
 package org.example.practicecode.designpattern.command;
 
-import com.example.designpattern.command.Control;
-import com.example.designpattern.command.Light;
-import com.example.designpattern.command.LightControl;
-import com.example.designpattern.command.TVControl;
-
 /**
  * 命令模式测试类
  */

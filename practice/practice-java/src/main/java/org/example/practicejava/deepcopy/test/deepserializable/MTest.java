@@ -1,7 +1,7 @@
 package org.example.practicejava.deepcopy.test.deepserializable;
 
-import com.example.javalab.deepcopy.clone.deepserializable.Address;
-import com.example.javalab.deepcopy.clone.deepserializable.Person;
+import org.example.practicejava.deepcopy.clone.deepserializable.Address;
+import org.example.practicejava.deepcopy.clone.deepserializable.Person;
 import org.junit.Test;
 
 public class MTest {

@@ -1,6 +1,6 @@
-package org.example.practice.controller;
+package org.example.practice.provider.controller;
 
-import org.example.practice.pojo.Order;
+import org.example.practice.provider.pojo.Order;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
