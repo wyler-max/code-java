@@ -7,7 +7,7 @@ public interface UserApi {
 
     User getUser2();
 
-    public static class Default implements UserApi {
+    public class Default implements UserApi {
 
         @Override
         public User getUser1() {

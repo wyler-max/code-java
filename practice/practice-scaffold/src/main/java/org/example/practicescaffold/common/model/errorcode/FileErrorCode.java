@@ -1,6 +1,5 @@
 package org.example.practicescaffold.common.model.errorcode;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,14 +7,18 @@ import lombok.Setter;
 @AllArgsConstructor
 public enum FileErrorCode implements ErrorCode {
 
+    // @formatter:off
     SUCCESS(0, "成功"),
-    FILE_NOT_EXIST(1, "文件不存在"),
-    FILE_BROKEN(2, "文件破损"),
+    FAIL(1, "失败"),
+
+    FILE_NOT_EXIST(11, "文件不存在"),
+    FILE_BROKEN(12, "文件损坏"),
     FILE_UPLOAD_TIMEOUT(100, "上传文件超时"),
     FILE_UPLOAD_OVERSIZE(101, "上传文件过大"),
     FILE_UPLOAD_FAIL(102, "上传文件失败"),
 
-    UNKNOWN(99999, "未知错误");
+    UNKNOWN(9999, "未知错误");
+    // @formatter:on
 
     /**
      * 错误码
@@ -42,7 +45,7 @@ public enum FileErrorCode implements ErrorCode {
     }
 
     @Override
-    public int getModuleErrorCode() {
+    public int getErrorCode() {
         return this.code;
     }
 }

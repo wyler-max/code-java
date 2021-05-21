@@ -1,13 +1,14 @@
 package org.example.practicescaffold.common.utils;
 
+import java.util.Arrays;
+import java.util.zip.CRC32;
+
+import org.apache.commons.lang3.StringUtils;
 import org.example.practicescaffold.common.model.UserToken;
+
 import com.google.common.primitives.Bytes;
 import com.google.common.primitives.Ints;
 import com.google.common.primitives.Longs;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.Arrays;
-import java.util.zip.CRC32;
 
 /**
  * token处理类
@@ -18,7 +19,8 @@ public class TokenUtil {
     /**
      * 生成TOKEN
      *
-     * @param id 用户id
+     * @param id
+     *            用户id
      * @return
      */
     public static String generateToken(long id) {

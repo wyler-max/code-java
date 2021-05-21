@@ -1,6 +1,6 @@
 package org.example.practicecode.designpattern.builderComputer2;
 
-import org.example.designpattern.builderComputer2.enums.ComputerMasterEnum;
+import org.example.practicecode.designpattern.builderComputer2.enums.ComputerMasterEnum;
 
 /**
  * 生产戴尔电脑，定义各个组件

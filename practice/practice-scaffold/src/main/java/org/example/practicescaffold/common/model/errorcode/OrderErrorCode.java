@@ -1,6 +1,5 @@
 package org.example.practicescaffold.common.model.errorcode;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,14 +7,18 @@ import lombok.Setter;
 @AllArgsConstructor
 public enum OrderErrorCode implements ErrorCode {
 
+    // @formatter:off
     SUCCESS(0, "成功"),
-    ORDER_NOT_EXIST(1, "订单不存在"),
-    ORDER_TIMEOUT(2, "订单超时"),
-    ORDER_EXPIRED(3, "订单已过期"),
-    ORDER_SUCCESS_AND_WAIT(4, "下单成功，后台正在处理中..."),
-    ORDER_FAIL(5, "下单失败，请重新下单"),
+    FAIL(1, "失败"),
 
-    UNKNOWN(99999, "未知错误");
+    ORDER_NOT_EXIST(10, "订单不存在"),
+    ORDER_TIMEOUT(11, "订单超时"),
+    ORDER_EXPIRED(12, "订单已过期"),
+    ORDER_SUCCESS_AND_WAIT(13, "下单成功，后台正在处理中..."),
+    ORDER_FAIL(14, "下单失败，请重新下单"),
+
+    UNKNOWN(9999, "未知错误");
+    // @formatter:on
 
     /**
      * 错误码
@@ -31,7 +34,6 @@ public enum OrderErrorCode implements ErrorCode {
     @Setter
     private String msg;
 
-
     @Override
     public Module getModule() {
         return Module.MODULE_02;
@@ -43,7 +45,7 @@ public enum OrderErrorCode implements ErrorCode {
     }
 
     @Override
-    public int getModuleErrorCode() {
+    public int getErrorCode() {
         return this.code;
     }
 }

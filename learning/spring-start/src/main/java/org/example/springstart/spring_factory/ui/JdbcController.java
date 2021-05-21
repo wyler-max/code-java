@@ -1,4 +1,4 @@
-package org.example.practicescaffold.mybatis;
+package org.example.springstart.spring_factory.ui;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -29,11 +29,12 @@ public class JdbcController {
             connection = DriverManager.getConnection(
                 "jdbc:mysql://123.56.76.209:3341/bukexuetang?characterEncoding=utf-8", "bkxtdev", "bktest^897");
             // 定义sql语句，？表示占位符
-            String sql = "select * from user where limit 10 order by a";
+            String sql = "select * from user where limit 10";
             // 获取预处理 statement
             preparedStatement = connection.prepareStatement(sql);
             // 设置参数，第一个参数为 sql 语句中的参数的序号（从1开始），第二个参数为设置的参数值
-            preparedStatement.setString(1, "Allen");
+            // preparedStatement.setString(1, "Allen");
+            System.out.println("interupt");
             // 执行 sql，查出结果集
             resultSet = preparedStatement.executeQuery();
 

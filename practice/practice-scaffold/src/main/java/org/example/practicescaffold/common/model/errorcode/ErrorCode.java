@@ -1,10 +1,10 @@
 package org.example.practicescaffold.common.model.errorcode;
 
-
 public interface ErrorCode {
 
     /**
      * 获取错误码所在的子模块
+     *
      * @return 该错误码所在的子模块
      */
     default Module getModule() {
@@ -17,7 +17,7 @@ public interface ErrorCode {
      * @return 根据子模块+子模块错误码计算出来的全局错误码
      */
     default int getGlobalErrorCode() {
-        return getModule().getType() * 10000 + getModuleErrorCode();
+        return getModule().getType() * 10000 + getErrorCode();
     }
 
     /**
@@ -34,5 +34,5 @@ public interface ErrorCode {
      *
      * @return 子模块定义的错误码
      */
-    int getModuleErrorCode();
+    int getErrorCode();
 }

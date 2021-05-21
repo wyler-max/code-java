@@ -1,10 +1,11 @@
 package org.example.practicescaffold.redis.config;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -31,7 +32,7 @@ public class JedisConfig extends CachingConfigurerSupport {
     private long maxWaitMillis;
 
     @Bean("jedisPool")
-    public JedisPool redisPollFactory(){
+    public JedisPool redisPollFactory() {
         log.info("开始注入");
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxIdle(maxIdle);

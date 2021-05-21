@@ -7,17 +7,33 @@ import lombok.Setter;
 @AllArgsConstructor
 public enum CommErrorCode implements ErrorCode {
 
+    // @formatter:off
+    /**
+     * 基础状态码
+     */
     SUCCESS(0, "成功"),
-    UNKNOWN(1, "未知错误"),
-    PARAM_INVALID(2, "请求的参数错误"),
-    REQUEST_TO_OFEN(3, "请求太快了"),
+    FAIL(1, "失败"),
 
+    REQ_PARAM_INVALID(2, "请求参数错误"),
+    REQ_FREQUENTLY(3, "请求太过频繁"),
+
+    /**
+     * HTTP状态码
+     * @see org.springframework.http.HttpStatus
+     */
+    E301_MOVED_PERMANENTLY(301, "301永久跳转"),
+    E302_REQUEST_REDIECT(302, "请求重定向"),
     E400_BAD_REQUEST(400, "请求不合法"),
     E404_NOT_FOUND(404, "请求地址不存在"),
     E500_SERVER_EXCEPTION(500, "服务器开小差"),
+    E503_SERVER_OVERLOAD(503, "服务器过载"),
 
+    /**
+     * 用户状态码
+     */
     USER_NO_LOGIN(10001, "用户未登录"),
-    ;
+    UNKNOWN(99999, "未知错误");
+    // @formatter:on
 
     /**
      * 错误码
@@ -44,7 +60,7 @@ public enum CommErrorCode implements ErrorCode {
     }
 
     @Override
-    public int getModuleErrorCode() {
+    public int getErrorCode() {
         return this.code;
     }
 }

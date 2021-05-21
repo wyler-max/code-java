@@ -1,18 +1,20 @@
 package org.example.practicescaffold.services;
 
-import org.example.practicescaffold.dtos.param.activity.ActivityClassListDto;
-import org.example.practicescaffold.services.strategy.activity.ActivityFactoryForStrategy;
-import com.google.common.collect.Lists;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.Collections;
 import java.util.List;
 
+import org.example.practicescaffold.dtos.param.activity.ActivityClassListDto;
+import org.example.practicescaffold.services.strategy.activity.ActivityFactoryForStrategy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.google.common.collect.Lists;
+
+import lombok.extern.slf4j.Slf4j;
+
 @Service
 @Slf4j
-public class ActivityServices {
+public class ActivityService {
 
     @Autowired
     ActivityFactoryForStrategy activityFactoryForStrategy;

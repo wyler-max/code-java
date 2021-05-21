@@ -1,12 +1,10 @@
 package org.example.practicescaffold.common.utils;
 
-import org.example.practicescaffold.common.model.Response;
-import org.example.practicescaffold.common.model.ErrorCode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import javax.servlet.ServletResponse;
-import java.io.IOException;
 import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.example.practicescaffold.common.model.Response;
+import org.example.practicescaffold.common.model.errorcode.ErrorCode;
 
 /**
  * 返回值处理工具类
@@ -15,14 +13,10 @@ public class ResponseUtil {
 
     public static final int SUCCESS = 0;
     public static final int FAIL = 1;
+    public static final int UNKNOWN = 99999;
 
+    private static final String EMPTY = StringUtils.EMPTY;
 
-    public static <T> Response<T> makeResponse(int code, String msg) {
-        return makeResponse(code, msg, null);
-    }
-    public static <T> Response<T> makeResponse(ErrorCode errorCode, T data) {
-        return makeResponse(errorCode.getCode(), errorCode.getMsg(), data);
-    }
     // base makeResponse
     public static <T> Response<T> makeResponse(int code, String msg, T data) {
         Response<T> response = new Response<>();
@@ -32,59 +26,74 @@ public class ResponseUtil {
         return response;
     }
 
+    public static <T> Response<T> makeResponse(int code, String msg) {
+        return makeResponse(code, msg, null);
+    }
+
+    public static <T> Response<T> makeResponse(ErrorCode errorCode) {
+        return makeResponse(errorCode.getErrorCode(), errorCode.getErrorMsg(), null);
+    }
+
+    public static <T> Response<T> makeResponse(ErrorCode errorCode, T data) {
+        return makeResponse(errorCode.getErrorCode(), errorCode.getErrorMsg(), data);
+    }
+
     // success
     public static <T> Response<T> makeSuccess(String msg) {
-        return makeResponse(ErrorCode.SUCCESS.getCode(), msg, null);
+        return makeResponse(SUCCESS, msg, null);
     }
+
     public static <T> Response<T> makeSuccess(T data) {
-        return makeResponse(ErrorCode.SUCCESS.getCode(), ErrorCode.SUCCESS.getMsg(), data);
+        return makeResponse(SUCCESS, EMPTY, data);
     }
+
     // fail
     public static <T> Response<T> makeFail(String msg) {
-        return makeResponse(ErrorCode.UNKNOWN.getCode(), msg, null);
+        return makeResponse(FAIL, msg, null);
     }
+
     public static <T> Response<T> makeFail(T data) {
-        return makeResponse(ErrorCode.UNKNOWN.getCode(), ErrorCode.UNKNOWN.getMsg(), data);
+        return makeResponse(FAIL, EMPTY, data);
     }
+
     public static <T> Response<T> makeFail(ErrorCode errorCode) {
-        return makeResponse(errorCode.getCode(), errorCode.getMsg(), null);
+        return makeResponse(errorCode.getGlobalErrorCode(), errorCode.getErrorMsg(), null);
     }
-    public static <T> Response<T> makeFail(ErrorCode errorCode, String msg) {
-        return makeResponse(errorCode.getCode(), msg, null);
-    }
+
     public static <T> Response<T> makeFail(ErrorCode errorCode, T data) {
-        return makeResponse(errorCode.getCode(), errorCode.getMsg(), data);
+        return makeResponse(errorCode.getGlobalErrorCode(), errorCode.getErrorMsg(), data);
+    }
+
+    public static <T> Response<T> makeFail(ErrorCode errorCode, String msg) {
+        return makeResponse(errorCode.getGlobalErrorCode(), msg, null);
     }
 
     // 转Json
+    public static <T> String makeFailResponseJson(ErrorCode errorCode) {
+        Response<T> errorResponse = makeFail(errorCode);
+        return makeResponseJson(errorResponse);
+    }
+
+    public static <T> String makeResponseJson(Response<T> response) {
+        return JsonUtil.toJson(response);
+    }
 
     // rpc response
     public static boolean isSuccess(Response<?> response) {
-        return response != null && response.getCode() == ErrorCode.SUCCESS.getCode();
+        return response != null && response.getCode() == SUCCESS;
     }
+
     public static <T> T getRpcData(Response<T> response) {
         if (isSuccess(response)) {
             return response.getData();
         }
         return null;
     }
+
     public static <T> List<T> getRpcListData(Response<List<T>> response) {
         if (isSuccess(response)) {
             return response.getData();
         }
         return null;
-    }
-
-    // 传入 Response
-    public static void makeResp(ServletResponse response, Response<?> restResponse) throws IOException {
-        response.setContentType("application/json; charset=utf-8");
-        response.setCharacterEncoding("UTF-8");
-        new ObjectMapper().writeValue(response.getWriter(), restResponse);
-    }
-    public static void responseFail(ServletResponse response, ErrorCode errorCode) throws IOException {
-        makeResp(response, makeFail(errorCode));
-    }
-    public static void responseFail(ServletResponse response, String msg) throws IOException {
-        makeResp(response, makeFail(msg));
     }
 }
