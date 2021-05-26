@@ -1,4 +1,4 @@
-package org.example.practice.provider.feignclient;
+package org.example.practice.consumer.feignclient;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

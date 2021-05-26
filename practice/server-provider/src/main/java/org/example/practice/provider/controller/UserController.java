@@ -1,5 +1,6 @@
 package org.example.practice.provider.controller;
 
+import org.example.practice.provider.pojo.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,16 @@ public class UserController {
 
     @PostMapping(value = "/post")
     public String postProvider() {
+        return "this is provider, post user";
+    }
+
+    @GetMapping(value = "/getObject")
+    public User getObject() {
+        return new User(1000, "providerUser", 10);
+    }
+
+    @PostMapping(value = "/postObject")
+    public String postObject() {
         return "this is provider, post user";
     }
 }

@@ -1,4 +1,4 @@
-package org.example.practice.provider.api;
+package org.example.practice.consumer.api;
 
 public class UserApiTestDriver {
 

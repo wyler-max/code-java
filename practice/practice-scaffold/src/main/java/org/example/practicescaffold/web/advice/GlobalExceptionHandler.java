@@ -16,8 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 全局异常处理器
  *
- * 完整链路： 调用：filter -> interceptor -> ControllerAdvice -> aspect -> controller 返回：controller -> aspect ->
- * ControllerAdvice -> interceptor -> filter
+ * 完整链路：
+ *
+ * 调用：filter -> interceptor -> ControllerAdvice -> aspect -> controller
+ *
+ * 返回：controller -> aspect -> ControllerAdvice -> interceptor -> filter
  *
  * 功能：捕获来自 controller、aspect 的异常
  */
@@ -34,7 +37,7 @@ public class GlobalExceptionHandler {
             ServiceException ex = (ServiceException)e;
             return ResponseUtil.makeResponse(ex.getErrorCode().getGlobalErrorCode(), ex.getMessage(), ex.getResult());
         } else if (e instanceof MethodArgumentNotValidException) {
-            log.info("GlobalExceptionHandler", e);// INFO级别
+            log.info("GlobalExceptionHandler", e);
             List<ObjectError> allErrors = ((MethodArgumentNotValidException)e).getBindingResult().getAllErrors();
             String message = allErrors.get(allErrors.size() - 1).getDefaultMessage();
             return ResponseUtil.makeFail(CommErrorCode.E400_BAD_REQUEST, message);

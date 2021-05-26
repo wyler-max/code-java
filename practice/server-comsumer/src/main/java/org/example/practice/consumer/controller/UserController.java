@@ -1,9 +1,9 @@
-package org.example.practice.provider.controller;
+package org.example.practice.consumer.controller;
 
 import javax.annotation.Resource;
 
-import org.example.practice.provider.feignclient.KnowboxGatewayApi;
-import org.example.practice.provider.feignclient.ServerProviderUserApi;
+import org.example.practice.consumer.feignclient.KnowboxGatewayApi;
+import org.example.practice.consumer.feignclient.ServerProviderUserApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

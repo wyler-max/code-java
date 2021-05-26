@@ -1,4 +1,4 @@
-package org.example.practice.provider;
+package org.example.practice.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

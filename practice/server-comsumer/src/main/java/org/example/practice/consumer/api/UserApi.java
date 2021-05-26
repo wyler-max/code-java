@@ -1,6 +1,6 @@
-package org.example.practice.provider.api;
+package org.example.practice.consumer.api;
 
-import org.example.practice.provider.pojo.User;
+import org.example.practice.consumer.pojo.User;
 
 public interface UserApi {
     User getUser1();
