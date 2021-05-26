@@ -8,12 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-jpa" />
-        <module name="server-comsumer" />
         <module name="practice-scaffold" />
         <module name="springboot-start" />
         <module name="springmvc-start" />
         <module name="common-utils" />
         <module name="spring-start" />
+        <module name="server-consumer" />
         <module name="practice-java" />
         <module name="ssm" />
         <module name="eureka-server" />
@@ -32,7 +32,7 @@
       <module name="java-lab" options="-parameters" />
       <module name="practice-java" options="-parameters" />
       <module name="practice-scaffold" options="-parameters" />
-      <module name="server-comsumer" options="-parameters" />
+      <module name="server-consumer" options="-parameters" />
       <module name="server-provider" options="-parameters" />
       <module name="spring-start" options="-parameters -extdirs lib" />
       <module name="springboot-jpa" options="-parameters" />

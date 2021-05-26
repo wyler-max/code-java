@@ -1,5 +1,7 @@
 package org.example.practice.consumer.api;
 
+import org.example.practice.commonutils.pojo.User;
+
 public interface UserApi {
     User getUser1();
 

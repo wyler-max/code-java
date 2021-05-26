@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping(value = "/provider/user")
+@Slf4j
 public class UserController {
 
     @GetMapping(value = "/get/{id}")
     public User userGet(@PathVariable("id") Integer id) {
-        User user = new User(id, "provider get User", 10);
-        return user;
+        return new User(id, "provider get User", 10);
     }
 
     @PostMapping(value = "/post")
