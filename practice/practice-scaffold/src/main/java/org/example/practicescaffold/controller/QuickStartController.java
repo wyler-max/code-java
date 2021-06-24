@@ -1,24 +1,26 @@
 package org.example.practicescaffold.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.example.practicescaffold.common.utils.yaml.YmlListCityUtil;
 import org.example.practicescaffold.common.utils.yaml.YmlListStudentUtil;
 import org.example.practicescaffold.common.utils.yaml.YmlMapStudentUtil;
 import org.example.practicescaffold.common.utils.yaml.YmlObjectPersonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Description;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.Map;
-
-/**
- * 快速启动控制器
- */
 @RestController
 @RequestMapping("/quickStart")
+@Description(value = "")
 public class QuickStartController {
 
+    /**
+     * 注入配置
+     */
     @Value("${name}")
     private String name;
     @Value("${person.name}")
@@ -46,11 +48,22 @@ public class QuickStartController {
     private YmlMapStudentUtil ymlMapStudentUtil;
     // 获取Map
     @Value("#{${map2}}")
-    private Map<String,String> maps2;
+    private Map<String, String> maps2;
+
+    @Value("${spring.profiles.active}")
+    private String env;
+
+    /**
+     * 返回当前的环境
+     */
+    @RequestMapping("/env")
+    public String env() {
+        return env;
+    }
 
     @RequestMapping("/quick")
     public String quick() {
-        System.out.println(3|9);
+        System.out.println(3 | 9);
         return "SpringBoot 快速访问成功！";
     }
 

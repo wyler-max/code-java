@@ -17,10 +17,12 @@
     <modules>
         <module>common-utils</module>
         <module>eureka-server</module>
+        <module>server-consumer</module>
         <module>server-provider</module>
-        <module>server-comsumer</module>
+        <module>server-provider2</module>
         <module>practice-java</module>
         <module>practice-scaffold</module>
+        <module>practice-spring</module>
     </modules>
 
     <properties>

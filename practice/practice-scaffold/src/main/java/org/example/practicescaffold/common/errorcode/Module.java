@@ -1,10 +1,10 @@
-package org.example.practicescaffold.common.model.errorcode;
+package org.example.practicescaffold.common.errorcode;
+
+import java.util.stream.Stream;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.stream.Stream;
 
 /**
  * @desc 模块
@@ -18,9 +18,7 @@ public enum Module {
     /**
      * 应用01模块
      */
-    MODULE_01(1),
-    MODULE_02(2),
-    MODULE_03(3),
+    MODULE_01(1), MODULE_02(2), MODULE_03(3),
     // ......
     /**
      * 位置模块
@@ -32,6 +30,6 @@ public enum Module {
     private int type;
 
     public static Module fromType(final int type) {
-        return Stream.of(values()).filter(m -> m.type==type).findAny().orElse(UNKNOWN);
+        return Stream.of(values()).filter(m -> m.type == type).findAny().orElse(UNKNOWN);
     }
 }

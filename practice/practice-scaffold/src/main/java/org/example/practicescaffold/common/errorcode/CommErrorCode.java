@@ -1,4 +1,4 @@
-package org.example.practicescaffold.common.model.errorcode;
+package org.example.practicescaffold.common.errorcode;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

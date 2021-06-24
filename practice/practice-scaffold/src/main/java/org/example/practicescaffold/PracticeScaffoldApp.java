@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * SpringBootApplication 声明该类是一个SpringBoot引导类 MapperScan 扫描指定包下的 Mapper接口类，并为其生成实现类
  *
- * @author wangyl
  */
 @SpringBootApplication
 @MapperScan(basePackages = "org.example.practicescaffold.db.dao")

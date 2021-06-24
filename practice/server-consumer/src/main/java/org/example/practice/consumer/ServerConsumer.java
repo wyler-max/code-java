@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+/**
+ * @EnableFeignClients(defaultConfiguration = FeignConfiguration.class) 全局配置，优先级低于@FeignClient.configuration
+ */
 @SpringBootApplication
 @EnableEurekaClient
 @EnableFeignClients

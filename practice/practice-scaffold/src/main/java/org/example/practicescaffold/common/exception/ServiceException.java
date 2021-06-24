@@ -2,8 +2,8 @@ package org.example.practicescaffold.common.exception;
 
 import java.io.Serializable;
 
-import org.example.practicescaffold.common.model.errorcode.CommErrorCode;
-import org.example.practicescaffold.common.model.errorcode.ErrorCode;
+import org.example.practicescaffold.common.errorcode.CommErrorCode;
+import org.example.practicescaffold.common.errorcode.ErrorCode;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

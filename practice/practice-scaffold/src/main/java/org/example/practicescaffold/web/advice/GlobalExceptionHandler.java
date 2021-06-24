@@ -2,9 +2,9 @@ package org.example.practicescaffold.web.advice;
 
 import java.util.List;
 
+import org.example.practicescaffold.common.errorcode.CommErrorCode;
 import org.example.practicescaffold.common.exception.ServiceException;
 import org.example.practicescaffold.common.model.Response;
-import org.example.practicescaffold.common.model.errorcode.CommErrorCode;
 import org.example.practicescaffold.common.utils.ResponseUtil;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

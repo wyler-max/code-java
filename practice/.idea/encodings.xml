@@ -20,8 +20,10 @@
     <file url="file://$PROJECT_DIR$/practice-java/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice-scaffold/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice-scaffold/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice-spring/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server-provider2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

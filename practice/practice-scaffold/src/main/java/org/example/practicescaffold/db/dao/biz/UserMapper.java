@@ -1,14 +1,14 @@
 package org.example.practicescaffold.db.dao.biz;
 
-import org.example.practicescaffold.db.model.biz.User;
-
 import java.util.List;
+
+import org.example.practicescaffold.db.model.biz.User;
 
 /**
  * mybatis mapper接口
  */
-//@Mapper
+// @Mapper // 注释掉防止启动失败
 public interface UserMapper {
 
-    public List<User> queryUserList();
+    List<User> queryUserList();
 }

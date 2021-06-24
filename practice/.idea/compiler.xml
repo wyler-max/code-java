@@ -7,18 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springboot-jpa" />
-        <module name="practice-scaffold" />
+        <module name="practice-spring" />
+        <module name="server-provider2" />
         <module name="springboot-start" />
         <module name="springmvc-start" />
         <module name="common-utils" />
-        <module name="spring-start" />
         <module name="server-consumer" />
-        <module name="practice-java" />
         <module name="ssm" />
         <module name="eureka-server" />
-        <module name="server-provider" />
         <module name="springmvc-upload-server" />
+        <module name="springboot-jpa" />
+        <module name="practice-scaffold" />
+        <module name="spring-start" />
+        <module name="practice-java" />
+        <module name="server-provider" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -32,8 +34,10 @@
       <module name="java-lab" options="-parameters" />
       <module name="practice-java" options="-parameters" />
       <module name="practice-scaffold" options="-parameters" />
+      <module name="practice-spring" options="-parameters" />
       <module name="server-consumer" options="-parameters" />
       <module name="server-provider" options="-parameters" />
+      <module name="server-provider2" options="-parameters" />
       <module name="spring-start" options="-parameters -extdirs lib" />
       <module name="springboot-jpa" options="-parameters" />
       <module name="springboot-start" options="-parameters" />

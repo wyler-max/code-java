@@ -3,6 +3,6 @@
 <mapper namespace="org.example.practicescaffold.db.dao.biz.UserMapper">
     <select id="queryUserList" resultType="org.example.practicescaffold.db.model.biz.User">
         select *
-        from user
+        from user limit 100
     </select>
 </mapper>

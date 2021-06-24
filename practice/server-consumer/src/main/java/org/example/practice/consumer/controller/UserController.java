@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import org.example.practice.commonutils.pojo.User;
 import org.example.practice.consumer.feignclient.KnowboxGatewayClient;
 import org.example.practice.consumer.feignclient.UserClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +20,7 @@ public class UserController {
 
     @Resource
     private UserClient userClient;
-    @Autowired
+    @Resource
     private KnowboxGatewayClient knowboxGatewayClient;
 
     @GetMapping(value = "/get")

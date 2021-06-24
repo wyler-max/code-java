@@ -1,10 +1,8 @@
 package org.example.practicescaffold.controller;
 
-
 import org.example.practicescaffold.dtos.param.common.Update;
 import org.example.practicescaffold.dtos.param.user.UserReq;
 import org.example.practicescaffold.dtos.param.user.UserValidReq;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -13,11 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
 @RestController
-@RequestMapping("/validation")
+@RequestMapping("/valid")
 public class ValidationController {
 
+    /**
+     * 手动校验，可统一封装到请求参数的抽象类中
+     */
     @RequestMapping(value = "/valid1", method = RequestMethod.POST)
     public String valid1(@RequestBody UserReq userReq) {
         Long userId = userReq.getId();
@@ -45,6 +48,9 @@ public class ValidationController {
         return "success";
     }
 
+    /**
+     * 使用@Validated注解，校验请求参数
+     */
     @RequestMapping(value = "/valid2", method = RequestMethod.POST)
     public String valid2(@Validated @RequestBody UserValidReq userValidReq, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -56,6 +62,9 @@ public class ValidationController {
         return "success";
     }
 
+    /**
+     * 使用@Validated注解，校验请求参数，增加了Update.class，可通过添加 groups = Update.class自动判断，是更新还是插入
+     */
     @RequestMapping(value = "/valid3", method = RequestMethod.POST)
     public String valid3(@Validated(Update.class) @RequestBody UserValidReq userValidReq, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

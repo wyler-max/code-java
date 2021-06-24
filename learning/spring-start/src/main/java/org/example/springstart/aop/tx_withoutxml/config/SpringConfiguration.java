@@ -10,9 +10,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * Spring 配置类
  */
 @Configuration
-@ComponentScan("com.example.aop.tx_withoutxml")
+@ComponentScan("org.example.springstart.aop.tx_withoutxml")
 @Import({JdbcConfig.class, TransactionConfig.class})
 @PropertySource("jdbcConfig.properties")
 @EnableTransactionManagement
-public class SpringConfiguration {
-}
+public class SpringConfiguration {}

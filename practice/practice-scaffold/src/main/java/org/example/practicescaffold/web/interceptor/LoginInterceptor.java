@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.example.practicescaffold.common.errorcode.UserErrorCode;
 import org.example.practicescaffold.common.model.UserContext;
 import org.example.practicescaffold.common.model.UserInfo;
-import org.example.practicescaffold.common.model.errorcode.UserErrorCode;
 import org.example.practicescaffold.common.utils.HttpUtil;
 import org.example.practicescaffold.common.utils.MockUtil;
 import org.example.practicescaffold.common.utils.ResponseUtil;

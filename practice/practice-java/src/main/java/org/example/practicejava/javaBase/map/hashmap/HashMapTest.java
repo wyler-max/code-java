@@ -1,7 +1,7 @@
 package org.example.practicejava.javaBase.map.hashmap;
 
-import com.google.common.collect.Maps;
-import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -9,20 +9,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+
+import com.google.common.collect.Maps;
 
 /**
  * HashMap 默认初始容量 16，负载因子 0.75; 每次扩容为之前2倍，扩容后，元素地址改变的概率为50%
  *
- * 1.非线程安全
- * 2.可以接受为null的键值(key)和值(value)
- * 3.不能保证随着时间的推移Map中的元素次序是不变的
+ * 1.非线程安全 2.可以接受为null的键值(key)和值(value) 3.不能保证随着时间的推移Map中的元素次序是不变的
  *
- * 如何选择合适的Map
- *   - HashMap可实现快速存储和检索，但其缺点是其包含的元素是无序的，这导致它在存在大量迭代(这里应是指循环时)的情况下表现不佳。
- *   - LinkedHashMap保留了HashMap的优势，且其包含的元素是有序的。它在有大量迭代的情况下表现更好
- *   - TreeMap能便捷的实现对其内部元素的各种排序，但其一般性能比前两种map差。
+ * 如何选择合适的Map - HashMap可实现快速存储和检索，但其缺点是其包含的元素是无序的，这导致它在存在大量迭代(这里应是指循环时)的情况下表现不佳。 -
+ * LinkedHashMap保留了HashMap的优势，且其包含的元素是有序的。它在有大量迭代的情况下表现更好 - TreeMap能便捷的实现对其内部元素的各种排序，但其一般性能比前两种map差。
  */
 public class HashMapTest {
 
@@ -140,25 +137,29 @@ public class HashMapTest {
         System.out.println("hashMap=" + hashMap);*/
 
         // computeIfAbsent & computeIfPresent
+        System.out.println("-----computeIfAbsent ----------");
         k = "key4";
         hashMap.computeIfAbsent(k, key -> 14);
         System.out.println("hashMap=" + hashMap);
+        System.out.println("-----computeIfPresent ----------");
         k = "key1";
-        hashMap.computeIfPresent(k, (key, oldVal) -> oldVal -10);
+        hashMap.computeIfPresent(k, (key, oldVal) -> oldVal - 10);
         System.out.println("hashMap=" + hashMap);
 
         // clone
         System.out.println("-----clone ----------");
         Object clone = hashMap.clone();
         System.out.println("clone=" + clone);
-        map = (HashMap<String, Integer>) hashMap.clone();
+        map = (HashMap<String, Integer>)hashMap.clone();
         System.out.println("map=" + map);
 
+        // clear
+        System.out.println("-----clear ----------");
         hashMap.clear();
         System.out.println("hashMap=" + hashMap);
 
         Map<String, Integer> stringIntegerMap = Collections.synchronizedMap(hashMap);
-
+        System.out.println("stringIntegerMap=" + stringIntegerMap);
     }
 
     public Integer func(String k, Integer oldVal) {

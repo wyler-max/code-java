@@ -1,5 +1,7 @@
 package org.example.springstart.aop.account;
 
+import java.util.List;
+
 import org.example.springstart.aop.account.domain.Account;
 import org.example.springstart.aop.account.service.IAccountService;
 import org.junit.Test;
@@ -9,14 +11,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
 /**
  * @author wangyulin
  * @date 2020/7/7
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:com/example/springstart/aop/account/bean.xml")
+@ContextConfiguration(locations = "classpath:org/example/springstart/aop/account/bean.xml")
 public class AccountTest {
 
     @Autowired

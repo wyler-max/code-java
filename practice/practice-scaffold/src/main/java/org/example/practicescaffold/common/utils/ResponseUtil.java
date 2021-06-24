@@ -3,8 +3,8 @@ package org.example.practicescaffold.common.utils;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.example.practicescaffold.common.errorcode.ErrorCode;
 import org.example.practicescaffold.common.model.Response;
-import org.example.practicescaffold.common.model.errorcode.ErrorCode;
 
 /**
  * 返回值处理工具类
@@ -26,19 +26,28 @@ public class ResponseUtil {
         return response;
     }
 
+    /**
+     * response
+     */
     public static <T> Response<T> makeResponse(int code, String msg) {
         return makeResponse(code, msg, null);
     }
 
     public static <T> Response<T> makeResponse(ErrorCode errorCode) {
-        return makeResponse(errorCode.getErrorCode(), errorCode.getErrorMsg(), null);
+        return makeResponse(errorCode.getGlobalErrorCode(), errorCode.getErrorMsg(), null);
     }
 
     public static <T> Response<T> makeResponse(ErrorCode errorCode, T data) {
-        return makeResponse(errorCode.getErrorCode(), errorCode.getErrorMsg(), data);
+        return makeResponse(errorCode.getGlobalErrorCode(), errorCode.getErrorMsg(), data);
     }
 
-    // success
+    public static <T> Response<T> makeResponse(ErrorCode errorCode, String message) {
+        return makeResponse(errorCode.getGlobalErrorCode(), message, null);
+    }
+
+    /**
+     * response success
+     */
     public static <T> Response<T> makeSuccess(String msg) {
         return makeResponse(SUCCESS, msg, null);
     }
@@ -47,7 +56,9 @@ public class ResponseUtil {
         return makeResponse(SUCCESS, EMPTY, data);
     }
 
-    // fail
+    /**
+     * response fail
+     */
     public static <T> Response<T> makeFail(String msg) {
         return makeResponse(FAIL, msg, null);
     }
@@ -68,17 +79,16 @@ public class ResponseUtil {
         return makeResponse(errorCode.getGlobalErrorCode(), msg, null);
     }
 
-    // 转Json
-    public static <T> String makeFailResponseJson(ErrorCode errorCode) {
-        Response<T> errorResponse = makeFail(errorCode);
-        return makeResponseJson(errorResponse);
-    }
-
+    /**
+     * response to Json
+     */
     public static <T> String makeResponseJson(Response<T> response) {
         return JsonUtil.toJson(response);
     }
 
-    // rpc response
+    /**
+     * process rpc response
+     */
     public static boolean isSuccess(Response<?> response) {
         return response != null && response.getCode() == SUCCESS;
     }

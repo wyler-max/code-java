@@ -15,6 +15,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserController {
 
+    @GetMapping(value = "/hello")
+    public String hello() {
+        return "hello provider";
+    }
+
     @GetMapping(value = "/get/{id}")
     public User userGet(@PathVariable("id") Integer id) {
         return new User(id, "provider get User", 10);

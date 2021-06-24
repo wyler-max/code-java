@@ -1,21 +1,20 @@
-package org.example.practicescaffold.common.model.errorcode;
+package org.example.practicescaffold.common.errorcode;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor
-public enum FileErrorCode implements ErrorCode {
+public enum UserErrorCode implements ErrorCode {
 
     // @formatter:off
     SUCCESS(0, "成功"),
     FAIL(1, "失败"),
 
-    FILE_NOT_EXIST(11, "文件不存在"),
-    FILE_BROKEN(12, "文件损坏"),
-    FILE_UPLOAD_TIMEOUT(100, "上传文件超时"),
-    FILE_UPLOAD_OVERSIZE(101, "上传文件过大"),
-    FILE_UPLOAD_FAIL(102, "上传文件失败"),
+    USER_NO_LOGIN(10, "未登录或已过期"),
+    USER_NOT_EXIST(11, "用户不存在"),
+    USER_INFO_ERROR(12, "用户信息错误"),
+    USER_NAME_ERROR(13, "用户名为空"),
 
     UNKNOWN(9999, "未知错误");
     // @formatter:on
@@ -36,7 +35,7 @@ public enum FileErrorCode implements ErrorCode {
 
     @Override
     public Module getModule() {
-        return Module.MODULE_01;
+        return Module.MODULE_03;
     }
 
     @Override

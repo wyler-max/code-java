@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
 /**
+ * @formatter:off
  * 该类是一个配置类，它的作用和bean.xml是一样的
  * spring中的新注解
  * Configuration
@@ -36,7 +37,7 @@ import org.springframework.context.annotation.PropertySource;
  *                  关键字：classpath，表示类路径下
  */
 @Configuration
-@ComponentScan(basePackages = "com.example.ioc.iocwithoutxml")
+@ComponentScan(basePackages = "org.example.springstart.ioc.iocwithoutxml")
 @Import(JdbcConfig.class)
 @PropertySource("classpath:jdbcConfig.properties")
 public class SpringConfiguration {

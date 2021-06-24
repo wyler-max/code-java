@@ -2,8 +2,45 @@ spring:
   application:
     name: server-comsumer
 server:
-  port: 8082
+  port: 8090
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:9090/eureka/
+# 配置Feign
+feign:
+  hystrix:
+    enabled: true
+  # 替换为 okhttp 客户端
+  okhttp:
+    enabled: true
+  # gzip压缩
+  compression:
+    request:
+      enabled: false
+      # 可以压缩的请求/响应的类型
+      mime-types: text/xml,application/xml,application/json
+      # 当请求的数据容量达到多少的时候，使用压缩。默认是2048字节
+      min-request-size: 512
+    response:
+      enabled: false
+  client:
+  #default-config: my-config # congituration 优先级最高
+  #my-config:
+  #error-decoder: org.example.practice.consumer.config.MyErrorDecoder
+  #config:
+  #default:
+  #connect-timeout: 15000 # ms 配置过熔断器时间，就无须配置 feign的connect-timeout了
+
+# 配置 ribbon 负载均衡器
+ribbon:
+  okhttp:
+    enabled: true
+
+# 配置 hystrix 熔断器
+hystrix:
+  metrics:
+    enabled: true
+    polling-interval-ms: 6000 # default=2000
+  shareSecurityContext: true # 共享上下文
+
