@@ -23,9 +23,9 @@ public class UserController {
     @GetMapping(value = "/get/{id}")
     public User userGet(@PathVariable("id") Integer id) {
         // return new User(id, "provider2 get User", 10);
-        // 模拟超时 2s
+        // 模拟超时
         try {
-            Thread.sleep(2000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

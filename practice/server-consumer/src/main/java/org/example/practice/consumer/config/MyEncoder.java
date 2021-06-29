@@ -4,13 +4,10 @@ import static java.lang.String.format;
 
 import java.lang.reflect.Type;
 
-import org.springframework.stereotype.Component;
-
 import feign.RequestTemplate;
 import feign.codec.EncodeException;
 import feign.codec.Encoder;
 
-@Component
 public class MyEncoder implements Encoder {
     @Override
     public void encode(Object object, Type bodyType, RequestTemplate template) throws EncodeException {
