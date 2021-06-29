@@ -1,4 +1,4 @@
-package org.example.practicecode.designpattern.createType.builder;
+package org.example.practicecode.designpattern.createType.builderKFC;
 
 import java.util.ArrayList;
 import java.util.List;

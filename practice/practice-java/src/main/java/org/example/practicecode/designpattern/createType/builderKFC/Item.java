@@ -1,4 +1,4 @@
-package org.example.practicecode.designpattern.createType.builder;
+package org.example.practicecode.designpattern.createType.builderKFC;
 
 /**
  * 食品元素接口，具象：汉堡、冷饮

@@ -1,4 +1,4 @@
-package org.example.practicecode.designpattern.createType.builder;
+package org.example.practicecode.designpattern.createType.builderKFC;
 
 /**
  * 实际创建Meal对象

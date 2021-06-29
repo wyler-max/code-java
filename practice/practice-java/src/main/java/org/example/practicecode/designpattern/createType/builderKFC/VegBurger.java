@@ -1,4 +1,4 @@
-package org.example.practicecode.designpattern.createType.builder;
+package org.example.practicecode.designpattern.createType.builderKFC;
 
 /**
  * 蔬菜汉堡，继承汉堡抽象类

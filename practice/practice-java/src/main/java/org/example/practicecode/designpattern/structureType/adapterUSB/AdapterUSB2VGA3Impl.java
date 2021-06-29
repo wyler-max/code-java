@@ -5,7 +5,7 @@ package org.example.practicecode.designpattern.structureType.adapterUSB;
  *
  * usb.output -> adapter -> vga.input
  */
-public class AdapterUSB2VGA3_Interface extends AdapterUSB2VGA3_Abstract {
+public class AdapterUSB2VGA3Impl extends AdapterUSB2VGA3_Abstract {
 
     @Override
     public String showScreenData(String data) {

@@ -5,7 +5,6 @@ package org.example.practicecode.designpattern.structureType.bridge;
  */
 public class Test {
     public static void main(String[] args) {
-
         System.out.println("Oppo 手机：");
         Software camera = new Camera();
         Oppo oppo = new Oppo();

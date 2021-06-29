@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.google.common.collect.Lists;
 
 /**
- * 树枝
+ * 树枝 合成器
  */
 public class Composite implements Component {
 

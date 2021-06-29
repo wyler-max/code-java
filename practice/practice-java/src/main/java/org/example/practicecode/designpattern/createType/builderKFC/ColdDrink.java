@@ -1,4 +1,4 @@
-package org.example.practicecode.designpattern.createType.builder;
+package org.example.practicecode.designpattern.createType.builderKFC;
 
 /**
  * 冷饮抽象类，实现商品

@@ -1,20 +1,42 @@
 package org.example.practicecode.designpattern.createType.builder;
 
 /**
- * 生成器模式测试
+ * 构造器不能是单例
  */
 public class Test {
     public static void main(String[] args) {
-        MealBuilder mealBuilder = new MealBuilder();
+        UserBuilder userBuilder = new UserBuilder();
+        // 使用构造器构造 userContext
+        userBuilder.setUserName("jack").setUserAge(18).setUserGender(0);
+        // 输出构造好的对象
+        UserContext userContext = userBuilder.getUserContext();
+        System.out.println(userContext);
+    }
 
-        System.out.println("套餐：vegMeal");
-        Meal vegMeal = mealBuilder.prepareVegMeal();
-        vegMeal.showItems();
-        System.out.println("Total Cost：" + vegMeal.getCost());
+    @org.junit.Test
+    public void testSingleton() {
+        // builder 不能是单例，否则可能会导致错乱
+        UserBuilderSingleton builder = UserBuilderSingleton.getInstance();
+        for (int i = 0; i < 100; i++) {
+            String name = "name-" + i;
+            int age = i;
+            new Thread((() -> {
+                builder.setUserName(name).setUserAge(age);
+                System.out.println(builder.getUserContext());
+            })).start();
+        }
+    }
 
-        System.out.println("套餐：nonMeal");
-        Meal nonMeal = mealBuilder.prepareNonVegMeal();
-        nonMeal.showItems();
-        System.out.println("Total Cost：" + nonMeal.getCost());
+    @org.junit.Test
+    public void testPrototype() {
+        UserBuilder builder = new UserBuilder();
+        for (int i = 0; i < 100; i++) {
+            String name = "name-" + i;
+            int age = i;
+            new Thread((() -> {
+                builder.setUserName(name).setUserAge(age);
+                System.out.println(builder.getUserContext());
+            })).start();
+        }
     }
 }

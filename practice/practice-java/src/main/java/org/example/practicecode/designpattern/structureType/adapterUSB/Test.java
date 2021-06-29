@@ -16,7 +16,7 @@ public class Test {
         adapterObject.showScreenData(data);
 
         // 接口适配器
-        AdapterUSB2VGA3_Interface adapterInterface = new AdapterUSB2VGA3_Interface();
+        AdapterUSB2VGA3Impl adapterInterface = new AdapterUSB2VGA3Impl();
         adapterInterface.showScreenData(data);
     }
 }
