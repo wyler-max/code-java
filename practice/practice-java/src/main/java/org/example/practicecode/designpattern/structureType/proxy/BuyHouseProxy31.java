@@ -7,7 +7,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 /**
- * Cglib 代理 1
+ * Cglib 代理 1 使用 asm 字节码框架生成代理类
  *
  * Enhancer类是CGLib中的一个字节码增强器，它可以方便的对想要处理的类进行扩展
  */
@@ -31,7 +31,7 @@ public class BuyHouseProxy31 implements MethodInterceptor {
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
         System.out.println("买房前，准备钱");
         Object result = proxy.invoke(object, args);
-        System.out.println("买房前，搞装修");
+        System.out.println("买房后，搞装修");
         return result;
     }
 }

@@ -1,9 +1,5 @@
 package org.example.practicecode.designpattern.actionType.observer;
 
-/**
- * @author wangyulin
- * @date 2020/6/2
- */
 public class ForecastDisplay implements Observer, DisplayElement {
 
     private float temperature;
@@ -19,9 +15,8 @@ public class ForecastDisplay implements Observer, DisplayElement {
 
     @Override
     public void display() {
-        System.out.println("明日预报：\ntemperature: " + temperature +
-                "; humidity: " + humidity +
-                "; pressure: " + pressure);
+        System.out
+            .println("明日预报：\ntemperature: " + temperature + "; humidity: " + humidity + "; pressure: " + pressure);
     }
 
     @Override

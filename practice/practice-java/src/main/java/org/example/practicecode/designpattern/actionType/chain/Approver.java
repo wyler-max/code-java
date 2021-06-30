@@ -15,6 +15,7 @@ public abstract class Approver {
         this.successor = successor;
     }
 
+    // 审批处理，不同职级处理的审批权限不同 即 最大审批金额不同
     public abstract void processRequest(PurchaseRequest request);
 
 }

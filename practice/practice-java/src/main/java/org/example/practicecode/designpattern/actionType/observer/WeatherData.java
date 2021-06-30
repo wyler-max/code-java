@@ -2,21 +2,15 @@ package org.example.practicecode.designpattern.actionType.observer;
 
 import java.util.ArrayList;
 
-/**
- * @author wangyulin
- * @date 2020/6/2
- */
+import com.google.common.collect.Lists;
+
 public class WeatherData implements Subject {
 
     private float temperature;
     private float humidity;
     private float pressure;
 
-    private ArrayList observers;
-
-    public WeatherData() {
-        observers = new ArrayList();
-    }
+    private ArrayList<Observer> observers = Lists.newArrayList();
 
     @Override
     public void addObserver(Observer o) {
@@ -34,29 +28,15 @@ public class WeatherData implements Subject {
     @Override
     public void notifyObservers() {
         for (int i = 0; i < observers.size(); i++) {
-            Observer observer = (Observer) observers.get(i);
+            Observer observer = observers.get(i);
             observer.update(temperature, humidity, pressure);
         }
-    }
-
-    public void measurementChanged() {
-        notifyObservers();
-    }
-
-    public float getTemperature() {
-        return temperature;
-    }
-    public float getHumidity() {
-        return humidity;
-    }
-    public float getPressure() {
-        return pressure;
     }
 
     public void setMeasurements(float temperature, float humidity, float pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
-        measurementChanged();
+        notifyObservers();
     }
 }

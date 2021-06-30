@@ -14,7 +14,7 @@ public class PresidentApprove extends Approver {
         if (100000 <= request.getSum()) {
             System.out.println("This request " + request.getId() + " will be handled by " + this.name + ".");
         } else {
-            successor.processRequest(request);
+            System.out.println("Oops! discuss at the meetting.");
         }
     }
 }

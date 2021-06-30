@@ -18,7 +18,7 @@ public class User implements Observer {
         read();
     }
 
-    public void read() {
+    private void read() {
         System.out.println(name + " 收到消息： " + message);
     }
 }

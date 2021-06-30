@@ -1,7 +1,7 @@
 package org.example.practicecode.designpattern.structureType.flyweight;
 
 /**
- * 享元模式测试类
+ * 享元模式，使用 HashMap 避免对象的重复创建。在spring中大量使用该模式
  */
 public class Test {
     public static void main(String[] args) {

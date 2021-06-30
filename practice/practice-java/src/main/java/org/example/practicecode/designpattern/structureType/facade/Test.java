@@ -3,7 +3,7 @@ package org.example.practicecode.designpattern.structureType.facade;
 /**
  * 外观模式，客户角色
  */
-public class Client {
+public class Test {
     public static void main(String[] args) {
         Computer computer = new Computer();
         computer.start();

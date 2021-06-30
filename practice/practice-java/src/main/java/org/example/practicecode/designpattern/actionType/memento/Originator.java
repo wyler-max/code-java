@@ -18,7 +18,7 @@ public class Originator {
         return new Memento(state);
     }
 
-    public String getStateFromMemento(MementoIF memento) {
-        return ((Memento) memento).getState();
+    public String getStateFromMemento(IMemento memento) {
+        return ((Memento)memento).getState();
     }
 }

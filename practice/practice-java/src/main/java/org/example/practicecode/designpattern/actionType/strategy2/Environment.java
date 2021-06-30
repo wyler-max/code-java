@@ -6,13 +6,6 @@ package org.example.practicecode.designpattern.actionType.strategy2;
 public class Environment {
     private Strategy strategy;
 
-    public Environment() {
-    }
-
-    public Environment(Strategy strategy) {
-        this.strategy = strategy;
-    }
-
     public void setStrategy(Strategy strategy) {
         this.strategy = strategy;
     }

@@ -1,7 +1,9 @@
 package org.example.practicecode.designpattern.actionType.interpreter;
 
 /**
- * 解释器模式测试类
+ * 解释器模式，提供了评估语言的语法或表达式的方式。
+ *
+ * 这种模式实现了一个表达式接口，该接口解释一个特定的上下文。这种模式被用在 SQL 解析、符号处理引擎等。
  */
 public class Test {
 
@@ -13,17 +15,17 @@ public class Test {
         System.out.println("Julie is a married women? " + isMarriedWoman.interpret("Married Julie"));
     }
 
-    // 规则：Robert 和 John 是男性
+    // 规则：Robert 和 John 都是男性
     public static Expression getMaleExpression() {
-        Expression robert = new TerminalExpression("Robert");
-        Expression john = new TerminalExpression("John");
-        return new OrExpression(robert, john);
+        Expression expr1 = new TerminalExpression("Robert");
+        Expression expr2 = new TerminalExpression("John");
+        return new OrExpression(expr1, expr2);
     }
 
     // 规则：Julie 是一个已婚的女性
     public static Expression getMarriedWomanExpression() {
-        Expression julie = new TerminalExpression("Julie");
-        Expression married = new TerminalExpression("Married");
-        return new AndExpression(julie, married);
+        Expression expr1 = new TerminalExpression("Julie");
+        Expression expr2 = new TerminalExpression("Married");
+        return new AndExpression(expr1, expr2);
     }
 }

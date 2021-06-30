@@ -1,9 +1,9 @@
 package org.example.practicecode.designpattern.structureType.proxy;
 
-import java.lang.reflect.Proxy;
-
 /**
- * 代理模式测试类
+ * 代理模式，使用一个类代表另一个类的功能。</br>
+ * 1、静态代理 </br>
+ * 2、动态代理 a. JDK Proxy 基于反射 b. Cglib 基于asm框架
  */
 public class Test {
     public static void main(String[] args) {
@@ -11,21 +11,21 @@ public class Test {
         BuyHouse buyHouse = new BuyHouseImpl();
 
         // 静态代理
-        System.out.println("静态代理：========");
+        /*System.out.println("静态代理：========");
         BuyHouseProxy buyHouseProxy = new BuyHouseProxy();
         buyHouseProxy.buyHouseProxy(buyHouse);
         buyHouseProxy.buyHouse();
 
-        // 动态代理
+        // 动态代理 jdk proxy
         System.out.println("动态代理：========");
         BuyHouse buyHouseProxy2 = (BuyHouse)Proxy.newProxyInstance(buyHouse.getClass().getClassLoader(),
             buyHouse.getClass().getInterfaces(), new BuyHouseProxy21(buyHouse));
-        buyHouseProxy2.buyHouse();
+        buyHouseProxy2.buyHouse();*/
 
-        // cglib 代理
+        // 动态代理 cglib
         System.out.println("cglib代理：========");
         BuyHouseProxy31 cglibProxy = new BuyHouseProxy31();
-        BuyHouseImpl proxyInstance = (BuyHouseImpl)cglibProxy.getInstance(buyHouse);
+        BuyHouse proxyInstance = (BuyHouse)cglibProxy.getInstance(buyHouse);
         proxyInstance.buyHouse();
     }
 }

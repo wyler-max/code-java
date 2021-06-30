@@ -5,16 +5,26 @@ package org.example.practicecode.designpattern.actionType.template;
  */
 public abstract class Mail {
 
+    // 信件属性
+    protected String mailTitle;
+    protected String mailReceiver;
+    protected String mailContext;
+    protected String mailFormat;
+
+    // 定义模板
     public void sendMail() {
-        this.mailTitle();
-        this.mailReciver();
-        this.mailContent();
-        this.mailFormat();
+        this.setMailTitle();
+        this.setMailReciver();
+        this.setMailContent();
+        this.setMailFormat();
     }
 
-    public abstract void mailTitle();
-    public abstract void mailReciver();
-    public abstract void mailContent();
-    // 邮件格式
-    public abstract void mailFormat();
+    // 模板中的方法
+    public abstract void setMailTitle();
+
+    public abstract void setMailReciver();
+
+    public abstract void setMailContent();
+
+    public abstract void setMailFormat();
 }

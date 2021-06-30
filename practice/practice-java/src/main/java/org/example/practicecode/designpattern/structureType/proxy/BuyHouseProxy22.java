@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * 动态代理 2
+ * 动态代理 2 使用 java.lang.reflect.Proxy
  */
 public class BuyHouseProxy22 {
 
@@ -18,7 +18,7 @@ public class BuyHouseProxy22 {
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                     System.out.println("买房前，准备钱");
                     Object result = method.invoke(buyHouseImpl, args);
-                    System.out.println("买房前，搞装修");
+                    System.out.println("买房后，搞装修");
                     return result;
                 }
             });

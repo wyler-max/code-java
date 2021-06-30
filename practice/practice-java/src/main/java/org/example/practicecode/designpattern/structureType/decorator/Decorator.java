@@ -5,7 +5,10 @@ package org.example.practicecode.designpattern.structureType.decorator;
  *
  * 装饰者不仅要考虑自身，还要考虑被它修饰的对象，它是在被修饰的对象上添加修饰。
  *
- * 例如， 咖啡里面加咖啡豆，价格为coffee+soy。 咖啡里面加牛奶，价格为coffee+milk。 咖啡里面加牛奶加巧克力，价格为coffee+milk+chocolate
+ * 例如 </br>
+ * 咖啡里面加咖啡豆，价格为coffee+soy。 </br>
+ * 咖啡里面加牛奶，价格为coffee+milk。 </br>
+ * 咖啡里面加牛奶加巧克力，价格为coffee+milk+chocolate
  */
 public class Decorator extends Drink {
     private Drink drink;
@@ -21,6 +24,6 @@ public class Decorator extends Drink {
 
     @Override
     public String getDescription() {
-        return super.getDescription() + "-" + super.getPrice() + "&&" + drink.getDescription();
+        return super.getDescription() + "-" + super.getPrice() + " && " + drink.getDescription();
     }
 }

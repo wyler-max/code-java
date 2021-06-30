@@ -3,18 +3,15 @@ package org.example.practicecode.designpattern.actionType.interpreter;
 /**
  * 主要解释器
  */
-public class TerminalExpression implements Expression{
+public class TerminalExpression implements Expression {
     private String data;
 
-    public TerminalExpression(String data){
+    public TerminalExpression(String data) {
         this.data = data;
     }
 
     @Override
     public boolean interpret(String context) {
-        if(context.contains(data)){
-            return true;
-        }
-        return false;
+        return context.contains(data);
     }
 }

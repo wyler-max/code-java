@@ -4,10 +4,10 @@ package org.example.practicecode.designpattern.actionType.observer2;
  * 观察者模式测试类
  */
 public class Test {
+
     public static void main(String[] args) {
-
         WechatServer wechatServer = new WechatServer();
-
+        // 注册用户-被观察者
         Observer obs1 = new User("userA");
         Observer obs2 = new User("userB");
         Observer obs3 = new User("userC");

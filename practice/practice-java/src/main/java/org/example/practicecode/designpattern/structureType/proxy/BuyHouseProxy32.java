@@ -19,7 +19,7 @@ public class BuyHouseProxy32 {
             public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
                 System.out.println("买房前，准备钱");
                 Object result = proxy.invoke(buyHouseImpl, args);
-                System.out.println("买房前，搞装修");
+                System.out.println("买房后，搞装修");
                 return result;
             }
         });

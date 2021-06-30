@@ -1,7 +1,7 @@
 package org.example.practicecode.designpattern.actionType.state;
 
 /**
- *
+ * 状态模式，类的行为是基于它的状态改变的。
  */
 public class Test {
     public static void main(String[] args) {

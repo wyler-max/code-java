@@ -3,7 +3,7 @@ package org.example.practicecode.designpattern.actionType.memento;
 /**
  * 备忘录
  */
-public class Memento implements MementoIF {
+public class Memento implements IMemento {
     private String state;
 
     public Memento(String state) {

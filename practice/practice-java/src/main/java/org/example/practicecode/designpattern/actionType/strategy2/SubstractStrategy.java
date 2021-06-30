@@ -1,7 +1,7 @@
 package org.example.practicecode.designpattern.actionType.strategy2;
 
 /**
- * 策略角色实现类
+ * 策略实现类，减法
  */
 public class SubstractStrategy implements Strategy {
     @Override
