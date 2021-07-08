@@ -25,6 +25,8 @@ public class SelfResourceLoaderAware implements ResourceLoaderAware {
         System.out.println("start");
         String fileName =
             "/Users/wangyulin/work/code/github.com/code-java/practice/practice-spring/src/main/resources/files/1.txt";
+        /*String path = ResourceUtils.getURL("classpath:").getPath();
+        String fileName = path + "/db/tmp.sql";*/
         Resource resource = resourceLoader.getResource("file:" + fileName);
         InputStream inputStream = resource.getInputStream();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

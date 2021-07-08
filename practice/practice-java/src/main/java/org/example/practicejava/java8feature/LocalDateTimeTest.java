@@ -1,8 +1,5 @@
 package org.example.practicejava.java8feature;
 
-
-import org.junit.Test;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -10,19 +7,21 @@ import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
+import org.junit.Test;
+
+/**
+ * 本地化日期时间 API
+ *
+ * LocalDate/LocalTime 和 LocalDateTime 类可以在处理时区不是必须的情况
+ */
 public class LocalDateTimeTest {
 
     /**
-     * 不考虑时区
-     * LocalDateTime.now().
-     *  toLocalDate/getMonth/getDayOfMonth/getSecond/withDayOfMonth/withYear
-     * LocalDate.
-     *  of
-     * LocalTime.
-     *  of/parse
+     * 不考虑时区 LocalDateTime.now(). toLocalDate/getMonth/getDayOfMonth/getSecond/withDayOfMonth/withYear LocalDate. of
+     * LocalTime. of/parse
      */
     @Test
-    public void testLocalDateTime(){
+    public void testLocalDateTime() {
 
         // 获取当前的日期时间
         LocalDateTime currentTime = LocalDateTime.now();
@@ -35,7 +34,7 @@ public class LocalDateTimeTest {
         int day = currentTime.getDayOfMonth();
         int seconds = currentTime.getSecond();
 
-        System.out.println("月: " + month +", 日: " + day +", 秒: " + seconds);
+        System.out.println("月: " + month + ", 日: " + day + ", 秒: " + seconds);
 
         LocalDateTime date2 = currentTime.withDayOfMonth(10).withYear(2012);
         System.out.println("date2: " + date2);
@@ -54,14 +53,10 @@ public class LocalDateTimeTest {
     }
 
     /**
-     * 考虑时区
-     * ZonedDateTime.
-     *  parse
-     * ZoneId.
-     *  of/systemDefault
+     * 考虑时区 ZonedDateTime. parse ZoneId. of/systemDefault
      */
     @Test
-    public void testLocalDateTimeZone(){
+    public void testLocalDateTimeZone() {
         // 获取当前时间日期
         ZonedDateTime date1 = ZonedDateTime.parse("2015-12-03T10:15:30+05:30[Asia/Shanghai]");
         System.out.println("date1: " + date1);

@@ -27,7 +27,8 @@
         <result column="sex" property="sex"/>
         <result column="birthday" property="birthday"/>
         <!-- 配置user对象中accounts集合的映射 -->
-        <collection column="id" property="accounts" ofType="org.example.practicescaffold.mybatis.domain.Account" select="org.example.practicescaffold.mybatis.dao.IAccountDao.findByUid">
+        <collection column="id" property="accounts" ofType="org.example.practicescaffold.mybatis.domain.Account"
+                    select="org.example.practicescaffold.mybatis.dao.IAccountDao.findByUid">
         </collection>
     </resultMap>
 
@@ -46,15 +47,19 @@
     </resultMap>
 
     <sql id="defaultUser">
-        select * from userReq
+        select *
+        from userReq
     </sql>
 
     <select id="findAll" resultType="org.example.practicescaffold.mybatis.domain.User">
-        select * from userReq
+        select *
+        from userReq
     </select>
 
     <select id="findById" resultType="org.example.practicescaffold.mybatis.domain.User">
-        select * from userReq where id = #{id}
+        select *
+        from userReq
+        where id = #{id}
     </select>
 
     <!--
@@ -65,18 +70,25 @@
         #{userReq.username}它会先去找 userReq 对象，然后在 userReq 对象中找到 username 属性，并把值取出来
     -->
     <insert id="saveUser" parameterType="org.example.practicescaffold.mybatis.domain.User">
-        <selectKey keyColumn="id" keyProperty="id" resultType="int" >
+        <selectKey keyColumn="id" keyProperty="id" resultType="int">
             select last_insert_id();
         </selectKey>
         insert into userReq (username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address})
     </insert>
 
     <insert id="updateUser" parameterType="org.example.practicescaffold.mybatis.domain.User">
-        update userReq set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
+        update userReq
+        set username=#{username},
+            birthday=#{birthday},
+            sex=#{sex},
+            address=#{address}
+        where id = #{id}
     </insert>
 
     <delete id="deleteById" parameterType="java.lang.Integer">
-        delete from userReq where id = #{id}
+        delete
+        from userReq
+        where id = #{id}
     </delete>
 
     <!--
@@ -86,24 +98,35 @@
     </select>
     -->
 
-    <select id="findByName" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="java.lang.String">
-        select * from userReq where username like concat(concat('%', #{username},'%'))
+    <select id="findByName" resultType="org.example.practicescaffold.mybatis.domain.User"
+            parameterType="java.lang.String">
+        select *
+        from userReq
+        where username like concat(concat('%', #{username}, '%'))
     </select>
 
-    <!-- #{} 是占位符；${}是字符串替换，容易SQL注入，一般内部的参数才能用${}，比如 order by ${age} -->
-    <select id="findByName2" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="java.lang.String">
-        select * from userReq where username like '%${value}%'
+    <!-- #{} 是占位符；${}是字符串替换，容易SQL注入，一般内部的参数才能用${}，比如 orderInfo by ${age} -->
+    <select id="findByName2" resultType="org.example.practicescaffold.mybatis.domain.User"
+            parameterType="java.lang.String">
+        select *
+        from userReq
+        where username like '%${value}%'
     </select>
 
     <select id="findTotal" resultType="int">
-        select count(*) from userReq
+        select count(*)
+        from userReq
     </select>
 
-    <select id="findByVo" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="org.example.practicescaffold.mybatis.domain.QueryVo">
-        select * from userReq where username like #{userReq.username}
+    <select id="findByVo" resultType="org.example.practicescaffold.mybatis.domain.User"
+            parameterType="org.example.practicescaffold.mybatis.domain.QueryVo">
+        select *
+        from userReq
+        where username like #{userReq.username}
     </select>
 
-    <select id="findByCondition" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="org.example.practicescaffold.mybatis.domain.User">
+    <select id="findByCondition" resultType="org.example.practicescaffold.mybatis.domain.User"
+            parameterType="org.example.practicescaffold.mybatis.domain.User">
         select * from userReq where 1=1
         <if test="username !=null and username!=''">
             and username like concat(concat('%',#{username},'%'))
@@ -113,7 +136,8 @@
         </if>
     </select>
 
-    <select id="findByConditionWhere" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="org.example.practicescaffold.mybatis.domain.User">
+    <select id="findByConditionWhere" resultType="org.example.practicescaffold.mybatis.domain.User"
+            parameterType="org.example.practicescaffold.mybatis.domain.User">
         select * from userReq
         <where>
             <if test="username !=null and username!=''">
@@ -125,7 +149,8 @@
         </where>
     </select>
 
-    <select id="findInIds" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="org.example.practicescaffold.mybatis.domain.QueryIdsVo">
+    <select id="findInIds" resultType="org.example.practicescaffold.mybatis.domain.User"
+            parameterType="org.example.practicescaffold.mybatis.domain.QueryIdsVo">
         <include refid="defaultUser"></include>
         <where>
             <if test="ids != null and ids.size()>0">
@@ -136,21 +161,29 @@
         </where>
     </select>
 
-    <select id="findAllUserJoinAccount" resultMap="userAccountMap" >
+    <select id="findAllUserJoinAccount" resultMap="userAccountMap">
         /*select u.*,a.id aid,a.uid,a.money from userReq u left join account a on u.i=a.uid;*/
-        select u.*,a.id as aid ,a.uid,a.money from userReq u left outer join account a on u.id =a.uid
+        select u.*, a.id as aid, a.uid, a.money
+        from userReq u
+                 left outer join account a on u.id = a.uid
     </select>
 
-    <select id="findAllUserJoinRole" resultMap="userRoleMap" >
-        select u.*,r.id rid,r.role_name,r.role_desc from userReq u left join user_role ur on u.id=ur.uid left join role r on r.id=ur.rid;
+    <select id="findAllUserJoinRole" resultMap="userRoleMap">
+        select u.*, r.id rid, r.role_name, r.role_desc
+        from userReq u
+                 left join user_role ur on u.id = ur.uid
+                 left join role r on r.id = ur.rid;
     </select>
 
-    <select id="findAllByCollection" resultMap="userAccountLazyMap" >
-        select * from userReq
+    <select id="findAllByCollection" resultMap="userAccountLazyMap">
+        select *
+        from userReq
     </select>
 
     <select id="findByIdCache" resultType="org.example.practicescaffold.mybatis.domain.User" parameterType="integer">
-        select * from userReq where id = #{id}
+        select *
+        from userReq
+        where id = #{id}
     </select>
 
     <!-- cache 标签表示当前这个 mapper 映射将使用二级缓存，区分的标准就看 mapper 的 namespace 值 -->

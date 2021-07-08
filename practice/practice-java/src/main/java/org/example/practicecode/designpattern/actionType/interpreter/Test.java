@@ -13,6 +13,11 @@ public class Test {
 
         System.out.println("John is male? " + isMale.interpret("John"));
         System.out.println("Julie is a married women? " + isMarriedWoman.interpret("Married Julie"));
+
+        Expression expr1 = new TerminalExpression("Robert");
+        Expression expr2 = new TerminalExpression("John");
+
+        System.out.println(expr1.interpret("John") || expr2.interpret("John"));
     }
 
     // 规则：Robert 和 John 都是男性

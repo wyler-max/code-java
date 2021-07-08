@@ -2,9 +2,9 @@ spring:
   envTemp: dev
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/spring_practice_scaffold?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
     username: root
-    password: ""
+    password: 123456
   redis:
     host: 127.0.0.1
     port: 6379
