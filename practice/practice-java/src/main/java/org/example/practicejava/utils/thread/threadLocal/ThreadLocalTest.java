@@ -1,6 +1,6 @@
 package org.example.practicejava.utils.thread.threadLocal;
 
-public class ThreadLocalDemo {
+public class ThreadLocalTest {
 
     /**
      * ThreadLocal变量，每个线程都有一个副本，互不干扰
@@ -8,7 +8,7 @@ public class ThreadLocalDemo {
     public static final ThreadLocal<String> THREAD_LOCAL = new ThreadLocal<String>();
 
     public static void main(String[] args) throws Exception {
-        new ThreadLocalDemo().threadLocalTest();
+        new ThreadLocalTest().threadLocalTest();
     }
 
     public void threadLocalTest() throws Exception {
