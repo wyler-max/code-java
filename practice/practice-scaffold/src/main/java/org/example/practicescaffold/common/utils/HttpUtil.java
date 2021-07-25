@@ -1,12 +1,14 @@
 package org.example.practicescaffold.common.utils;
 
-import com.google.common.collect.Maps;
-import org.apache.commons.lang3.StringUtils;
+import java.util.Enumeration;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Enumeration;
-import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.google.common.collect.Maps;
 
 /**
  * Http工具类

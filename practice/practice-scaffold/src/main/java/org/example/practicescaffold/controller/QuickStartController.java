@@ -9,13 +9,11 @@ import org.example.practicescaffold.common.utils.yaml.YmlMapStudentUtil;
 import org.example.practicescaffold.common.utils.yaml.YmlObjectPersonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Description;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/quickStart")
-@Description(value = "")
 public class QuickStartController {
 
     /**

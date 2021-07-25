@@ -1,11 +1,12 @@
 package org.example.practicescaffold.common.model;
 
-import lombok.Data;
-import org.apache.commons.lang3.time.DateUtils;
-
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+
+import org.apache.commons.lang3.time.DateUtils;
+
+import lombok.Data;
 
 /**
  * 用户token类

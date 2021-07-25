@@ -1,0 +1,25 @@
+drop database if exists `jay_default_master`;
+drop database if exists `jay_one_master`;
+drop database if exists `jay_one_slave1`;
+drop database if exists `jay_one_slave2`;
+drop database if exists `jay_two_master1`;
+drop database if exists `jay_two_master2`;
+drop database if exists `jay_two_slave11`;
+drop database if exists `jay_two_slave12`;
+drop database if exists `jay_two_slave21`;
+drop database if exists `jay_two_slave22`;
+drop database if exists `jay_three_master1`;
+drop database if exists `jay_three_master2`;
+
+create database jay_default_master;
+create database jay_one_master;
+create database jay_one_slave1;
+create database jay_one_slave2;
+create database jay_two_master1;
+create database jay_two_master2;
+create database jay_two_slave11;
+create database jay_two_slave12;
+create database jay_two_slave21;
+create database jay_two_slave22;
+create database jay_three_master1;
+create database jay_three_master2;

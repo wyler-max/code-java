@@ -1,8 +1,8 @@
 package org.example.practicescaffold.dtos.param.activity;
 
-import lombok.Data;
-
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * 活动列表接口

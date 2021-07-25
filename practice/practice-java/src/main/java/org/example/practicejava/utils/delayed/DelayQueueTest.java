@@ -5,7 +5,10 @@ import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
 /**
- * DelayQueue 实现简单效率⾼，不引⼊第三⽅依赖。
+ * DelayQueue：</br>
+ * 是⼀个⽀持延时获取元素的⽆界阻塞队列。</br>
+ * 队列中的元素必须实现 Delayed 接⼝，并重写 getDelay(TimeUnit) 和 compareTo(Delayed) ⽅法</br>
+ * 实现简单效率⾼，不引⼊第三⽅依赖。
  *
  * 但缺点也明显，内存存储，对分布式⽀持不友好，发⽣单 点故障，造成数据丢失，误解队列还存在OOM⻛险。
  */
@@ -17,7 +20,7 @@ public class DelayQueueTest {
         long startNano = System.nanoTime();
         // 创建订单，并设置过期时间
         OrderDelay task1 = new OrderDelay("XH00001", TimeUnit.NANOSECONDS.convert(10, TimeUnit.SECONDS) + startNano);
-        OrderDelay task2 = new OrderDelay("XH00002", TimeUnit.NANOSECONDS.convert(6, TimeUnit.SECONDS) + startNano);
+        OrderDelay task2 = new OrderDelay("XH00002", TimeUnit.NANOSECONDS.convert(5, TimeUnit.SECONDS) + startNano);
         OrderDelay task3 = new OrderDelay("XH00003", TimeUnit.NANOSECONDS.convert(15, TimeUnit.SECONDS) + startNano);
         // 添加到延迟队列中
         DelayQueue<OrderDelay> queue = new DelayQueue<>();

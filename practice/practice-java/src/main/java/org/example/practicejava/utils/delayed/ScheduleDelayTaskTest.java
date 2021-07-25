@@ -9,6 +9,8 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 
 /**
  * Java 提供的 scheduled 相关api：ScheduledExecutorService、ThreadPoolTaskScheduler等
+ *
+ * 以某个频率⼀直循环执⾏延时任务
  */
 public class ScheduleDelayTaskTest {
 

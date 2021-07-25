@@ -90,7 +90,7 @@
                     execution(* com.example.service.impl.*.*(..))
         -->
         <!--配置通用切入点表达式-->
-        <aop:pointcut id="pt1" expression="execution(* com.example.aop.aoptx_xml.service.impl.*.*(..))"/>
+        <aop:pointcut id="pt1" expression="execution(* org.example.springstart.aop.aoptx_xml.service.impl.*.*(..))"/>
 
         <!--
             aop:before 配置前置通知：在切入点方法执行之前执行
@@ -111,7 +111,7 @@
             <aop:after method="release" pointcut-ref="pt1"/>
 
             <!-- 环绕通知处理事务时存在问题：必须使用 ProceedingJoinPoint接口的 proceed()方法，显式地调用切入点方法才能生效 -->
-<!--            <aop:around method="aroundAdvice" pointcut-ref="pt1"/>-->
+            <!--            <aop:around method="aroundAdvice" pointcut-ref="pt1"/>-->
         </aop:aspect>
     </aop:config>
 </beans>

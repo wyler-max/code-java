@@ -7,7 +7,9 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * 死循环+判断，执行延时任务。缺点：会一直占用CPU资源，浪费
+ * ⽆限循环实现延迟任务。
+ *
+ * 缺点：会一直占用CPU资源，浪费
  */
 public class SimpleDelayTaskTest {
 
@@ -31,7 +33,7 @@ public class SimpleDelayTaskTest {
     public static void main(String[] args) {
         System.out.println("程序启动");
         taskMap.put("task-1", Instant.now().plusSeconds(10).toEpochMilli());
-        taskMap.put("task-2", Instant.now().plusSeconds(6).toEpochMilli());
+        taskMap.put("task-2", Instant.now().plusSeconds(5).toEpochMilli());
         taskMap.put("task-3", Instant.now().plusSeconds(15).toEpochMilli());
         lookTask();
     }

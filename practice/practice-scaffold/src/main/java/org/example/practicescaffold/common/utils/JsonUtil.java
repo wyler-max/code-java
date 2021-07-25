@@ -1,5 +1,10 @@
 package org.example.practicescaffold.common.utils;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -8,11 +13,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
-import java.util.Map;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Json工具类
@@ -21,7 +23,7 @@ import java.util.Map;
 public class JsonUtil {
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final TypeReference<Map<String, Object>> MAP_TYPE_REFERENCE =
-            new TypeReference<Map<String, Object>>() {};
+        new TypeReference<Map<String, Object>>() {};
 
     static {
         MAPPER.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
@@ -84,7 +86,7 @@ public class JsonUtil {
         }
         try {
             return MAPPER.readValue(getSafeJson(content),
-                    MAPPER.getTypeFactory().constructParametricType(List.class, c));
+                MAPPER.getTypeFactory().constructParametricType(List.class, c));
         } catch (Exception e) {
             log.error("convert json:{} to list class:{} error", content, c.getName(), e);
         }
@@ -107,7 +109,7 @@ public class JsonUtil {
         }
         try {
             return MAPPER.readValue(getSafeJson(content),
-                    MAPPER.getTypeFactory().constructParametricType(Map.class, key, val));
+                MAPPER.getTypeFactory().constructParametricType(Map.class, key, val));
         } catch (Exception e) {
             log.error("convert json:{} to map key:{},value:{} error", content, key.getName(), val.getName(), e);
         }

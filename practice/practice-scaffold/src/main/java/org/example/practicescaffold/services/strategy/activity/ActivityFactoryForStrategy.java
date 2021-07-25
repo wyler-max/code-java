@@ -1,13 +1,13 @@
 package org.example.practicescaffold.services.strategy.activity;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 import org.example.practicescaffold.services.enums.ActivityTypeEnum;
 import org.example.practicescaffold.services.strategy.activity.impl.ActivityTypeAStrategy;
 import org.example.practicescaffold.services.strategy.activity.impl.ActivityTypeBStrategy;
 import org.example.practicescaffold.services.strategy.activity.impl.ActivityTypeCStrategy;
 import org.springframework.stereotype.Component;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 策略模式的工厂方法
@@ -22,9 +22,9 @@ public class ActivityFactoryForStrategy {
         strategys.put(ActivityTypeEnum.TYPEC.getType(), new ActivityTypeCStrategy());
     }
 
-    public IActivityStrategy getStrategy(Integer type) throws Exception{
+    public IActivityStrategy getStrategy(Integer type) throws Exception {
         IActivityStrategy strategy = strategys.get(type);
-        if(strategy == null) {
+        if (strategy == null) {
             throw new RuntimeException("no strategy defined");
         }
         return strategy;

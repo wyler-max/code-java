@@ -2,12 +2,151 @@ spring:
   envTemp: dev
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
+    type: com.zaxxer.hikari.HikariDataSource
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
     username: root
     password: 123456
+    connectionTimeout: 30000
+    minIdle: 10
+    maxPoolSize: 50
+    connectionInitSql: set names utf8mb4
   redis:
     host: 127.0.0.1
     port: 6379
+    database: 0
+    password: ""
+    timeout: 0
+    jedis:
+      pool:
+        max-active: 50
+        max-wait: 3000
+        max-idle: 20
+        min-idle: 2
+databaseconfig:
+  jaydefault:
+    master:
+      driverClassName: com.mysql.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_default_master?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: 123456
+      connectionTimeout: 30000
+      minIdle: 10
+      maxPoolSize: 50
+      connectionInitSql: set names utf8mb4
+  jayone:
+    master:
+      driverClassName: com.mysql.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_one_master?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: 123456
+      connectionTimeout: 30000
+      minIdle: 10
+      maxPoolSize: 50
+      connectionInitSql: set names utf8mb4
+    slaves:
+      - driverClassName: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_one_slave1?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: 123456
+        connectionTimeout: 30000
+        minIdle: 10
+        maxPoolSize: 50
+        connectionInitSql: set names utf8mb4
+      - driverClassName: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_one_slave2?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: 123456
+        connectionTimeout: 30000
+        minIdle: 10
+        maxPoolSize: 50
+        connectionInitSql: set names utf8mb4
+  jaytwo:
+    - master:
+        driverClassName: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_master?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: 123456
+        connectionTimeout: 30000
+        minIdle: 10
+        maxPoolSize: 50
+        connectionInitSql: set names utf8mb4
+      slaves:
+        - driverClassName: com.mysql.jdbc.Driver
+          type: com.zaxxer.hikari.HikariDataSource
+          jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_slave1?useUnicode=true&characterEncoding=utf8
+          username: root
+          password: 123456
+          connectionTimeout: 30000
+          minIdle: 10
+          maxPoolSize: 50
+          connectionInitSql: set names utf8mb4
+        - driverClassName: com.mysql.jdbc.Driver
+          type: com.zaxxer.hikari.HikariDataSource
+          jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_slave2?useUnicode=true&characterEncoding=utf8
+          username: root
+          password: 123456
+          connectionTimeout: 30000
+          minIdle: 10
+          maxPoolSize: 50
+          connectionInitSql: set names utf8mb4
+    - master:
+        driverClassName: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: 123456
+        connectionTimeout: 30000
+        minIdle: 10
+        maxPoolSize: 50
+        connectionInitSql: set names utf8mb4
+      slaves:
+        - driverClassName: com.mysql.jdbc.Driver
+          type: com.zaxxer.hikari.HikariDataSource
+          jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
+          username: root
+          password: 123456
+          connectionTimeout: 30000
+          minIdle: 10
+          maxPoolSize: 50
+          connectionInitSql: set names utf8mb4
+        - driverClassName: com.mysql.jdbc.Driver
+          type: com.zaxxer.hikari.HikariDataSource
+          jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
+          username: root
+          password: 123456
+          connectionTimeout: 30000
+          minIdle: 10
+          maxPoolSize: 50
+          connectionInitSql: set names utf8mb4
+  jaythree:
+    - master:
+        driverClassName: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: 123456
+        connectionTimeout: 30000
+        minIdle: 10
+        maxPoolSize: 50
+        connectionInitSql: set names utf8mb4
+    - master:
+        driverClassName: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: 123456
+        connectionTimeout: 30000
+        minIdle: 10
+        maxPoolSize: 50
+        connectionInitSql: set names utf8mb4
+
+
+
     #引用其他的yaml文件时
     #profiles:
-    #include: tmp
+    #include: yaml-test

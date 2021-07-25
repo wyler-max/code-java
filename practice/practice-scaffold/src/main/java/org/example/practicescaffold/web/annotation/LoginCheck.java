@@ -14,12 +14,14 @@ public @interface LoginCheck {
 
     /**
      * 检查用户登录状态
+     *
      * @return
      */
     boolean check() default true;
 
     /**
      * 声明获取用户信息
+     *
      * @return
      */
     boolean fetchUser() default true;

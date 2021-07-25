@@ -2,6 +2,7 @@ package org.example.practicescaffold.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -22,20 +23,12 @@ public class Swagger2Config {
 
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("org.example.springbootstart.controller"))
-                .paths(PathSelectors.any())
-                .build();
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select()
+            .apis(RequestHandlerSelectors.basePackage("org.example.tmp.controller")).paths(PathSelectors.any()).build();
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("SpringBoot APIs")
-                .description("自测框架请求API")
-                .version("1.0")
-                .build();
+        return new ApiInfoBuilder().title("SpringBoot APIs").description("自测框架请求API").version("1.0").build();
     }
 
     /**
@@ -43,21 +36,11 @@ public class Swagger2Config {
      */
     @Bean
     public UiConfiguration uiConfig() {
-        return UiConfigurationBuilder.builder()
-                .deepLinking(true)
-                .displayOperationId(false)
-                // 隐藏UI上的Models模块
-                .defaultModelsExpandDepth(-1)
-                .defaultModelExpandDepth(0)
-                .defaultModelRendering(ModelRendering.EXAMPLE)
-                .displayRequestDuration(false)
-                .docExpansion(DocExpansion.NONE)
-                .filter(false)
-                .maxDisplayedTags(null)
-                .operationsSorter(OperationsSorter.ALPHA)
-                .showExtensions(false)
-                .tagsSorter(TagsSorter.ALPHA)
-                .validatorUrl(null)
-                .build();
+        return UiConfigurationBuilder.builder().deepLinking(true).displayOperationId(false)
+            // 隐藏UI上的Models模块
+            .defaultModelsExpandDepth(-1).defaultModelExpandDepth(0).defaultModelRendering(ModelRendering.EXAMPLE)
+            .displayRequestDuration(false).docExpansion(DocExpansion.NONE).filter(false).maxDisplayedTags(null)
+            .operationsSorter(OperationsSorter.ALPHA).showExtensions(false).tagsSorter(TagsSorter.ALPHA)
+            .validatorUrl(null).build();
     }
 }

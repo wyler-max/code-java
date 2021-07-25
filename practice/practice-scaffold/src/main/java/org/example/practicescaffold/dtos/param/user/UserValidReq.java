@@ -1,16 +1,17 @@
 package org.example.practicescaffold.dtos.param.user;
 
-import org.example.practicescaffold.dtos.param.common.Update;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import org.hibernate.validator.constraints.Length;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+
+import org.example.practicescaffold.dtos.param.common.Update;
+import org.hibernate.validator.constraints.Length;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 @ApiModel(value = "用户实体类")
 @Data
