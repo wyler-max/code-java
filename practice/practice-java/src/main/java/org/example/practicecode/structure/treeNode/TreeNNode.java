@@ -2,10 +2,13 @@ package org.example.practicecode.structure.treeNode;
 
 import lombok.Data;
 
+/**
+ * N 叉树节点
+ */
 @Data
 public class TreeNNode {
     public int val;
-    TreeNNode[] children;
+    public TreeNNode[] children;
 
     public TreeNNode(int val, TreeNNode[] children) {
         this.val = val;

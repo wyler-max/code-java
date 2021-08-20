@@ -3,7 +3,7 @@ package org.example.practicescaffold.common.utils;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.example.practicescaffold.db.model.biz.User;
+import org.example.practicescaffold.db.jaydefault.model.biz.User;
 
 /**
  * Mock 工具类

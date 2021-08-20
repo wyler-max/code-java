@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import org.example.practicescaffold.common.utils.FileUtil;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -27,17 +26,25 @@ import com.google.common.collect.Lists;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class},
     scanBasePackages = {"org.example.practicescaffold"})
 @EnableEurekaClient
-@MapperScans(@MapperScan(basePackages = {"org.example.practicescaffold.db.dao.biz"},
-    sqlSessionFactoryRef = "masterSqlSessionFactory"))
+@MapperScans({
+    @MapperScan(basePackages = {"org.example.practicescaffold.db.jaydefault.dao.biz"},
+        sqlSessionFactoryRef = "jayDefaultSqlSessionFactory"),
+    @MapperScan(basePackages = {"org.example.practicescaffold.db.jayone.dao.biz"},
+        sqlSessionFactoryRef = "jayOneSqlSessionFactory"),
+    @MapperScan(basePackages = {"org.example.practicescaffold.db.jaytwo.dao.biz"},
+        sqlSessionFactoryRef = "jayTwoSqlSessionFactory"),
+    @MapperScan(basePackages = {"org.example.practicescaffold.db.jaythree.dao.biz"},
+        sqlSessionFactoryRef = "jayThreeSqlSessionFactory")})
 public class PracticeScaffoldApp {
 
-    @Autowired
+    // @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    /**
+     * 初始化数据库
+     */
     @PostConstruct
-    public void init() throws IOException {
-        // 加载表结构和预制数据
-
+    public void initDataBase() throws IOException {
         List<String> list = Lists.newArrayList();
         // 重置数据库
         List<String> databases = FileUtil.readTxtToList(ResourceUtils.getFile("classpath:db/databases.sql"));
@@ -83,8 +90,7 @@ public class PracticeScaffoldApp {
         list.addAll(jay_two_slave22);
         list.addAll(jay_three_master1);
         list.addAll(jay_three_master2);
-        System.out.println(list);
-        jdbcTemplate.batchUpdate(list.toArray(new String[list.size()]));
+        // jdbcTemplate.batchUpdate(list.toArray(new String[list.size()]));
     }
 
     public static void main(String[] args) {

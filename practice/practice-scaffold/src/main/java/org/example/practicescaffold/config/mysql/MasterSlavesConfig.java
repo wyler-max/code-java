@@ -7,7 +7,7 @@ import com.zaxxer.hikari.HikariConfig;
 import lombok.Data;
 
 /**
- * 一主多从数据库配置
+ * 主从数据库配置
  */
 @Data
 public class MasterSlavesConfig {

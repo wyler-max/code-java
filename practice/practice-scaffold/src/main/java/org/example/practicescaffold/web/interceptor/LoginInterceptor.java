@@ -12,7 +12,7 @@ import org.example.practicescaffold.common.model.UserInfo;
 import org.example.practicescaffold.common.utils.HttpUtil;
 import org.example.practicescaffold.common.utils.MockUtil;
 import org.example.practicescaffold.common.utils.ResponseUtil;
-import org.example.practicescaffold.db.model.biz.User;
+import org.example.practicescaffold.db.jaydefault.model.biz.User;
 import org.example.practicescaffold.web.annotation.LoginCheck;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.method.HandlerMethod;
