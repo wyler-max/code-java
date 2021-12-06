@@ -8,10 +8,7 @@ public class TreeNodeTest {
     @Test
     public void test() {
         TreeNode root = TreeUtil.buildBinaryTree((int)Math.pow(2, 3) - 1);
-        TreeUtil.traverseBefore(root);
-        /*TreeUtil.traverseDeepFirst(root);
-        System.out.println("--------");
-        TreeUtil.traverseDeepFirst2(root);*/
+        TreeUtil.traverseLevelFirst(root);
     }
 
     @Test

@@ -23,6 +23,7 @@
         <module>practice-java</module>
         <module>practice-scaffold</module>
         <module>practice-spring</module>
+        <module>practice-knowbox</module>
     </modules>
 
     <properties>

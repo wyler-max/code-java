@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 测试 Feign
+ */
 @RestController
 @RequestMapping(value = "/consumer")
 @Slf4j
@@ -33,12 +36,12 @@ public class UserController {
         return "post consumer";
     }
 
-    @GetMapping(value = "/provider/user/get/{id}")
+    @GetMapping(value = "/user/get/{id}")
     public User getProvider(@PathVariable("id") Integer id) {
         return userClient.userGet(id);
     }
 
-    @PostMapping(value = "/provider/user/post")
+    @PostMapping(value = "/user/post")
     public User postProvider() {
         User user = new User(100, "comsumer post", 10);
         log.info(user.toString());

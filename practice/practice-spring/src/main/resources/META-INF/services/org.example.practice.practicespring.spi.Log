@@ -1,2 +1,2 @@
-org.example.practice.practicespring.spi.impl.Log4j
+#org.example.practice.practicespring.spi.impl.Log4j
 org.example.practice.practicespring.spi.impl.Logback

@@ -1,6 +1,6 @@
 package org.example.practice.practicespring.springcontext;
 
-import org.example.practice.practicespring.annotation.importDir.TestB;
+import org.example.practice.practicespring.annotation.importAnnotation.ClassB;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -26,8 +26,8 @@ public class SelfBeanFactoryAware implements BeanFactoryAware {
         System.out.println("I belong to " + beanFactory);
 
         // 通过beanFactory，读取任意bean
-        TestB testB = (TestB)beanFactory.getBean("testB");
-        testB.printName();
+        ClassB classB = (ClassB)beanFactory.getBean("classB");
+        classB.printName();
     }
 
     /**

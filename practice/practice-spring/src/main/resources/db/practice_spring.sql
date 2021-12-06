@@ -18,6 +18,18 @@ VALUES (41, '老王', '123456', '北京'),
        (45, '王大锤', '123456', '北京金燕龙'),
        (46, '老王', '123456', '北京');
 
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE `customer`
+(
+    `customer_id`   int(11) NOT NULL auto_increment COMMENT '主键客户ID',
+    `customer_name` varchar(32)  NOT NULL DEFAULT '' COMMENT '客户名称',
+    PRIMARY KEY (`customer_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `customer`(`customer_id`, `customer_name`)
+VALUES (10, 'jack'),
+       (11, 'jon'),
+       (12, 'julia');
 
 DROP TABLE IF EXISTS `order_info`;
 CREATE TABLE "order_info"

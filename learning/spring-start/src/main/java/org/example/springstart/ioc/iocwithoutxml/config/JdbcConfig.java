@@ -1,19 +1,21 @@
 package org.example.springstart.ioc.iocwithoutxml.config;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import java.beans.PropertyVetoException;
+
+import javax.sql.DataSource;
+
 import org.apache.commons.dbutils.QueryRunner;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 
-import javax.sql.DataSource;
-import java.beans.PropertyVetoException;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 /**
  * 和spring连接数据库相关的配置类
  */
-//@Configuration
+// @Configuration
 public class JdbcConfig {
 
     @Value("${jdbc.driver}")

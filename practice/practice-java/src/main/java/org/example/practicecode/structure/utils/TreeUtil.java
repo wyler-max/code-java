@@ -13,6 +13,24 @@ import com.google.common.collect.Lists;
  */
 public class TreeUtil {
 
+    /**
+     * @formatter:off
+     * 简单的二叉树
+     *       1
+     *     /    \
+     *   2        3
+     *  /  \     /  \
+     * 4    5   6    7
+     * @formatter:on
+     */
+
+    /**
+     * 构建一个二叉树
+     *
+     * @param count
+     *            节点个数
+     * @return
+     */
     public static TreeNode buildBinaryTree(int count) {
         TreeNode root = new TreeNode(1, null, null);
         LinkedList<TreeNode> list = Lists.newLinkedList();
@@ -38,6 +56,15 @@ public class TreeUtil {
         return root;
     }
 
+    /**
+     * 构建一个N叉树
+     *
+     * @param count
+     *            节点个数
+     * @param n
+     *            分叉个数
+     * @return
+     */
     public static TreeNNode buildNTree(int count, int n) {
         TreeNNode root = new TreeNNode(1, new TreeNNode[n]);
         LinkedList<TreeNNode> list = new LinkedList<>();
@@ -57,7 +84,7 @@ public class TreeUtil {
     }
 
     /**
-     * 前序遍历
+     * 前序遍历 root->root.left->root.right 1、2、4、5、3、6、7
      */
     public static void traverseBefore(TreeNode root) {
         if (root == null) {
@@ -69,7 +96,7 @@ public class TreeUtil {
     }
 
     /**
-     * 中序遍历
+     * 中序遍历 root.left->root->root.right 4、2、5、1、6、3、7
      */
     public static void traverseMid(TreeNode root) {
         if (root == null) {
@@ -81,7 +108,7 @@ public class TreeUtil {
     }
 
     /**
-     * 后序遍历
+     * 后序遍历 root.left->root.right->root 4、5、2、6、7、3、1
      */
     public static void traverseAfter(TreeNode root) {
         if (root == null) {
@@ -117,7 +144,7 @@ public class TreeUtil {
         }
     }
 
-    // 深度优先遍历2，用递归替换栈
+    // 深度优先遍历2，用递归替换栈 等于先序遍历
     public static void traverseDeepFirst2(TreeNode root) {
         if (root != null) {
             System.out.println(root.val);

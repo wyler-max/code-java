@@ -17,7 +17,7 @@ public class Client {
 
     @Test
     public void test() {
-        int size = 100;
+        int size = 10000;
         long begin = System.currentTimeMillis();
         for (int i = 0; i < size; i++) {
             ConcretePrototype concretePrototype = new ConcretePrototype();
@@ -28,7 +28,7 @@ public class Client {
 
     @Test
     public void testClone() throws CloneNotSupportedException {
-        int size = 100;
+        int size = 10000;
         long begin = System.currentTimeMillis();
         ConcretePrototype concretePrototype = new ConcretePrototype();
         for (int i = 0; i < size; i++) {

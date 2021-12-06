@@ -10,6 +10,7 @@
         <module name="practice-spring" />
         <module name="server-provider2" />
         <module name="springboot-start" />
+        <module name="practice-knowbox" />
         <module name="springmvc-start" />
         <module name="common-utils" />
         <module name="server-consumer" />
@@ -33,6 +34,7 @@
       <module name="eureka-server" options="-parameters" />
       <module name="java-lab" options="-parameters" />
       <module name="practice-java" options="-parameters" />
+      <module name="practice-knowbox" options="-parameters" />
       <module name="practice-scaffold" options="-parameters" />
       <module name="practice-spring" options="-parameters" />
       <module name="server-consumer" options="-parameters" />

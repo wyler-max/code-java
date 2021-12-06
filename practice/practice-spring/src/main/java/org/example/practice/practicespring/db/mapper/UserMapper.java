@@ -9,6 +9,8 @@ import org.example.practice.practicespring.db.model.User;
 public interface UserMapper {
     List<User> selectAll();
 
+    User selectById(long id);
+
     int insert(User user);
 
     int update(long id, String addr);

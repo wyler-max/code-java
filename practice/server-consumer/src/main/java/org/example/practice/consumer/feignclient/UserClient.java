@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "server-provider", path = "/provider/user", decode404 = false, fallback = UserFeignFallBack.class,
+@FeignClient(name = "server-provider", path = "/p/user", decode404 = false, fallback = UserFeignFallBack.class,
     configuration = FeignConfiguration2.class)
 public interface UserClient {
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping(value = "/provider/user")
+@RequestMapping(value = "/p/user")
 @Slf4j
 public class UserController {
 
@@ -25,7 +25,7 @@ public class UserController {
         // return new User(id, "provider2 get User", 10);
         // 模拟超时
         try {
-            Thread.sleep(4000);
+            Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

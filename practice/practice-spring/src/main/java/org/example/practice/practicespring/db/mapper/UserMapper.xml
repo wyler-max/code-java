@@ -11,6 +11,11 @@
         from user limit 100
     </select>
 
+    <select id="selectById" resultType="org.example.practice.practicespring.db.model.User">
+        select *
+        from user where id=#{id} limit 1
+    </select>
+
     <insert id="insert" parameterType="org.example.practice.practicespring.db.model.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">

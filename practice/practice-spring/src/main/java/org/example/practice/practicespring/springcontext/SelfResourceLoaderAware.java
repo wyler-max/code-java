@@ -9,6 +9,7 @@ import org.springframework.context.ResourceLoaderAware;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
 /**
  *
@@ -21,12 +22,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SelfResourceLoaderAware implements ResourceLoaderAware {
 
+    /**
+     * 1、resource 路径、工具类；
+     * 2、加载资源文件
+     */
     public void setResourceData(ResourceLoader resourceLoader) throws IOException {
         System.out.println("start");
-        String fileName =
-            "/Users/wangyulin/work/code/github.com/code-java/practice/practice-spring/src/main/resources/files/1.txt";
-        /*String path = ResourceUtils.getURL("classpath:").getPath();
-        String fileName = path + "/db/tmp.sql";*/
+        String fileName = ResourceUtils.getURL("classpath:files/poetry.txt").getPath();
         Resource resource = resourceLoader.getResource("file:" + fileName);
         InputStream inputStream = resource.getInputStream();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

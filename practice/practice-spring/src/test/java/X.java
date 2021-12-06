@@ -10,6 +10,8 @@ import lombok.Data;
 public class X {
 
     private List<SkuInfoX> skuInfoList;
+    private List<Long> list1;
+    private String str1;
 
     @Data
     public static class SkuInfoX {

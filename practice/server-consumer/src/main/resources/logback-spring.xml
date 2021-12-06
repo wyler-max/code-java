@@ -58,7 +58,7 @@
         <appender-ref ref="info"/>
     </logger>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="console"/>
         <appender-ref ref="error"/>
         <appender-ref ref="info"/>

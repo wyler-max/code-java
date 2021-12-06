@@ -17,7 +17,7 @@
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径 -->
-            <fileNamePattern>${LOG_HOME}/info.%d{yyyy-MM-dd.HH}.log
+            <fileNamePattern>${LOG_HOME}/practice-spring-info.%d{yyyy-MM-dd}.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>
@@ -36,7 +36,7 @@
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径 -->
-            <fileNamePattern>${LOG_HOME}/error.%d{yyyy-MM-dd.HH}.log
+            <fileNamePattern>${LOG_HOME}/practice-spring-error.%d{yyyy-MM-dd}.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>
