@@ -7,16 +7,16 @@ public class Test {
     public static void main(String[] args) {
         // test computer send & accept data
         Computer computer = new Computer();
-        computer.setAdapter(new AdapterVGA());
+        computer.setAdapter(new USBAdapter2VGA());
         System.out.println("********** now send");
-        computer.send("hello vga");
+        computer.usbSend("hello vga");
         System.out.println("********** now accept");
-        computer.accept("world");
+        computer.usbAccept("world");
 
-        computer.setAdapter(new AdapterHDMI());
+        computer.setAdapter(new USBAdapter2HDMI());
         System.out.println("********** now send");
-        computer.send("hello hdmi");
+        computer.usbSend("hello hdmi");
         System.out.println("********** now accept");
-        computer.accept("world");
+        computer.usbAccept("world");
     }
 }

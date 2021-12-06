@@ -1,22 +1,27 @@
 package org.example.practicecode.designpattern.structureType.adapter2;
 
-public class Computer implements USB {
+public class Computer{
 
-    private Adapter adapter = null;
+    private USB usb;
+    private USBAdapter adapter = null;
 
-    public void setAdapter(Adapter adapter) {
+    public void setAdapter(USBAdapter adapter) {
         this.adapter = adapter;
     }
 
-    @Override
-    public void send(String msg) {
-        System.out.println("computer send: " + msg);
+    /**
+     * usb发送消息
+     */
+    public void usbSend(String msg) {
+        System.out.println("computer usb send: " + msg);
         adapter.send(msg);
     }
 
-    @Override
-    public void accept(String msg) {
+    /**
+     * usb接收消息
+     */
+    public void usbAccept(String msg) {
         adapter.accept(msg);
-        System.out.println("computer accept: " + msg);
+        System.out.println("computer usb accept: " + msg);
     }
 }

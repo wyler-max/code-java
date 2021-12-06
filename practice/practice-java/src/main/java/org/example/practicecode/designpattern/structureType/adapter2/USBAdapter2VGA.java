@@ -1,6 +1,6 @@
 package org.example.practicecode.designpattern.structureType.adapter2;
 
-public class AdapterVGA extends Adapter {
+public class USBAdapter2VGA extends USBAdapter {
 
     private VGA vga = new Screen();
 

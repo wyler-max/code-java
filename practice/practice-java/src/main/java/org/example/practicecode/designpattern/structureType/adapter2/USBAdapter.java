@@ -1,6 +1,6 @@
 package org.example.practicecode.designpattern.structureType.adapter2;
 
-public abstract class Adapter implements USB {
+public abstract class USBAdapter implements USB {
     @Override
     public abstract void send(String msg);
 

@@ -6,7 +6,7 @@ package org.example.practicecode.designpattern.structureType.adapterUSB;
 public class USBImpl implements USB {
 
     @Override
-    public String showData(String data) {
+    public String outData(String data) {
         System.out.println("USB输出数据: " + data);
         return data;
     }
