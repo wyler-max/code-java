@@ -1,4 +1,4 @@
-package org.example.practice.practiceknowbox.api;
+package lazy.api;
 
 /**
  * 部门服务接口

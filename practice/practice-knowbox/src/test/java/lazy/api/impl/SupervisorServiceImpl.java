@@ -1,10 +1,10 @@
-package org.example.practice.practiceknowbox.api.impl;
+package lazy.api.impl;
 
 import java.util.Map;
 
-import org.example.practice.practiceknowbox.api.SupervisorServiceApi;
-
 import com.google.common.collect.Maps;
+
+import lazy.api.SupervisorServiceApi;
 
 /**
  *

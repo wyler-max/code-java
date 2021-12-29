@@ -3,7 +3,6 @@ package org.example.practice.practiceknowbox.services;
 import java.util.Map;
 
 import org.example.practice.practiceknowbox.common.CommonResponse;
-import org.example.practice.practiceknowbox.common.CommonResponseEntity;
 import org.example.practice.practiceknowbox.utils.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -15,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
 
 @Service
@@ -24,38 +22,34 @@ public class RestTemplateService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public CommonResponseEntity doGetForObject() {
+    public String doGetForObject() {
         String url = "https://mvip.knowbox.cn/user/hello.do";
-        String response = restTemplate.getForObject(url, String.class);
-        return JSON.parseObject(response, CommonResponseEntity.class);
+        return restTemplate.getForObject(url, String.class);
     }
 
-    public CommonResponseEntity doGetForObjectV1(String sessionId) {
+    public String doGetForObjectV1(String sessionId) {
         String url = "https://mvip.knowbox.cn/user/center/info.do" + "?sessionId={s}";
-        String response = restTemplate.getForObject(url, String.class, sessionId);
-        return JSON.parseObject(response, CommonResponseEntity.class);
+        return restTemplate.getForObject(url, String.class, sessionId);
     }
 
-    public CommonResponseEntity doGetForObjectV2(String sessionId) {
+    public String doGetForObjectV2(String sessionId) {
         Map<String, String> param = Maps.newHashMap();
         param.put("s", sessionId);
         String url = "https://mvip.knowbox.cn/user/center/info.do" + "?sessionId={s}";
-        String response = restTemplate.getForObject(url, String.class, param);
-        return JSON.parseObject(response, CommonResponseEntity.class);
+        return restTemplate.getForObject(url, String.class, param);
     }
 
-    public CommonResponseEntity doGetForEntity() {
+    public String doGetForEntity() {
         String url = "https://mvip.knowbox.cn/user/hello.do";
         ResponseEntity response = restTemplate.getForEntity(url, String.class);
-        return JSON.parseObject(String.valueOf(response.getBody()), CommonResponseEntity.class);
+        return String.valueOf(response.getBody());
     }
 
-    public CommonResponseEntity doPostForObject() {
+    public String doPostForObject() {
         String url = "https://mvip.knowbox.cn/user/hello.do";
         Map<String, Object> param = Maps.newHashMap();
         param.put("name", "jane");
-        String response = restTemplate.postForObject(url, param, String.class);
-        return JSON.parseObject(response, CommonResponseEntity.class);
+        return restTemplate.postForObject(url, param, String.class);
     }
 
     /**

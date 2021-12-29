@@ -1,4 +1,4 @@
-package org.example.practice.practiceknowbox.entities;
+package lazy;
 
 import java.util.Collections;
 import java.util.Set;

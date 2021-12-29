@@ -1,10 +1,11 @@
-package org.example.practice.practiceknowbox.entities;
+package lazy;
 
-import org.example.practice.practiceknowbox.api.DepartmentServiceApi;
-import org.example.practice.practiceknowbox.api.SupervisorServiceApi;
-import org.example.practice.practiceknowbox.api.impl.DepartmentServiceImpl;
-import org.example.practice.practiceknowbox.api.impl.SupervisorServiceImpl;
 import org.junit.Test;
+
+import lazy.api.DepartmentServiceApi;
+import lazy.api.SupervisorServiceApi;
+import lazy.api.impl.DepartmentServiceImpl;
+import lazy.api.impl.SupervisorServiceImpl;
 
 /**
  * @author wangyulin

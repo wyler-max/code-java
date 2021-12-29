@@ -1,5 +1,3 @@
-package org.example.practice.practiceknowbox.entities.function;
-
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -30,7 +28,6 @@ public class TestFunctionalInterface {
     public void testSupplier() {
         Supplier<String> supplier1 = () -> "Test Supplier";
         System.out.println(supplier1.get());
-
         Supplier<Integer> supplier2 = () -> {
             return 2;
         };
@@ -62,6 +59,6 @@ public class TestFunctionalInterface {
     public void testCustomFunctional() {
         // 16进制转10进制函数
         CustomFunctional<String, Integer> customFunctional = (x) -> Integer.parseInt(x, 16);
-        System.out.println(customFunctional.doAcction("12"));
+        System.out.println(customFunctional.doAction("12"));
     }
 }
