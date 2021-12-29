@@ -1,8 +1,6 @@
-package org.example.practicecode.leetcode;
+package org.example.practicecode.leetcode.itembank;
 
 import org.junit.Test;
-
-import java.util.Map;
 
 /**
  * 最长公共前缀

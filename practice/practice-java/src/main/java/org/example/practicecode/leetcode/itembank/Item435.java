@@ -1,11 +1,9 @@
-package org.example.practicecode.leetcode;
-
-import com.google.common.collect.Maps;
-import org.junit.Test;
+package org.example.practicecode.leetcode.itembank;
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Map;
+
+import org.junit.Test;
 
 /**
  * 无重叠区间：

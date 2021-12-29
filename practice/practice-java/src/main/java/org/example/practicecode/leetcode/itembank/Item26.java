@@ -1,8 +1,6 @@
-package org.example.practicecode.leetcode;
+package org.example.practicecode.leetcode.itembank;
 
 import org.junit.Test;
-
-import java.util.Arrays;
 
 /**
  * 删除排序数组中的重复项

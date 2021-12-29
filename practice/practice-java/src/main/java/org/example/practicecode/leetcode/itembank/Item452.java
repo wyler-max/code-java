@@ -1,9 +1,9 @@
-package org.example.practicecode.leetcode;
-
-import org.junit.Test;
+package org.example.practicecode.leetcode.itembank;
 
 import java.util.Arrays;
 import java.util.Comparator;
+
+import org.junit.Test;
 
 /**
  * 用最少的箭头射爆气球：

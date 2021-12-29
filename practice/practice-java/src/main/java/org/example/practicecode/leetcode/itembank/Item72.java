@@ -1,8 +1,8 @@
-package org.example.practicecode.leetcode;
-
-import org.junit.Test;
+package org.example.practicecode.leetcode.itembank;
 
 import java.util.Arrays;
+
+import org.junit.Test;
 
 /**
  * 编辑距离问题：

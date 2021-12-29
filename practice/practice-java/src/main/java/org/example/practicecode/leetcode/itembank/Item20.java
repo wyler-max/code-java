@@ -1,14 +1,10 @@
-package org.example.practicecode.leetcode;
+package org.example.practicecode.leetcode.itembank;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import org.junit.Test;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Stack;
+
+import org.junit.Test;
 
 /**
  * 有效的括号

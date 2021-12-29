@@ -1,4 +1,4 @@
-package org.example.practicecode.leetcode;
+package org.example.practicecode.leetcode.itembank;
 
 import org.junit.Test;
 
