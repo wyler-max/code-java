@@ -1,7 +1,7 @@
 package org.example.practice.practiceknowbox.controller;
 
-import org.example.practice.practiceknowbox.services.RestTemplateService;
-import org.example.practice.practiceknowbox.utils.JsonUtil;
+import org.example.practice.practiceknowbox.common.util.JsonUtil;
+import org.example.practice.practiceknowbox.test.RestTemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ public class TestRestTemplateController {
     @Autowired
     private RestTemplateService restTemplateService;
 
-    @GetMapping("/finish-status/")
+    @GetMapping("/finish-status")
     public String getV1() {
         String url =
             "https://qaaiclass.knowbox.cn/api/v2/competence/finish-status?studentId=1575903084377087&classIds=1673375700652543&sig=446e38eedcff533fc31f3b72d115324d";

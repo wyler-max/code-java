@@ -13,7 +13,6 @@
 
     <properties>
         <springboot.version>2.3.2.RELEASE</springboot.version>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
@@ -21,13 +20,6 @@
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>common-utils</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
         <!--导入springboot依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,7 +36,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${springboot.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>2.2.2.RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -55,7 +51,6 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
         </dependency>
-
         <!--mybatis起步依赖-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -73,11 +68,21 @@
             <artifactId>HikariCP</artifactId>
             <version>3.4.2</version>
         </dependency>
-
         <!-- redis -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+            <scope>compile</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson-spring-boot-starter</artifactId>
+            <version>3.12.5</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.7</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -86,11 +91,63 @@
             <version>1.2.47</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.edas.acm</groupId>
+            <artifactId>acm-sdk</artifactId>
+            <version>1.0.9</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun.openservices</groupId>
+            <artifactId>ons-client</artifactId>
+            <version>1.8.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>2.1.3</version>
+        </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <activityProfile>dev</activityProfile>
+                <resource.directory>src/main/profiles/dev</resource.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <activityProfile>test</activityProfile>
+                <resource.directory>src/main/profiles/test</resource.directory>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <activityProfile>prod</activityProfile>
+                <resource.directory>src/main/profiles/prod</resource.directory>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <resources>
-            <!-- 如果不添加此节点，mybatis的 mapper.xml文件都会被漏掉 -->
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
@@ -99,7 +156,11 @@
             </resource>
             <resource>
                 <directory>src/main/resources</directory>
+                <!--开启过滤-->
                 <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/profiles/${activeProfile}</directory>
             </resource>
         </resources>
     </build>

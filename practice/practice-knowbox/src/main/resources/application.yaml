@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: @activeProfile@
+  application:
+    name: practice-knowbox
+eureka:
+  client:
+    enabled: false
+    service-url: http://localhost:9090/eureka/
