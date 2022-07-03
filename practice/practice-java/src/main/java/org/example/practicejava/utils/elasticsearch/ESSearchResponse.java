@@ -7,8 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- *
+ * 因使用高版本，且通过 searchResponse.getHits() 获取结果，废弃了
  */
+@Deprecated
 @Data
 public class ESSearchResponse {
     private Integer took;
