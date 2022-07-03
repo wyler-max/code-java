@@ -16,11 +16,15 @@ import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.index.query.BoolQueryBuilder;
+import org.elasticsearch.index.query.MatchAllQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.sort.FieldSortBuilder;
+import org.elasticsearch.search.sort.SortOrder;
 import org.example.practicejava.utils.JsonUtil;
 import org.junit.Test;
 
@@ -67,6 +71,7 @@ public class ESService {
             boolQueryBuilder.must(QueryBuilders.matchQuery(key, val));
         });
         sourceBuilder.query(boolQueryBuilder);
+        // sourceBuilder.fetchSource(new String[]{"uri","request_id"}, new String[]{});
         sourceBuilder.from(from);
         sourceBuilder.size(size);
         sourceBuilder.sort("@timestamp");
@@ -87,17 +92,70 @@ public class ESService {
         matchMap.put("uri", "boss/order/queryOrderList");
         matchMap.put("userid", "8608318343063552");
         SearchResponse searchResponse = ESService.search(client, ESService.of("bossaccesslog-info*", 0, 10, matchMap));
-        System.out.println(JsonUtil.toJson(searchResponse.getHits()));
+        System.out.println("response="+JsonUtil.toJson(searchResponse.getHits()));
     }
 
     @Test
     public void testDemo() throws IOException {
         RestHighLevelClient client = ESService.esRestClient("127.0.0.1", "kibana", "kibana");
-        ESService esService = new ESService();
-        esService.demo(client);
+        ofDemoService(client);
     }
 
-    public void demo(RestHighLevelClient esRestClient) throws IOException {
+
+    /**
+     * 查询条件
+     */
+    public static SearchRequest ofDemoSearchRequest() {
+        String indices = "log-info*";
+        // 创建检索请求
+        SearchRequest searchRequest = new SearchRequest();
+        searchRequest.indices(indices);
+
+        // 查询条件
+        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+        // 查询所有
+        sourceBuilder.query(QueryBuilders.matchAllQuery());
+        // 匹配单个 name.contains(wang)
+        sourceBuilder.query(QueryBuilders.matchQuery("name", "wang"));
+        // 匹配多个 name1.contains(wang) || name2.contains(wang)
+        sourceBuilder.query(QueryBuilders.multiMatchQuery("wang", "name1", "name2"));
+        // 通配符匹配
+        sourceBuilder.query(QueryBuilders.wildcardQuery("name", "*wang*"));
+        // BoolQueryBuilder 复合查询 must: conditionA && conditionB
+        QueryBuilder q1 = QueryBuilders.matchQuery("name", "wang");
+        QueryBuilder q2 = QueryBuilders.matchQuery("id", "1");
+        BoolQueryBuilder boolQueryA = QueryBuilders.boolQuery();
+        boolQueryA.must(q1);
+        boolQueryA.must(q2);
+        sourceBuilder.query(boolQueryA);
+        // BoolQueryBuilder 复合查询 should: conditionA || conditionB
+        sourceBuilder.query(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("name", "wang")).should(QueryBuilders.matchQuery("id", "1")));
+        // BoolQueryBuilder 复合查询 minimumShouldMatch: 最少满足2个should
+        sourceBuilder.query(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("name1", "wang"))
+                .should(QueryBuilders.matchQuery("name2", "wang"))
+                .should(QueryBuilders.matchQuery("name3", "wang"))
+                .minimumShouldMatch(2));
+        // 等值查询 name==wang
+        sourceBuilder.query(QueryBuilders.boolQuery().must(QueryBuilders.termQuery("name", "wang")));
+        // 范围查询
+        sourceBuilder.query(QueryBuilders.rangeQuery("id").from("10").to("30"));
+        // 判空查询 name1有值 && name2无值
+        sourceBuilder.query(QueryBuilders.boolQuery().must(QueryBuilders.existsQuery("name1")).mustNot(QueryBuilders.existsQuery("name2")));
+
+        // include / exclude
+        sourceBuilder.fetchSource(new String[]{"uri","request_id"}, new String[]{});
+
+        // 其他查询属性
+        sourceBuilder.from(0);
+        sourceBuilder.size(10);
+        //sourceBuilder.sort("@timestamp");
+        sourceBuilder.sort(new FieldSortBuilder("@timestamp").order(SortOrder.ASC));
+        sourceBuilder.timeout(TimeValue.timeValueMinutes(2L));
+        searchRequest.source(sourceBuilder);
+        return searchRequest;
+    }
+
+    public static void ofDemoService(RestHighLevelClient esRestClient) throws IOException {
         // 1 创建检索请求
         SearchRequest searchRequest = new SearchRequest();
         searchRequest.indices("api-info*");
