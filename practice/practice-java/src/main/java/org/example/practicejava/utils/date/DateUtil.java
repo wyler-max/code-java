@@ -20,8 +20,10 @@ public class DateUtil {
     public static final FastDateFormat DATETIME = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
     public static final FastDateFormat DATETIME_HOUR_MINUTE = FastDateFormat.getInstance("yyyy-MM-dd HH:mm");
     public static final FastDateFormat DATETIME_MILLISECOND = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss.SSS");
+    public static final FastDateFormat DATETIME_TZ = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
     public static final FastDateFormat MONTH_DAY = FastDateFormat.getInstance("MM.dd");
     public static final FastDateFormat MONTH_DAY_SIMPLE = FastDateFormat.getInstance("M.dd");
+    public static final FastDateFormat HOUR_MINUTE_SECOND = FastDateFormat.getInstance("HH:mm:ss");
     public static final FastDateFormat HOUR_MINUTE = FastDateFormat.getInstance("HH:mm");
 
     public static final int WEEK_DAY_HEAD = 1;
