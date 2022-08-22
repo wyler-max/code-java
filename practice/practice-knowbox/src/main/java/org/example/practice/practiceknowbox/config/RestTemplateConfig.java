@@ -11,9 +11,11 @@ import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.conn.socket.PlainConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.ssl.SSLContextBuilder;
 import org.example.practice.practiceknowbox.common.web.interceptor.RestTemplateInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -91,6 +93,23 @@ public class RestTemplateConfig {
         Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
                 .register("http", PlainConnectionSocketFactory.getSocketFactory())
                 .register("https", SSLConnectionSocketFactory.getSocketFactory()).build();
+        return socketFactoryRegistry;
+    }
+
+    /**
+     * 设置SSL单向校验
+     */
+    public static Registry<ConnectionSocketFactory> getConnectionSocketFactory() {
+        SSLConnectionSocketFactory sslsf = null;
+        try {
+            SSLContextBuilder builder = new SSLContextBuilder();
+            builder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
+            sslsf = new SSLConnectionSocketFactory(builder.build());
+        } catch (Exception e) {
+            log.error("poolingHttpClientConnectionManager", e);
+        }
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
+                .register("http", new PlainConnectionSocketFactory()).register("https", sslsf).build();
         return socketFactoryRegistry;
     }
 

@@ -14,22 +14,21 @@ import com.google.common.collect.Lists;
 public class TreeUtil {
 
     /**
-     * @formatter:off
+     * 构建一个二叉树
+     *
+     * <pre>
+     *
      * 简单的二叉树
      *       1
      *     /    \
      *   2        3
      *  /  \     /  \
      * 4    5   6    7
-     * @formatter:on
-     */
-
-    /**
-     * 构建一个二叉树
-     *
+     * </pre>
      * @param count
      *            节点个数
      * @return
+     *
      */
     public static TreeNode buildBinaryTree(int count) {
         TreeNode root = new TreeNode(1, null, null);
