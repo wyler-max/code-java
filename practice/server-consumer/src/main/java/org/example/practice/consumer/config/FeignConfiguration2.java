@@ -15,7 +15,7 @@ public class FeignConfiguration2 {
 
     @Bean("feignLoggerLevel2")
     Logger.Level feignLoggerLevel() {
-        return Logger.Level.NONE;
+        return Logger.Level.FULL;
     }
 
     // 设置超时时间

@@ -53,7 +53,7 @@
     </appender>
 
     <logger name="org.example" level="INFO">
-        <appender-ref ref="console"/>
+        <!--<appender-ref ref="console"/>-->
         <appender-ref ref="error"/>
         <appender-ref ref="info"/>
     </logger>

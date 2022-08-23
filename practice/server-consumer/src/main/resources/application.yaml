@@ -8,6 +8,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:9090/eureka/
 
+logging:
+  level:
+    # openfeign日志以什么级别监控哪个接口
+    org.example.practice.consumer.feignclient.Provider1UserClient: debug
+    org.example.practice.consumer.feignclient.Provider2UserClient: info
 
 # 配置Feign
 feign:

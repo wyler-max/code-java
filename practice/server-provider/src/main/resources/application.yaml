@@ -1,6 +1,6 @@
 spring:
   application:
-    name: server-provider
+    name: server-provider1
 server:
   port: 8081
 eureka:
