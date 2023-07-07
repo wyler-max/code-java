@@ -28,11 +28,13 @@
     <file url="file://$PROJECT_DIR$/practice/practice-spring/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-consumer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-consumer1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider1/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-provider3/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/src/main/resources" charset="UTF-8" />
   </component>

@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: server-consumer1
+server:
+  port: 8091
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9090/eureka/
+
+logging:
+  level:
+    # openfeign日志以什么级别监控哪个接口
+    org.example.practice.consumer.feignclient.Provider1UserClient: debug
+    org.example.practice.consumer.feignclient.Provider2UserClient: debug
+
+# 配置Feign
+feign:
+  hystrix:
+    enabled: true
+  # 替换为 okhttp 客户端
+  okhttp:
+    enabled: true
+    # gzip压缩
+  compression:
+    request:
+      enabled: false
+      # 可以压缩的请求/响应的类型
+      mime-types: text/xml,application/xml,application/json
+      # 当请求的数据容量达到多少的时候，使用压缩。默认是2048字节
+      min-request-size: 512
+    response:
+      enabled: false
+  #client:
+  #default-config: my-config # congituration 优先级最高
+  #my-config:
+  #error-decoder: org.example.practice.consumer.config.MyErrorDecoder
+  #config:
+  #default:
+  #connect-timeout: 15000 # ms 配置过熔断器时间，就无须配置 feign的connect-timeout了
+
+# 配置 ribbon 负载均衡器
+# 当调用某个服务等待时间过长的时候, 对超时报错/熔断生效的是 ReadTimeout, ConnectTimeout 则表示连接服务的时间,一般不用配置太久,1~2秒左右就可以了
+ribbon:
+  okhttp:
+    enabled: true
+  OkToRetryOnAllOperations: false # 对所有操作请求都进行重试,默认false
+  ReadTimeout: 5000 # 负载均衡超时时间，默认值5000
+  ConnectTimeout: 1000 # ribbon请求连接的超时时间，默认值2000
+  MaxAutoRetries: 0     # 对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 1 # 对切换实例的重试次数，默认1；如果ribbon的ReadTimeout超时,或者ConnectTimeout连接超时,会进行重试操作
+
+# 配置 hystrix 熔断器 Hystrix默认的超时时间是1秒，如果超过这个时间尚未响应，将会进入fallback代码
+hystrix:
+  metrics:
+    enabled: true
+    polling-interval-ms: 2000 # default=2000ms
+  #shareSecurityContext: true # 共享上下文
+  command:
+    default:
+      execution:
+        timeout:
+          # 如果enabled设置为false，则请求超时交给ribbon控制,为true,则超时作为熔断根据，ribbon+hystrix控制超时
+          enable: true
+        isolation:
+          thread:
+            # 为了保障重试机制，hystrix-timeout=(1 + MaxAutoRetries + MaxAutoRetriesNextServer) * ReadTimeout
+            timeoutInMilliseconds: 3000 # 断路器超时时间 default=1000ms
+  threadpool:
+    default:
+      coreSize: 10 # 默认线程池大小 default=10
+

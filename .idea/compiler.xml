@@ -9,25 +9,24 @@
         <outputRelativeToContentRoot value="true" />
         <module name="practice-spring" />
         <module name="server-provider2" />
+        <module name="server-provider1" />
         <module name="springboot-start" />
         <module name="practice-knowbox" />
         <module name="common-utils" />
-        <module name="server-consumer" />
         <module name="ssm" />
         <module name="springmvc-upload-server" />
         <module name="eureka-server" />
+        <module name="server-consumer1" />
         <module name="springboot-jpa" />
         <module name="practice-scaffold" />
         <module name="spring-start" />
         <module name="practice-java" />
       </profile>
-      <profile name="Annotation profile for practice" enabled="true">
-        <sourceOutputDir name="../server-provider/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../server-provider/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="server-provider1" />
-      </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="server-consumer" target="1.8" />
+      <module name="server-provider3" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -38,8 +37,10 @@
       <module name="practice-scaffold" options="-parameters" />
       <module name="practice-spring" options="-parameters" />
       <module name="server-consumer" options="-parameters" />
+      <module name="server-consumer1" options="-parameters" />
       <module name="server-provider1" options="-parameters" />
       <module name="server-provider2" options="-parameters" />
+      <module name="server-provider3" options="-parameters" />
       <module name="spring-start" options="-parameters -extdirs lib" />
       <module name="springboot-jpa" options="-parameters" />
       <module name="springboot-start" options="-parameters" />
