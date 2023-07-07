@@ -1,9 +1,9 @@
 spring:
   envTemp: dev
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 123456
     connectionTimeout: 30000
@@ -22,11 +22,16 @@ spring:
         max-wait: 3000
         max-idle: 20
         min-idle: 2
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 0.01
+      rate: 10
 databaseconfig:
   jayDefaultName: jay_default
   jaydefault:
     master:
-      driverClassName: com.mysql.jdbc.Driver
+      driverClassName: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_default_master?useUnicode=true&characterEncoding=utf8
       username: root
@@ -38,7 +43,7 @@ databaseconfig:
   jayOneName: jay_one
   jayone:
     master:
-      driverClassName: com.mysql.jdbc.Driver
+      driverClassName: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
       jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_one_master?useUnicode=true&characterEncoding=utf8
       username: root
@@ -48,7 +53,7 @@ databaseconfig:
       maxPoolSize: 50
       connectionInitSql: set names utf8mb4
     slaves:
-      - driverClassName: com.mysql.jdbc.Driver
+      - driverClassName: com.mysql.cj.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_one_slave1?useUnicode=true&characterEncoding=utf8
         username: root
@@ -57,7 +62,7 @@ databaseconfig:
         minIdle: 10
         maxPoolSize: 50
         connectionInitSql: set names utf8mb4
-      - driverClassName: com.mysql.jdbc.Driver
+      - driverClassName: com.mysql.cj.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_one_slave2?useUnicode=true&characterEncoding=utf8
         username: root
@@ -69,7 +74,7 @@ databaseconfig:
   jayTwoName: jay_two
   jaytwo:
     - master:
-        driverClassName: com.mysql.jdbc.Driver
+        driverClassName: com.mysql.cj.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_master1?useUnicode=true&characterEncoding=utf8
         username: root
@@ -79,7 +84,7 @@ databaseconfig:
         maxPoolSize: 50
         connectionInitSql: set names utf8mb4
       slaves:
-        - driverClassName: com.mysql.jdbc.Driver
+        - driverClassName: com.mysql.cj.jdbc.Driver
           type: com.zaxxer.hikari.HikariDataSource
           jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_slave11?useUnicode=true&characterEncoding=utf8
           username: root
@@ -88,7 +93,7 @@ databaseconfig:
           minIdle: 10
           maxPoolSize: 50
           connectionInitSql: set names utf8mb4
-        - driverClassName: com.mysql.jdbc.Driver
+        - driverClassName: com.mysql.cj.jdbc.Driver
           type: com.zaxxer.hikari.HikariDataSource
           jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_slave12?useUnicode=true&characterEncoding=utf8
           username: root
@@ -98,7 +103,7 @@ databaseconfig:
           maxPoolSize: 50
           connectionInitSql: set names utf8mb4
     - master:
-        driverClassName: com.mysql.jdbc.Driver
+        driverClassName: com.mysql.cj.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_master2?useUnicode=true&characterEncoding=utf8
         username: root
@@ -108,7 +113,7 @@ databaseconfig:
         maxPoolSize: 50
         connectionInitSql: set names utf8mb4
       slaves:
-        - driverClassName: com.mysql.jdbc.Driver
+        - driverClassName: com.mysql.cj.jdbc.Driver
           type: com.zaxxer.hikari.HikariDataSource
           jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_slave21?useUnicode=true&characterEncoding=utf8
           username: root
@@ -117,7 +122,7 @@ databaseconfig:
           minIdle: 10
           maxPoolSize: 50
           connectionInitSql: set names utf8mb4
-        - driverClassName: com.mysql.jdbc.Driver
+        - driverClassName: com.mysql.cj.jdbc.Driver
           type: com.zaxxer.hikari.HikariDataSource
           jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_two_slave22?useUnicode=true&characterEncoding=utf8
           username: root
@@ -129,7 +134,7 @@ databaseconfig:
   jayThreeName: jay_three
   jaythree:
     - master:
-        driverClassName: com.mysql.jdbc.Driver
+        driverClassName: com.mysql.cj.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_three_master1?useUnicode=true&characterEncoding=utf8
         username: root
@@ -139,7 +144,7 @@ databaseconfig:
         maxPoolSize: 50
         connectionInitSql: set names utf8mb4
     - master:
-        driverClassName: com.mysql.jdbc.Driver
+        driverClassName: com.mysql.cj.jdbc.Driver
         type: com.zaxxer.hikari.HikariDataSource
         jdbcUrl: jdbc:mysql://127.0.0.1:3306/jay_three_master2?useUnicode=true&characterEncoding=utf8
         username: root

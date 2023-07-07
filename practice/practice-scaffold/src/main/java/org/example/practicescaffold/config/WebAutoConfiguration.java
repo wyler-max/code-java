@@ -2,6 +2,7 @@ package org.example.practicescaffold.config;
 
 import java.util.List;
 
+import org.example.practicescaffold.web.interceptor.LogInterceptor;
 import org.example.practicescaffold.web.interceptor.LoginInterceptor;
 import org.example.practicescaffold.web.resolver.LoginUserHandlerMethodArgumentResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,16 @@ public class WebAutoConfiguration implements WebMvcConfigurer {
         return new LoginInterceptor();
     }
 
+    @Bean
+    @ConditionalOnMissingBean
+    public LogInterceptor logInterceptor() {
+        return new LogInterceptor("scaffold");
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(applicationContext.getBean(LoginInterceptor.class)).addPathPatterns("/**");
+        registry.addInterceptor(applicationContext.getBean(LogInterceptor.class)).addPathPatterns("/**");
     }
 
     @Override

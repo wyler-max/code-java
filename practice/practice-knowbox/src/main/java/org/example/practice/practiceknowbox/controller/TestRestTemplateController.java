@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
+
 @RestController
 @RequestMapping(value = "/api/test")
 public class TestRestTemplateController {
 
-    @Autowired
+    @Resource(name = "slowRestTemplate")
     private RestTemplate restTemplate;
 
     @Autowired
@@ -47,6 +49,9 @@ public class TestRestTemplateController {
                 break;
             case 4:
                 result = JsonUtil.toJson(restTemplateService.doRequestGeneric());
+                break;
+            case 5:
+                result = JsonUtil.toJson(restTemplateService.doRequestProvider2Hello());
                 break;
             default:
         }

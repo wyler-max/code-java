@@ -1,9 +1,17 @@
 server:
   port: 8080
+  tomcat:
+    # -1 表示不限制请求大小
+    # 单位是字节 byte
+    max-http-form-post-size: -1
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:9090/eureka/
+    # 客户端信息上报到服务的周期
+    #instance-info-replication-interval-seconds: 30
+    # 客户端拉取服务器配置信息的周期，默认30s
+    #registry-fetch-interval-seconds: 30
 spring:
   application:
     name: practice-spring
@@ -16,8 +24,19 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+# 配置日志
 logging:
   level:
-    org.example: info
+    #org.example: info
     org.mybatis: info
+    # 配置 mybatis mapper 日志级别，打印 sql语句
+    org:
+      example:
+        practice:
+          practicespring:
+            domain: trace
+            db:
+              mapper: info
+# spring 健康检查
+
 

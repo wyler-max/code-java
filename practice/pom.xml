@@ -18,7 +18,7 @@
         <module>common-utils</module>
         <module>eureka-server</module>
         <module>server-consumer</module>
-        <module>server-provider</module>
+        <module>server-provider1</module>
         <module>server-provider2</module>
         <module>practice-java</module>
         <module>practice-scaffold</module>

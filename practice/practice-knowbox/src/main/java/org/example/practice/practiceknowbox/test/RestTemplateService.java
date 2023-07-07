@@ -16,10 +16,12 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.common.collect.Maps;
 
+import javax.annotation.Resource;
+
 @Service
 public class RestTemplateService {
 
-    @Autowired
+    @Resource(name = "simpleRestTemplate")
     private RestTemplate restTemplate;
 
     public String doGetForObject() {
@@ -69,5 +71,11 @@ public class RestTemplateService {
         ResponseEntity<Response<String>> response = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
             new ParameterizedTypeReference<Response<String>>() {});
         return response.getBody();
+    }
+
+    public String doRequestProvider2Hello() {
+        String url = "http://localhost:8082/provider/user/hello";
+        ResponseEntity response = restTemplate.getForEntity(url, String.class);
+        return String.valueOf(response.getBody());
     }
 }

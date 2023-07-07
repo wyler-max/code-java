@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
     <property name="LOG_HOME" value="../logs"/>
-    <property name="PATTERN"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{X-B3-TraceId}] %-5level [%thread] %logger{15} %msg%n"/>
+    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{X-B3-TraceId}] %-5level [%thread] %logger{15} %msg%n"/>
     <appender name="info"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">

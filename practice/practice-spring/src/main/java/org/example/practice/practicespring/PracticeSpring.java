@@ -7,17 +7,22 @@ import java.util.ServiceLoader;
 
 import javax.annotation.PostConstruct;
 
+import org.example.practice.practicespring.config.TaskConfig;
 import org.example.practice.practicespring.spi.Log;
 import org.example.practice.practicespring.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.ResourceUtils;
 
 @SpringBootApplication
 @EnableEurekaClient
+@EnableConfigurationProperties
+@Import({TaskConfig.class})
 public class PracticeSpring {
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -34,9 +39,12 @@ public class PracticeSpring {
         }
 
         // 2、加载表结构和预制数据
-        List<String> list = FileUtil.readTxtToList(ResourceUtils.getFile("classpath:db/practice_spring.sql"));
-        System.out.println(list);
-        jdbcTemplate.batchUpdate(list.toArray(new String[list.size()]));
+        boolean resetDatebase = false;
+        if (resetDatebase) {
+            List<String> list = FileUtil.readTxtToList(ResourceUtils.getFile("classpath:db/practice_spring.sql"));
+            System.out.println(list);
+            jdbcTemplate.batchUpdate(list.toArray(new String[list.size()]));
+        }
     }
 
     public static void main(String[] args) {

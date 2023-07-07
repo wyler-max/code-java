@@ -1,17 +1,23 @@
 package org.example.practicescaffold.controller;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import org.example.practicescaffold.dtos.param.common.Update;
 import org.example.practicescaffold.dtos.param.user.UserReq;
 import org.example.practicescaffold.dtos.param.user.UserValidReq;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 
 @Slf4j
 @RestController
@@ -74,5 +80,12 @@ public class ValidationController {
             return "fail";
         }
         return "success";
+    }
+
+    @Validated
+    @GetMapping(value = "/valid4")
+    public String valid3(@Valid @RequestParam(value = "p1", defaultValue = "0") @Digits(integer = 100, fraction = 0,
+            message = "不是数字呀") long p1) {
+        return String.valueOf(p1);
     }
 }

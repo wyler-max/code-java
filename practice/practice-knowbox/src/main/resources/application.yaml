@@ -1,8 +1,11 @@
 spring:
   profiles:
-    active: @activeProfile@
+#    active: @activeProfile@
+    active: dev
   application:
     name: practice-knowbox
+server:
+  port: 8081
 eureka:
   client:
     enabled: false

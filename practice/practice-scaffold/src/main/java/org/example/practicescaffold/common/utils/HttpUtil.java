@@ -37,6 +37,17 @@ public class HttpUtil {
         return JsonUtil.toJson(headerMap);
     }
 
+    public static Map<String, String> fetchHeaders(HttpServletRequest request) {
+        Map<String, String> headerMap = Maps.newHashMap();
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String headerName = headerNames.nextElement();
+            String headerValue = request.getHeader(headerName);
+            headerMap.put(headerName, StringUtils.defaultString(headerValue));
+        }
+        return headerMap;
+    }
+
     public static Map<String, String> fetchParameters(HttpServletRequest request) {
         Map<String, String> paramMap = Maps.newHashMap();
         Enumeration<String> paramNames = request.getParameterNames();

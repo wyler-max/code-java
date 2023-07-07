@@ -19,7 +19,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @author yijiu.chen
  * @date 2020/04/16
  */
-@ControllerAdvice(basePackages = {"cn.knowbox.homework"})
+@ControllerAdvice(basePackages = {"org.example.practice.practiceknowbox"})
 public class HomeworkResponseAdvice implements ResponseBodyAdvice<Object> {
 
     @Override

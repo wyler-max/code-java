@@ -17,11 +17,13 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.example.practice.practiceknowbox.common.web.interceptor.RestTemplateInterceptor;
+import org.example.practice.practiceknowbox.common.web.interceptor.SimpleRestTemplateInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
@@ -63,6 +65,14 @@ public class RestTemplateConfig {
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory());
         restTemplate.setInterceptors(Collections.singletonList(new RestTemplateInterceptor()));
+        return restTemplate;
+    }
+
+    @Bean("simpleRestTemplate")
+    public RestTemplate simpleRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate(bufferingClientHttpRequestFactory());
+        restTemplate.setInterceptors(Collections.singletonList(new SimpleRestTemplateInterceptor()));
+        log.info("use simpleRestTemplate");
         return restTemplate;
     }
 
@@ -164,7 +174,6 @@ public class RestTemplateConfig {
     /**
      * 设置ClientHttpRequestFactory
      */
-    @Bean
     public ClientHttpRequestFactory clientHttpRequestFactory() {
         HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
         clientHttpRequestFactory.setHttpClient(httpClientBuilder().build());
@@ -175,5 +184,17 @@ public class RestTemplateConfig {
         // 连接池获取连接超时时间
         clientHttpRequestFactory.setConnectionRequestTimeout(connectionRequestTimeout);
         return clientHttpRequestFactory;
+    }
+
+    public ClientHttpRequestFactory bufferingClientHttpRequestFactory() {
+        HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        clientHttpRequestFactory.setHttpClient(httpClientBuilder().build());
+        // 连接建立超时时间（握手时间），毫秒
+        clientHttpRequestFactory.setConnectTimeout(connectTimeout);
+        // 连接读取超时时间，毫秒
+        clientHttpRequestFactory.setReadTimeout(socketTimeout);
+        // 连接池获取连接超时时间
+        clientHttpRequestFactory.setConnectionRequestTimeout(connectionRequestTimeout);
+        return new BufferingClientHttpRequestFactory(clientHttpRequestFactory);
     }
 }

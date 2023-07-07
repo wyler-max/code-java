@@ -1,3 +1,5 @@
+package org.example.practice.practicespring.springcontext;
+
 import javax.annotation.Resource;
 
 import org.example.practice.practicespring.PracticeSpring;

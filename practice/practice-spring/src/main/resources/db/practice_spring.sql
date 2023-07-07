@@ -32,13 +32,13 @@ VALUES (10, 'jack'),
        (12, 'julia');
 
 DROP TABLE IF EXISTS `order_info`;
-CREATE TABLE "order_info"
+CREATE TABLE `order_info`
 (
-    "id"       int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-    "userid"   int(11) NOT NULL DEFAULT '0' COMMENT '用户ID',
-    "username" varchar(64) NOT NULL DEFAULT '' COMMENT '用户名',
-    "price"    int(11) NOT NULL DEFAULT '0' COMMENT '价格 单位分',
-    PRIMARY KEY ("id")
+    `id`       int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `userid`   int(11) NOT NULL DEFAULT '0' COMMENT '用户ID',
+    `username` varchar(64) NOT NULL DEFAULT '' COMMENT '用户名',
+    `price`    int(11) NOT NULL DEFAULT '0' COMMENT '价格 单位分',
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `order_info` (`id`, `userid`, `username`, `price`)

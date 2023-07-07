@@ -41,6 +41,12 @@
         </rollingPolicy>
     </appender>
 
+    <!--在 application.yaml 的 logging 配置即可 -->
+    <!--<logger name="org.mybatis" level="debug" additivity="false">
+        <appender-ref ref="error" />
+        <appender-ref ref="info" />
+    </logger>-->
+
     <root level="info">
         <appender-ref ref="error"/>
         <appender-ref ref="info"/>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/learning/spring-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/springboot-jpa/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/springboot-jpa/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/springboot-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/springboot-start/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/springmvc-upload-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/springmvc-upload-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/ssm/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learning/ssm/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/common-utils/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/common-utils/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/eureka-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/eureka-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-java/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-java/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-knowbox/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-knowbox/src/main/profiles/${activeProfile}" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-knowbox/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-scaffold/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-scaffold/src/main/profiles/dev" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-scaffold/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-spring/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/practice-spring/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-consumer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-provider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-provider1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-provider1/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-provider2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/server-provider2/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/practice/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

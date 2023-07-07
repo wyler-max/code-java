@@ -13,6 +13,7 @@ public class TaskConfig {
 
     @Bean
     public ThreadPoolTaskExecutor defaultThreadPool() {
+        System.out.println("初始化线程池1");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         // 核心线程数目
         executor.setCorePoolSize(16);
@@ -35,6 +36,7 @@ public class TaskConfig {
 
     @Bean
     public ThreadPoolTaskExecutor secondThreadPool() {
+        System.out.println("初始化线程池2");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         // 核心线程数目
         executor.setCorePoolSize(16);

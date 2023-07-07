@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.example.practice.practicespring.db.mapper.UserMapper">
     <sql id="base_columns">
-        id
-        , username, password, addr
+        id, username, password, addr
     </sql>
 
     <select id="selectAll" resultType="org.example.practice.practicespring.db.model.User">

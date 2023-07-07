@@ -19,7 +19,7 @@ public class TestController {
     private UserService userService;
 
     @GetMapping(value = "/{testN}")
-    public int test(@PathVariable("testN") String testN, @RequestParam("username") String username) throws IOException {
+    public int test(@PathVariable("testN") String testN, @RequestParam(value = "username", required = false) String username) throws IOException {
         switch (testN) {
             case "test1":
                 return userService.insertUser1(username);
@@ -47,6 +47,8 @@ public class TestController {
                 return userService.insertUser9(username);
             case "test10":
                 return userService.insertUser10(username);
+            case "test11":
+                return userService.insertUser11(username);
             default:
                 return -1;
         }

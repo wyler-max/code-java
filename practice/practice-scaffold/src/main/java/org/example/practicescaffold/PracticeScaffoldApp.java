@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import org.example.practicescaffold.common.utils.FileUtil;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -37,7 +39,7 @@ import com.google.common.collect.Lists;
         sqlSessionFactoryRef = "jayThreeSqlSessionFactory")})
 public class PracticeScaffoldApp {
 
-    // @Autowired
+    //@Autowired
     private JdbcTemplate jdbcTemplate;
 
     /**

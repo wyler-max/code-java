@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * 测试 @Import 注解
+ * 测试 @Import 注解 以及 类加载到spring bean的方式
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = PracticeSpring.class)

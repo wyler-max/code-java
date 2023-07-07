@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author yijiu.chen
  * @date 2020/04/16
  */
-@RestControllerAdvice(basePackages = {"cn.knowbox.homework"})
+@RestControllerAdvice(basePackages = {"org.example.practice.practiceknowbox"})
 @Slf4j
 public class GlobalExceptionHandler {
 

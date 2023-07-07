@@ -10,11 +10,15 @@ import org.springframework.stereotype.Repository;
  * @date 2021/9/17
  */
 @Repository
-public class CustomerRepository {
+public class UserRepository {
     @Autowired
     private UserMapper userMapper;
 
     public User selectById(long id) {
-        return userMapper.selectById(id);
+        return userMapper.queryById(id);
+    }
+
+    public long updateName(long id, String name) {
+        return userMapper.updateName(id, name);
     }
 }

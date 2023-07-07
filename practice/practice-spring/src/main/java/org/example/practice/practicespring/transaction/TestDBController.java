@@ -34,7 +34,7 @@ public class TestDBController {
     public void testInsert() {
         log.info("插入用户");
         User user = new User();
-        user.setUsername("haha");
+        user.setUserName("haha");
         user.setPassword("123");
         user.setAddr("soho----123");
         System.out.println(userMapper.insert(user));

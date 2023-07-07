@@ -40,12 +40,12 @@ public class UserService {
     // @Transactional
     private void insertUserPrivate(String userName) {
         User user = new User();
-        user.setUsername(userName);
+        user.setUserName(userName);
         user.setPassword("123");
         user.setAddr("soho----123");
         log.info("user=" + user);
         userMapper.insert(user);
-        if (user.getUsername().contains("user-error")) {
+        if (user.getUserName().contains("user-error")) {
             log.info("模拟抛出异常");
             throw new RuntimeException("private 非法用户名，在线求回滚");
         }
@@ -59,12 +59,12 @@ public class UserService {
 
     public void insertUserPublicWithoutTransaction(String userName) {
         User user = new User();
-        user.setUsername(userName);
+        user.setUserName(userName);
         user.setPassword("123");
         user.setAddr("soho----123");
         log.info("user=" + user);
         userMapper.insert(user);
-        if (user.getUsername().contains("user-error")) {
+        if (user.getUserName().contains("user-error")) {
             log.info("模拟抛出异常");
             throw new RuntimeException("public 非法用户名，在线求回滚");
         }
@@ -309,5 +309,12 @@ public class UserService {
          * 若 insertOrder3 为嵌套事务，在这里抛异常，将会导致嵌套事务无法【提交】
          */
         throw new RuntimeException("模拟抛出异常");
+    }
+
+    public int insertUser11(String userName) {
+        orderService.insertOrder4(userName + 222);
+        System.out.println("abccccc");
+        //throw new RuntimeException("模拟抛出异常");
+        return 100;
     }
 }
