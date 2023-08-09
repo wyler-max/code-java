@@ -13,7 +13,7 @@ import org.springframework.util.StringValueResolver;
  * 例如：db.mysql.union=${db.mysql.user}/${db.mysql.password}
  */
 @Component
-@PropertySource("classpath:/dbConfig.properties")
+@PropertySource("classpath:/mysql.properties")
 public class SelfEmbededValueResolverAware implements EmbeddedValueResolverAware {
 
     private StringValueResolver resolver;

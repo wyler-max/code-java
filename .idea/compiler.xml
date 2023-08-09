@@ -13,14 +13,18 @@
         <module name="springboot-start" />
         <module name="practice-knowbox" />
         <module name="common-utils" />
+        <module name="practice-springboot-start-biz" />
         <module name="ssm" />
         <module name="springmvc-upload-server" />
         <module name="eureka-server" />
         <module name="server-consumer1" />
         <module name="springboot-jpa" />
+        <module name="practice-springboot-start-api" />
         <module name="practice-scaffold" />
         <module name="spring-start" />
         <module name="practice-java" />
+        <module name="practice-springboot-start-app" />
+        <module name="practice-springboot-start-dto" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -36,6 +40,11 @@
       <module name="practice-knowbox" options="-parameters" />
       <module name="practice-scaffold" options="-parameters" />
       <module name="practice-spring" options="-parameters" />
+      <module name="practice-springboot-start" options="" />
+      <module name="practice-springboot-start-api" options="-parameters" />
+      <module name="practice-springboot-start-app" options="-parameters" />
+      <module name="practice-springboot-start-biz" options="-parameters" />
+      <module name="practice-springboot-start-dto" options="-parameters" />
       <module name="server-consumer" options="-parameters" />
       <module name="server-consumer1" options="-parameters" />
       <module name="server-provider1" options="-parameters" />

@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <property name="LOG_HOME" value="../logs"/>
+    <property name="LOG_HOME" value="./logs"/>
+    <property name="PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{X-B3-TraceId}] %-5level [%thread] %logger{15} %msg%n"/>
     <appender name="info"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>ERROR</level>
+            <level>DEBUG</level>
             <onMatch>DENY</onMatch>
             <onMismatch>ACCEPT</onMismatch>
         </filter>
         <encoder>
             <pattern>
-                %d{yyyy-MM-dd HH:mm:ss.SSS} [%X{Eagleeye-Traceid}] %-5level [%thread] %logger{15}:%line - %msg%n
+                ${PATTERN}
             </pattern>
         </encoder>
+        <file>${LOG_HOME}/server-provider1-access.log</file>
         <!--滚动策略 -->
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径 -->
-            <fileNamePattern>${LOG_HOME}/practice-spring-info.%d{yyyy-MM-dd}.log
+            <fileNamePattern>${LOG_HOME}/server-provider1-access.%d{yyyy-MM-dd}.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>
@@ -29,25 +32,35 @@
         </filter>
         <encoder>
             <pattern>
-                %d{yyyy-MM-dd HH:mm:ss.SSS} [%X{Eagleeye-Traceid}] %-5level [%thread] %logger{15} %msg%n
+                ${PATTERN}
             </pattern>
         </encoder>
+        <file>${LOG_HOME}/server-provider1-error.log</file>
         <!--滚动策略 -->
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径 -->
-            <fileNamePattern>${LOG_HOME}/practice-spring-error.%d{yyyy-MM-dd}.log
+            <fileNamePattern>${LOG_HOME}/server-provider1-error.%d{yyyy-MM-dd}.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>
 
-    <!--在 application.yaml 的 logging 配置即可 -->
-    <!--<logger name="org.mybatis" level="debug" additivity="false">
-        <appender-ref ref="error" />
-        <appender-ref ref="info" />
-    </logger>-->
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>${PATTERN}</Pattern>
+        </encoder>
+    </appender>
 
-    <root level="info">
+    <!--控制指定包的日志输出级别-->
+    <logger name="org.example" level="DEBUG">
+        <appender-ref ref="console"/>
+        <appender-ref ref="error"/>
+        <appender-ref ref="info"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
         <appender-ref ref="error"/>
         <appender-ref ref="info"/>
     </root>

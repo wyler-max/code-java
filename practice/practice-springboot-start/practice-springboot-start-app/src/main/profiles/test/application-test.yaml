@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    #jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL&characterEncoding=utf8&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/practice_spring?serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL&characterEncoding=utf8&allowMultiQueries=true
+    username: root
+    password: 123456
+    connectionTimeout: 30000
+    minimumIdle: 10
+    maximumPoolSize: 50
+    connectionInitSql: set names utf8mb4
+
+config:
+  env: test

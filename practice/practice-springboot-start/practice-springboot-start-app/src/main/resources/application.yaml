@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: practice-spring-boot-start
+  profiles:
+    active: @activeProfile@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9090/eureka/
+
+mybatis-plus:
+  mapper-locations: mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  type-aliases-package: org.example.practice.practicespringbootstart.biz.model.auto

@@ -17,7 +17,6 @@
     <modules>
         <module>common-utils</module>
         <module>eureka-server</module>
-        <module>server-consumer</module>
         <module>practice-java</module>
         <module>practice-scaffold</module>
         <module>practice-spring</module>
@@ -25,6 +24,7 @@
         <module>server-provider1</module>
         <module>server-provider2</module>
         <module>server-consumer1</module>
+        <module>practice-springboot-start</module>
     </modules>
 
     <properties>
@@ -96,7 +96,7 @@
     </build>
 
     <repositories>
-        <repository>
+        <!--<repository>
             <id>aliyunmaven</id>
             <name>aliyun maven repository</name>
             <url>https://maven.aliyun.com/repository/public</url>
@@ -104,6 +104,6 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
             </releases>
-        </repository>
+        </repository>-->
     </repositories>
 </project>

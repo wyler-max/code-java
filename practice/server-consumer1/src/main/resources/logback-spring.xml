@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <property name="LOG_HOME" value="../logs"/>
+    <property name="LOG_HOME" value="./logs"/>
     <property name="PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{X-B3-TraceId}] %-5level [%thread] %logger{15} %msg%n"/>
     <appender name="info"
@@ -17,16 +17,13 @@
         </encoder>
         <file>${LOG_HOME}/server-consumer1-access.log</file>
         <!--滚动策略 -->
-        <rollingPolicy
-                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--路径 -->
-            <fileNamePattern>${LOG_HOME}/server-consumer1-access.%d{yyyy-MM-dd}.log
-            </fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/server-consumer1-access.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
-    <appender name="error"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
