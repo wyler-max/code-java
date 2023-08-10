@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @date 2023/8/9
  */
 @EnableEurekaClient
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "org.example.practice.practicespringbootstart")
 public class PracticeSpringbootStartApp {
 
     public static void main(String[] args) {

@@ -31,18 +31,17 @@
     </properties>
 
     <repositories>
-        <repository>
+        <!--指定依赖下载的仓库-->
+        <!--<repository>
             <id>aliyunmaven</id>
             <name>aliyun maven repository</name>
             <url>https://maven.aliyun.com/repository/public</url>
-
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
             </releases>
-        </repository>
+        </repository>-->
     </repositories>
-
     <distributionManagement>
         <!--指定deploy发布的仓库-->
         <!--<repository>

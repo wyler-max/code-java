@@ -1,6 +1,8 @@
 package org.example.practice.practicespringbootstart.app.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.example.practice.practicespringbootstart.biz.AlarmBizService;
+import org.example.practice.practicespringbootstart.biz.UserBizService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,17 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @Value("${config.env}")
-    private String configEnv;
-
-    @Value("${spring.profiles.active}")
-    private String activeProfile;
+    @Autowired
+    private UserBizService userBizService;
 
     @GetMapping("/queryEnv")
     public String queryEnv() {
-        StringBuilder rs = new StringBuilder();
-        rs.append(configEnv).append("_").append(activeProfile);
-        return rs.toString();
+        return AlarmBizService.getActiveProfiles();
     }
 
     @GetMapping("/queryBydId")

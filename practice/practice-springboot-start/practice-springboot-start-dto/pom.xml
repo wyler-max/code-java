@@ -10,18 +10,4 @@
     </parent>
 
     <artifactId>practice-springboot-start-dto</artifactId>
-
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <!-- 取消查找本项目下的Main方法：为了解决Unable to find main class的问题 -->
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
