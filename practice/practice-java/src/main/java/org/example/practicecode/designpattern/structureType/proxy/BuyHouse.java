@@ -1,8 +1,0 @@
-package org.example.practicecode.designpattern.structureType.proxy;
-
-/**
- * 服务类接口
- */
-public interface BuyHouse {
-    void buyHouse();
-}

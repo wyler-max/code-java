@@ -21,8 +21,8 @@
         <module name="springboot-jpa" />
         <module name="practice-springboot-start-api" />
         <module name="practice-scaffold" />
+        <module name="practice-code" />
         <module name="spring-start" />
-        <module name="practice-java" />
         <module name="practice-springboot-start-app" />
         <module name="practice-springboot-start-dto" />
       </profile>
@@ -36,7 +36,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common-utils" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
-      <module name="practice-java" options="-parameters" />
+      <module name="practice-code" options="-parameters" />
       <module name="practice-knowbox" options="-parameters" />
       <module name="practice-scaffold" options="-parameters" />
       <module name="practice-spring" options="-parameters" />

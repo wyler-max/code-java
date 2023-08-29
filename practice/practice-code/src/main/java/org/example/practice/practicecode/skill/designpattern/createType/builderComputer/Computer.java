@@ -1,0 +1,15 @@
+package org.example.practice.practicecode.skill.designpattern.createType.builderComputer;
+
+import lombok.Data;
+
+/**
+ * 电脑实体类
+ */
+@Data
+public class Computer {
+    private String master;
+    private String screen;
+    private String keyBoard;
+    private String mouse;
+    private String audio;
+}
