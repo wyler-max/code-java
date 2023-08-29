@@ -1,5 +1,7 @@
 package org.example.practice.practicecode.test.yulin;
 
+import org.junit.Test;
+
 import java.text.DecimalFormat;
 
 public class CalculaterBTC {

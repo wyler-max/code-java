@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/learning/spring-start/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/springboot-jpa/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/springboot-jpa/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/springboot-start/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/springboot-start/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/learning/springmvc-upload-server/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/learning/springmvc-upload-server/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/learning/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/learning/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/ssm/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/learning/ssm/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/common-utils/src/main/java" charset="UTF-8" />
@@ -19,7 +15,6 @@
     <file url="file://$PROJECT_DIR$/practice/practice-code/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/practice-code/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/practice-knowbox/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/practice/practice-knowbox/src/main/profiles/${activeProfile}" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/practice-knowbox/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/practice-scaffold/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/practice-scaffold/src/main/profiles/dev" charset="UTF-8" />
@@ -30,17 +25,11 @@
     <file url="file://$PROJECT_DIR$/practice/practice-springboot-start/practice-springboot-start-app/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/practice-springboot-start/practice-springboot-start-biz/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/practice-springboot-start/practice-springboot-start-dto/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/practice/practice-springboot-start/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/practice/practice-springboot-start/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/practice/server-consumer/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/practice/server-consumer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-consumer1/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/practice/server-provider/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider1/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/server-provider2/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/practice/server-provider3/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/practice/src/main/resources" charset="UTF-8" />
   </component>

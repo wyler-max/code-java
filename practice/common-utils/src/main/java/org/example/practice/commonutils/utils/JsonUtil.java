@@ -1,5 +1,10 @@
 package org.example.practice.commonutils.utils;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -8,15 +13,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.List;
-import java.util.Map;
-
 
 @Slf4j
-public class JsonUtil {
+public abstract class JsonUtil {
     public static final ObjectMapper MAPPER = new ObjectMapper();
     private static final TypeReference<Map<String, Object>> MAP_TYPE_REFERENCE =
         new TypeReference<Map<String, Object>>() {};

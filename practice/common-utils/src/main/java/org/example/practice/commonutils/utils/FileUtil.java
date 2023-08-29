@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-public class FileUtil {
+public abstract class FileUtil {
 
     public static String readTxt(File file) throws IOException {
         String s = "";

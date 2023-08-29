@@ -1,5 +1,7 @@
 package org.example.practice.practicecode.javalang.utils.thread.threadLocal;
 
+import org.junit.Test;
+
 /**
  * 哈希魔数 </br>
  * 16进制：0x61c88647 </br>

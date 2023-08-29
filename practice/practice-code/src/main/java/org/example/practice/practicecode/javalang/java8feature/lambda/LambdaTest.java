@@ -1,4 +1,4 @@
-package org.example.practice.practicecode.javalang.java8feature;
+package org.example.practice.practicecode.javalang.java8feature.lambda;
 
 import org.junit.Test;
 
