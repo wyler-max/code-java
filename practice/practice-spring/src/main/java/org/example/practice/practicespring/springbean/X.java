@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class X {
+    private int id;
+
     public X() {
         System.out.println("X Constructor");
     }

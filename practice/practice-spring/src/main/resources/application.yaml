@@ -1,8 +1,7 @@
 server:
   port: 8080
   tomcat:
-    # -1 表示不限制请求大小
-    # 单位是字节 byte
+    # -1 表示不限制请求大小，单位是字节 byte
     max-http-form-post-size: -1
 eureka:
   client:
@@ -16,7 +15,7 @@ spring:
   application:
     name: practice-spring
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
@@ -24,6 +23,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+    password: ""
 # 配置日志
 logging:
   level:
@@ -37,8 +37,8 @@ logging:
             domain: trace
             db:
               mapper: info
-    org.example.practice.practicespring.feignclient.Provider1Client: debug
-    org.example.practice.practicespring.feignclient.Provider2Client: debug
+    org.example.practice.practicespring.feign.Provider1Client: debug
+    org.example.practice.practicespring.feign.Provider2Client: debug
 
 # spring 健康检查
 
@@ -74,7 +74,7 @@ ribbon:
     enabled: true
   OkToRetryOnAllOperations: false # 对所有操作请求都进行重试,默认false
   ReadTimeout: 5000 # 负载均衡超时时间，默认值5000
-  ConnectTimeout: 1000 # ribbon请求连接的超时时间，默认值2000
+  ConnectTimeout: 2000 # ribbon请求连接的超时时间，默认值2000
   MaxAutoRetries: 0     # 对当前实例的重试次数，默认0
   MaxAutoRetriesNextServer: 1 # 对切换实例的重试次数，默认1；如果ribbon的ReadTimeout超时,或者ConnectTimeout连接超时,会进行重试操作
 

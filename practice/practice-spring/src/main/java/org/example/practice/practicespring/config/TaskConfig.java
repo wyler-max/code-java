@@ -1,17 +1,26 @@
 package org.example.practice.practicespring.config;
 
+import java.util.concurrent.ThreadPoolExecutor;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.util.concurrent.ThreadPoolExecutor;
-
+/**
+ * 自定义线程池
+ */
 @Configuration
 @EnableAsync
 public class TaskConfig {
-    @Bean
-    public ThreadPoolTaskExecutor defaultThreadPool() {
+
+    /**
+     * 初始化一个默认的线程池，beanName为taskExecutor，否则会因为找不到而自主创建一个
+     * 
+     * @return
+     */
+    @Bean("taskExecutor")
+    public ThreadPoolTaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         // 核心线程数目
         executor.setCorePoolSize(16);
@@ -32,6 +41,11 @@ public class TaskConfig {
         return executor;
     }
 
+    /**
+     * 初始化一个新的线程池
+     * 
+     * @return
+     */
     @Bean
     public ThreadPoolTaskExecutor secondThreadPool() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();

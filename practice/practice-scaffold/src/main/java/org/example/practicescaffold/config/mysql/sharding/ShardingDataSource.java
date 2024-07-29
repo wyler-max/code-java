@@ -34,7 +34,7 @@ public class ShardingDataSource extends AbstractRoutingDataSource {
             }
             return holder.getDb().findDbKey(shardingIndex, dataSourceType);
         } else {
-            log.debug("{}未使用分库", holder.getDb().getDbName());
+            log.debug("数据库{}未使用分库", holder.getDb().getDbName());
             return holder.getDb().findDbKey(0, dataSourceType);
         }
     }

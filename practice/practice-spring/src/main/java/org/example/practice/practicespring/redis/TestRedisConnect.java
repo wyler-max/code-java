@@ -4,8 +4,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.example.practice.commonutils.utils.JsonUtil;
 import org.example.practice.practicespring.PracticeSpring;
+import org.example.practice.practicespring.util.JsonUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,8 +14,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * 测试Redis连接
  */
-@SpringBootTest(classes = PracticeSpring.class)
 @RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = PracticeSpring.class)
 public class TestRedisConnect {
 
     @Resource
@@ -23,25 +23,28 @@ public class TestRedisConnect {
 
     @Test
     public void testString() {
-        // string get/set/del
-        String keyStr = "key:string";
-        String strVal = redisService.getString(keyStr);
-        redisService.set(keyStr, "value", 10);
-        redisService.del(keyStr);
+        String key = "key:string";
+        String val = redisService.getString(key);
+        System.out.println(val);
+
+        redisService.set(key, "valNew", 10);
+        String valNew = redisService.getString(key);
+        System.out.println(valNew);
+
+        redisService.del(key);
     }
 
     @Test
     public void testHash() {
-        // hash hget/hset
         String keyHashKey = "key:hash";
-        Object jack = redisService.hget(keyHashKey, "jack");
-        String jackScore = redisService.hget(keyHashKey, "jack", String.class);
+        Object jack = redisService.hget(keyHashKey, "k1");
+        String jackScore = redisService.hget(keyHashKey, "k1", String.class);
         System.out.println(jack);
         System.out.println(jackScore);
 
-        redisService.hset(keyHashKey, "jack", "jjj", 10);
-        redisService.hset(keyHashKey, "jane", "eee");
-        jackScore = redisService.hget(keyHashKey, "jack", String.class);
+        redisService.hset(keyHashKey, "k1", "v1", 10);
+        redisService.hset(keyHashKey, "k2", "v2");
+        jackScore = redisService.hget(keyHashKey, "k1", String.class);
         System.out.println(jackScore);
         Map<Object, Object> hmget = redisService.hmget(keyHashKey);
         System.out.println(JsonUtil.toJson(hmget));

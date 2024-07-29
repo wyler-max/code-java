@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 /**
- * 读取数据库配置 单库、一主多从、多主多从、纯分片
+ * 读取数据库配置 单库、一主多从、多主多从、多主（纯分片）
  */
 @Component
 @Data
-@ConfigurationProperties("databaseconfig")
+@ConfigurationProperties("mysql")
 public class MuitipleDataSourceConfig {
     // 单库
     private String jayDefaultName;
@@ -24,7 +24,7 @@ public class MuitipleDataSourceConfig {
     // 多主多从
     private String jayTwoName;
     private List<MasterSlavesConfig> jaytwo;
-    // 纯分片
+    // 多主（纯分片）
     private String jayThreeName;
     private List<MasterSlavesConfig> jaythree;
 

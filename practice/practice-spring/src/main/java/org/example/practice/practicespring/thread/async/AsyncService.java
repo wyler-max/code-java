@@ -1,8 +1,9 @@
 package org.example.practice.practicespring.thread.async;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author wangyulin
@@ -21,7 +22,7 @@ public class AsyncService {
         log.info("异步");
     }
 
-    @Async("defaultThreadPool")
+    @Async("secondThreadPool")
     public void doAsync2() {
         log.info("异步2");
     }

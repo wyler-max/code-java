@@ -23,12 +23,11 @@ import org.springframework.util.ResourceUtils;
 public class SelfResourceLoaderAware implements ResourceLoaderAware {
 
     /**
-     * 1、resource 路径、工具类；
-     * 2、加载资源文件
+     * 1、resource 路径、工具类； 2、加载资源文件
      */
     public void setResourceData(ResourceLoader resourceLoader) throws IOException {
-        System.out.println("start");
-        String fileName = ResourceUtils.getURL("classpath:files/poetry.txt").getPath();
+        System.out.println("ResourceLoaderAware process resource");
+        String fileName = ResourceUtils.getURL("classpath:data/Poetry.txt").getPath();
         Resource resource = resourceLoader.getResource("file:" + fileName);
         InputStream inputStream = resource.getInputStream();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

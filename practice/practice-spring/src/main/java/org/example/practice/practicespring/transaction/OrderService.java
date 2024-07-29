@@ -1,17 +1,19 @@
 package org.example.practice.practicespring.transaction;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
-import org.example.practice.commonutils.utils.JsonUtil;
 import org.example.practice.practicespring.db.mapper.OrderInfoMapper;
 import org.example.practice.practicespring.db.model.OrderInfo;
+import org.example.practice.practicespring.util.JsonUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.List;
+;
 
 @Service
 @Slf4j

@@ -10,10 +10,10 @@ import org.springframework.util.StringValueResolver;
  *
  * 功能和 @Value 注解类似，用于加载配置文件，并可以解析值中的表达式
  *
- * 例如：db.mysql.union=${db.mysql.user}/${db.mysql.password}
+ * 例如：other.union=${other.user}/${other.password}
  */
 @Component
-@PropertySource("classpath:/mysql.properties")
+@PropertySource("classpath:/other.properties")
 public class SelfEmbededValueResolverAware implements EmbeddedValueResolverAware {
 
     private StringValueResolver resolver;

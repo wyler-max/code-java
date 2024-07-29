@@ -2,7 +2,7 @@ package org.example.practice.practicespring.web.interceptor;
 
 import java.util.Optional;
 
-import org.example.practice.commonutils.pojo.User;
+import org.example.practice.practicespring.pojo.User;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;

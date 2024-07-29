@@ -55,10 +55,37 @@ public class SqlSessionFactoryConfig {
         return commonFactory(dataSource);
     }
 
+    /**
+     * 一主多从分片处理
+     */
+    @Bean("jayOneShardingDataSourceHolder")
+    public ShardingDataSourceHolder jayOneShardingDataSourceHolder() {
+        List<MasterSlavesDataSourceEntity> dbList = Lists.newArrayList();
+        MasterSlavesConfig config = muitipleDataSourceConfig.getJayone();
+        List<DataSourceInfo> list = Lists.newArrayList();
+        list.add(new DataSourceInfo(DataSourceType.MASTER, config.getMaster()));
+        log.info("db {} init jay one master", 1);
+        if (!CollectionUtils.isEmpty(config.getSlaves())) {
+            for (int j = 0; j < config.getSlaves().size(); j++) {
+                list.add(new DataSourceInfo(DataSourceType.SLAVE, config.getSlaves().get(j)));
+                log.info("db {} init jay one slave {}", 1, config.getSlaves().get(j));
+            }
+        }
+        dbList.add(new MasterSlavesDataSourceEntity(list));
+        return new ShardingDataSourceHolder(
+            new ShardingDataSourceEntity(muitipleDataSourceConfig.getJayOneName(), null, dbList));
+    }
+
     @Bean("jayOneDataSource")
-    public DataSource jayOneDataSource() {
-        log.info("===jayOneDataSource=" + muitipleDataSourceConfig.getJayone().getMaster().getJdbcUrl());
-        return new HikariDataSource(muitipleDataSourceConfig.getJayone().getMaster());
+    public DataSource jayOneDataSource(@Qualifier("jayOneShardingDataSourceHolder") ShardingDataSourceHolder holder) {
+        // return new HikariDataSource(muitipleDataSourceConfig.getJayone().getMaster());
+        return new ShardingDataSource(holder);
+    }
+
+    @Bean("jayOneTransactionManager")
+    @Primary
+    public PlatformTransactionManager jayOneTransactionManager(@Qualifier("jayOneDataSource") DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean("jayOneSqlSessionFactory")
@@ -71,17 +98,17 @@ public class SqlSessionFactoryConfig {
      * 多主多从分片处理
      */
     @Bean("jayTwoShardingDataSourceHolder")
-    public ShardingDataSourceHolder baseShardingDataSourceHolder() {
+    public ShardingDataSourceHolder jayTwoShardingDataSourceHolder() {
         List<MasterSlavesDataSourceEntity> dbList = Lists.newArrayList();
         for (int i = 0; i < muitipleDataSourceConfig.getJaytwo().size(); i++) {
             MasterSlavesConfig config = muitipleDataSourceConfig.getJaytwo().get(i);
             List<DataSourceInfo> list = Lists.newArrayList();
             list.add(new DataSourceInfo(DataSourceType.MASTER, config.getMaster()));
-            log.info("db {} init homework base master", i);
+            log.info("db {} init jay two master", i);
             if (!CollectionUtils.isEmpty(config.getSlaves())) {
                 for (int j = 0; j < config.getSlaves().size(); j++) {
                     list.add(new DataSourceInfo(DataSourceType.SLAVE, config.getSlaves().get(j)));
-                    log.info("db {} init homework base slave {}", i, j);
+                    log.info("db {} init jay two slave {}", i, j);
                 }
             }
             dbList.add(new MasterSlavesDataSourceEntity(list));
@@ -97,8 +124,7 @@ public class SqlSessionFactoryConfig {
 
     @Bean("jayTwoTransactionManager")
     @Primary
-    public PlatformTransactionManager
-        baseHomeworkTransactionManager(@Qualifier("jayTwoDataSource") DataSource dataSource) {
+    public PlatformTransactionManager jayTwoTransactionManager(@Qualifier("jayTwoDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
@@ -125,8 +151,10 @@ public class SqlSessionFactoryConfig {
      */
     @Bean("shardingDataSourceHolderAll")
     public ShardingDataSourceHolderAll shardingDataSourceHolderAll(
+        @Qualifier("jayOneShardingDataSourceHolder") ShardingDataSourceHolder jayOneHolder,
         @Qualifier("jayTwoShardingDataSourceHolder") ShardingDataSourceHolder jayTwoHolder) {
         List<ShardingDataSourceHolder> holderList = Lists.newArrayList();
+        holderList.add(jayOneHolder);
         holderList.add(jayTwoHolder);
         return new ShardingDataSourceHolderAll(holderList);
     }

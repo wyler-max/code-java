@@ -14,8 +14,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * @author yijiu.chen
- * @date 2020/04/16
+ * 拦截器注册器
  */
 @Configuration
 public class WebAutoConfiguration implements WebMvcConfigurer {
@@ -28,15 +27,9 @@ public class WebAutoConfiguration implements WebMvcConfigurer {
         return new CustomErrorPageRegistrar();
     }
 
-    /*@Bean
-    @ConditionalOnMissingBean
-    public QywxInterceptor qywxInterceptor() {
-        return new QywxInterceptor();
-    }*/
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // registry.addInterceptor(applicationContext.getBean(QywxInterceptor.class)).addPathPatterns("/**");
+        // registry.addInterceptor(applicationContext.getBean(LogInterceptor.class)).addPathPatterns("/**");
     }
 
     @Override

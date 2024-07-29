@@ -27,7 +27,7 @@ spring:
     sampler:
       probability: 0.01
       rate: 10
-databaseconfig:
+mysql:
   jayDefaultName: jay_default
   jaydefault:
     master:

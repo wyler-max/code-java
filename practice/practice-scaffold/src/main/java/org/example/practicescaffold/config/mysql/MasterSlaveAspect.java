@@ -17,6 +17,29 @@ public class MasterSlaveAspect {
     @Autowired
     private ShardingDataSourceHolderAll holder;
 
+    @Before("execution(* org.example.practicescaffold.db.jayone.dao..*.select*(..))"
+        + " || execution(* org.example.practicescaffold.db.jayone.dao..*.query*(..))"
+        + " || execution(* org.example.practicescaffold.db.jayone.dao..*.count*(..))")
+    public void setJayOneSlaveDataSourceType() {
+        holder.setDataSourceType(dataSourceConfig.getJayOneName(), DataSourceType.SLAVE);
+    }
+
+    @Before("execution(* org.example.practicescaffold.db.jayone.dao..*.update*(..))"
+        + " || execution(* org.example.practicescaffold.db.jayone.dao..*.insert*(..))"
+        + " || execution(* org.example.practicescaffold.db.jayone.dao..*.delete*(..))"
+        + " || execution(* org.example.practicescaffold.db.jayone.dao..*.batchInsert*(..))"
+        + " || execution(* org.example.practicescaffold.db.jayone.dao..*.logicalDelete*(..))")
+    public void setJayOneMasterSourceType() {
+        holder.setDataSourceType(dataSourceConfig.getJayOneName(), DataSourceType.MASTER);
+    }
+
+    @After("execution(* org.example.practicescaffold.db.jayone.dao..*.*(..))")
+    public void removeJayOneDataSource() {
+        if (!DataSourceType.FORCE_MASTER.equals(holder.fetchDataSourceType(dataSourceConfig.getJayOneName()))) {
+            holder.removeDataSourceType(dataSourceConfig.getJayOneName());
+        }
+    }
+
     @Before("execution(* org.example.practicescaffold.db.jaytwo.dao..*.select*(..))"
         + " || execution(* org.example.practicescaffold.db.jaytwo.dao..*.query*(..))"
         + " || execution(* org.example.practicescaffold.db.jaytwo.dao..*.count*(..))")
@@ -34,7 +57,7 @@ public class MasterSlaveAspect {
     }
 
     @After("execution(* org.example.practicescaffold.db.jaytwo.dao..*.*(..))")
-    public void restoreBaseDataSource() {
+    public void removeJayTwoDataSource() {
         if (!DataSourceType.FORCE_MASTER.equals(holder.fetchDataSourceType(dataSourceConfig.getJayTwoName()))) {
             holder.removeDataSourceType(dataSourceConfig.getJayTwoName());
         }

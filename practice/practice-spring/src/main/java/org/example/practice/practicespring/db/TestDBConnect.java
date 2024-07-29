@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.example.practice.commonutils.utils.JsonUtil;
 import org.example.practice.practicespring.PracticeSpring;
 import org.example.practice.practicespring.db.mapper.OrderInfoMapper;
 import org.example.practice.practicespring.db.mapper.UserMapper;
 import org.example.practice.practicespring.db.model.OrderInfo;
 import org.example.practice.practicespring.db.model.User;
+import org.example.practice.practicespring.util.JsonUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

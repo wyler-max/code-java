@@ -13,6 +13,5 @@
     <file url="file://$PROJECT_DIR$/practice/practice-scaffold/src/main/resources/db/jay_two_slave12.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/practice/practice-scaffold/src/main/resources/db/jay_two_slave21.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/practice/practice-scaffold/src/main/resources/db/jay_two_slave22.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/practice/practice-spring/src/main/resources/db/practice_spring.sql" dialect="MySQL" />
   </component>
 </project>

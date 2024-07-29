@@ -44,14 +44,13 @@ public class PracticeSpring {
         // 2、加载表结构和预制数据
         boolean resetDatebase = false;
         if (resetDatebase) {
-            List<String> list = FileUtil.readTxtToList(ResourceUtils.getFile("classpath:db/practice_spring.sql"));
+            List<String> list = FileUtil.readTxtToList(ResourceUtils.getFile("classpath:data/init_db.sql"));
             System.out.println(list);
             jdbcTemplate.batchUpdate(list.toArray(new String[list.size()]));
         }
     }
 
     public static void main(String[] args) {
-
         SpringApplication.run(PracticeSpring.class, args);
     }
 }

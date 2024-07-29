@@ -4,6 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!--Springboot的依赖管理器，所有的springboot工程都必须继承它，以便更好的管理boot所需的所有依赖，从而统一各种jar的版本号；引用后可以省略版本号，如果再次指定版本号则替代默认版本号-->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
