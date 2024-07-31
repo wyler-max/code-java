@@ -3,7 +3,7 @@ spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    jdbcUrl: jdbc:mysql://127.0.0.1:3306/practice_spring?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
+    jdbcUrl: jdbc:mysql://127.0.0.1:3306/spring_default?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: 123456
     connectionTimeout: 30000
@@ -153,10 +153,8 @@ mysql:
         minIdle: 10
         maxPoolSize: 50
         connectionInitSql: set names utf8mb4
-  shadingTables:
-    user_one: 3
-    user_two: 3
-    user_three: 3
+  shardingTables:
+    user: 4
 
 
     #引用其他的yaml文件时

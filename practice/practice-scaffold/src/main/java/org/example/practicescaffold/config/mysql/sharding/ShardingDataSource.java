@@ -1,11 +1,14 @@
 package org.example.practicescaffold.config.mysql.sharding;
 
+import org.example.practicescaffold.config.mysql.enums.DataSourceType;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 简单的分库分表和主从实现，不支持跨库，最终会指定到一个库里
+ * sharding 数据源路由
+ *
+ * 简单的主从分库实现，不支持跨库，最终会指定到一个库里
  */
 @Slf4j
 public class ShardingDataSource extends AbstractRoutingDataSource {

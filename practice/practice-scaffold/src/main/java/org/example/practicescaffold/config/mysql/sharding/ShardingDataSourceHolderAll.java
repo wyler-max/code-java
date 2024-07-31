@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.example.practicescaffold.config.mysql.enums.DataSourceType;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
@@ -12,7 +13,7 @@ import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 数据库
+ * 数据源持有者集合，用于多数据源切换、分表
  */
 @Slf4j
 public class ShardingDataSourceHolderAll implements Serializable {
@@ -52,7 +53,7 @@ public class ShardingDataSourceHolderAll implements Serializable {
             return;
         }
         log.debug("设置数据库:{},使用类型:{}", holder.getDb().getDbName(), type);
-        log.debug("db: {}", holder.getDb().getDbs());
+        // log.debug("db: {}", holder.getDb().getDbs());
         holder.getDatabaseType().set(type);
     }
 

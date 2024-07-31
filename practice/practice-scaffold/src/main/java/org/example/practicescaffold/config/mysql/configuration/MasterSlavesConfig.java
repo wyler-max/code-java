@@ -1,4 +1,4 @@
-package org.example.practicescaffold.config.mysql;
+package org.example.practicescaffold.config.mysql.configuration;
 
 import java.util.List;
 

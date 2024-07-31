@@ -1,10 +1,11 @@
-package org.example.practicescaffold.config.mysql.sharding;
+package org.example.practicescaffold.config.mysql.model;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.LongAdder;
 
+import org.example.practicescaffold.config.mysql.enums.DataSourceType;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
@@ -19,13 +20,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Data
 @Slf4j
-public class MasterSlavesDataSourceEntity implements Serializable {
+public class MasterSlavesDatabaseInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private DataSourceInfo master;
+    private DatabaseInfo master;
 
-    private List<DataSourceInfo> slaves;
+    private List<DatabaseInfo> slaves;
 
     private LongAdder counter;
 
@@ -34,11 +35,11 @@ public class MasterSlavesDataSourceEntity implements Serializable {
     /**
      * 初始化数据源
      */
-    public MasterSlavesDataSourceEntity(List<DataSourceInfo> list) {
+    public MasterSlavesDatabaseInfo(List<DatabaseInfo> list) {
         Assert.isTrue(!CollectionUtils.isEmpty(list), "数据库列表不能为空");
-        List<DataSourceInfo> slaveList = Lists.newArrayListWithExpectedSize(list.size());
+        List<DatabaseInfo> slaveList = Lists.newArrayListWithExpectedSize(list.size());
         boolean foundMaster = false;
-        for (DataSourceInfo info : list) {
+        for (DatabaseInfo info : list) {
             if (info.getType() == DataSourceType.MASTER) {
                 if (!foundMaster) {
                     foundMaster = true;

@@ -5,6 +5,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
@@ -13,15 +14,24 @@ import org.springframework.core.io.ClassPathResource;
  * 2、手动注入自定义yaml类型文件，本文件实现
  */
 @Configuration
+@PropertySource(ignoreResourceNotFound = true, value = {"classpath:a.yaml"})
+@PropertySource(value = "classpath:b.properties")
 public class SpringBootConfiguration {
 
     // 加载YML格式自定义配置文件
     @Bean
     public static PropertySourcesPlaceholderConfigurer properties() {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
+
         YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
         yaml.setResources(new ClassPathResource("yaml-test.yaml"));
-        configurer.setProperties(Objects.requireNonNull(yaml.getObject()));
+
+        YamlPropertiesFactoryBean yamlA = new YamlPropertiesFactoryBean();
+        yamlA.setResources(new ClassPathResource("a.yaml"));
+
+        // configurer.setProperties(Objects.requireNonNull(yaml.getObject()));
+        configurer.setPropertiesArray(Objects.requireNonNull(yaml.getObject()),
+            Objects.requireNonNull(yamlA.getObject()));
         return configurer;
     }
 }

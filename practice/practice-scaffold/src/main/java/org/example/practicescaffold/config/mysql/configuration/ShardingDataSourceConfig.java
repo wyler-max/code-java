@@ -1,4 +1,4 @@
-package org.example.practicescaffold.config.mysql;
+package org.example.practicescaffold.config.mysql.configuration;
 
 import java.util.List;
 import java.util.Map;
@@ -14,7 +14,7 @@ import lombok.Data;
 @Component
 @Data
 @ConfigurationProperties("mysql")
-public class MuitipleDataSourceConfig {
+public class ShardingDataSourceConfig {
     // 单库
     private String jayDefaultName;
     private MasterSlavesConfig jaydefault;

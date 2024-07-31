@@ -12,6 +12,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import org.example.practicescaffold.common.exception.ServiceException;
+import org.example.practicescaffold.config.AConfig;
+import org.example.practicescaffold.config.BConfig;
 import org.example.practicescaffold.services.TestService;
 import org.example.practicescaffold.services.enums.ActivityTypeEnum;
 import org.example.practicescaffold.services.enums.UserErrorCode;
@@ -27,9 +29,14 @@ public class TestAController {
     private ServletRequest request;
     @Autowired
     private ServletResponse response;
-
     @Autowired
     private TestService testService;
+
+    @Autowired
+    private AConfig aConfig;
+    @Autowired
+    private BConfig bConfig;
+
     @Resource(name = "defaultThreadPool")
     private ThreadPoolTaskExecutor executor;
 
@@ -88,6 +95,26 @@ public class TestAController {
         System.out.println(UserErrorCode.USER_A);
         System.out.println(UserErrorCode.USER_B);
         throw ServiceException.of(UserErrorCode.USER_A);
+    }
+
+    @RequestMapping("/testAConfig")
+    public String testAConfig() {
+        // return JsonUtil.toJson(aConfig);
+        System.out.println(aConfig.getName());
+        System.out.println(aConfig.getAge());
+        System.out.println(aConfig.getAddr());
+        System.out.println(aConfig.toString());
+        return "JsonUtil.toJson(aConfig)";
+    }
+
+    @RequestMapping("/testBConfig")
+    public String testBConfig() {
+        // return JsonUtil.toJson(bConfig);
+        System.out.println(bConfig.getName());
+        System.out.println(bConfig.getAge());
+        System.out.println(bConfig.getAddr());
+        System.out.println(bConfig.toString());
+        return "JsonUtil.toJson(bConfig)";
     }
 
     public static void main(String[] args) {

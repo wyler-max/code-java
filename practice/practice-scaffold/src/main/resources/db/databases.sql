@@ -10,7 +10,6 @@ drop database if exists `jay_two_slave21`;
 drop database if exists `jay_two_slave22`;
 drop database if exists `jay_three_master1`;
 drop database if exists `jay_three_master2`;
-
 create database jay_default_master;
 create database jay_one_master;
 create database jay_one_slave1;

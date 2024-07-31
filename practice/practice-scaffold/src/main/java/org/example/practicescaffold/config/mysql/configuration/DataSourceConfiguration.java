@@ -1,15 +1,17 @@
-package org.example.practicescaffold.config.mysql;
+package org.example.practicescaffold.config.mysql.configuration;
 
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.example.practicescaffold.config.mysql.sharding.DataSourceInfo;
-import org.example.practicescaffold.config.mysql.sharding.DataSourceType;
-import org.example.practicescaffold.config.mysql.sharding.MasterSlavesDataSourceEntity;
+import org.example.practicescaffold.config.mysql.enums.DataSourceType;
+import org.example.practicescaffold.config.mysql.model.DatabaseInfo;
+import org.example.practicescaffold.config.mysql.model.MasterSlavesDatabaseInfo;
+import org.example.practicescaffold.config.mysql.model.ShardingDatabaseInfo;
+import org.example.practicescaffold.config.mysql.mybatis.interceptor.ShardingTableInterceptor;
+import org.example.practicescaffold.config.mysql.mybatis.interceptor.SlowSqlInterceptor;
 import org.example.practicescaffold.config.mysql.sharding.ShardingDataSource;
-import org.example.practicescaffold.config.mysql.sharding.ShardingDataSourceEntity;
 import org.example.practicescaffold.config.mysql.sharding.ShardingDataSourceHolder;
 import org.example.practicescaffold.config.mysql.sharding.ShardingDataSourceHolderAll;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -29,24 +31,40 @@ import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @Slf4j
-public class SqlSessionFactoryConfig {
+public class DataSourceConfiguration {
 
     @Autowired
-    private MuitipleDataSourceConfig muitipleDataSourceConfig;
+    private ShardingDataSourceConfig shardingDataSourceConfig;
 
     public SqlSessionFactory commonFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
+
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
         configuration.setMapUnderscoreToCamelCase(true);
         bean.setConfiguration(configuration);
+
+        bean.setPlugins(new SlowSqlInterceptor());
+        return bean.getObject();
+    }
+
+    public SqlSessionFactory jayTwoFactory(DataSource dataSource, ShardingDataSourceHolderAll allHolder)
+        throws Exception {
+        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+        bean.setDataSource(dataSource);
+
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setMapUnderscoreToCamelCase(true);
+        bean.setConfiguration(configuration);
+
+        bean.setPlugins(new ShardingTableInterceptor(allHolder), new SlowSqlInterceptor());
         return bean.getObject();
     }
 
     @Bean("jayDefaultDataSource")
     public DataSource jayDefaultDataSource() {
-        log.info("===jayDefaultDataSource=" + muitipleDataSourceConfig.getJaydefault().getMaster().getJdbcUrl());
-        return new HikariDataSource(muitipleDataSourceConfig.getJaydefault().getMaster());
+        log.info("jayDefaultDataSource" + shardingDataSourceConfig.getJaydefault().getMaster().getJdbcUrl());
+        return new HikariDataSource(shardingDataSourceConfig.getJaydefault().getMaster());
     }
 
     @Bean("jayDefaultSqlSessionFactory")
@@ -60,20 +78,20 @@ public class SqlSessionFactoryConfig {
      */
     @Bean("jayOneShardingDataSourceHolder")
     public ShardingDataSourceHolder jayOneShardingDataSourceHolder() {
-        List<MasterSlavesDataSourceEntity> dbList = Lists.newArrayList();
-        MasterSlavesConfig config = muitipleDataSourceConfig.getJayone();
-        List<DataSourceInfo> list = Lists.newArrayList();
-        list.add(new DataSourceInfo(DataSourceType.MASTER, config.getMaster()));
+        List<MasterSlavesDatabaseInfo> dbList = Lists.newArrayList();
+        MasterSlavesConfig config = shardingDataSourceConfig.getJayone();
+        List<DatabaseInfo> list = Lists.newArrayList();
+        list.add(new DatabaseInfo(DataSourceType.MASTER, config.getMaster()));
         log.info("db {} init jay one master", 1);
         if (!CollectionUtils.isEmpty(config.getSlaves())) {
             for (int j = 0; j < config.getSlaves().size(); j++) {
-                list.add(new DataSourceInfo(DataSourceType.SLAVE, config.getSlaves().get(j)));
+                list.add(new DatabaseInfo(DataSourceType.SLAVE, config.getSlaves().get(j)));
                 log.info("db {} init jay one slave {}", 1, config.getSlaves().get(j));
             }
         }
-        dbList.add(new MasterSlavesDataSourceEntity(list));
+        dbList.add(new MasterSlavesDatabaseInfo(list));
         return new ShardingDataSourceHolder(
-            new ShardingDataSourceEntity(muitipleDataSourceConfig.getJayOneName(), null, dbList));
+            new ShardingDatabaseInfo(shardingDataSourceConfig.getJayOneName(), null, dbList));
     }
 
     @Bean("jayOneDataSource")
@@ -99,22 +117,22 @@ public class SqlSessionFactoryConfig {
      */
     @Bean("jayTwoShardingDataSourceHolder")
     public ShardingDataSourceHolder jayTwoShardingDataSourceHolder() {
-        List<MasterSlavesDataSourceEntity> dbList = Lists.newArrayList();
-        for (int i = 0; i < muitipleDataSourceConfig.getJaytwo().size(); i++) {
-            MasterSlavesConfig config = muitipleDataSourceConfig.getJaytwo().get(i);
-            List<DataSourceInfo> list = Lists.newArrayList();
-            list.add(new DataSourceInfo(DataSourceType.MASTER, config.getMaster()));
+        List<MasterSlavesDatabaseInfo> dbList = Lists.newArrayList();
+        for (int i = 0; i < shardingDataSourceConfig.getJaytwo().size(); i++) {
+            MasterSlavesConfig config = shardingDataSourceConfig.getJaytwo().get(i);
+            List<DatabaseInfo> list = Lists.newArrayList();
+            list.add(new DatabaseInfo(DataSourceType.MASTER, config.getMaster()));
             log.info("db {} init jay two master", i);
             if (!CollectionUtils.isEmpty(config.getSlaves())) {
                 for (int j = 0; j < config.getSlaves().size(); j++) {
-                    list.add(new DataSourceInfo(DataSourceType.SLAVE, config.getSlaves().get(j)));
+                    list.add(new DatabaseInfo(DataSourceType.SLAVE, config.getSlaves().get(j)));
                     log.info("db {} init jay two slave {}", i, j);
                 }
             }
-            dbList.add(new MasterSlavesDataSourceEntity(list));
+            dbList.add(new MasterSlavesDatabaseInfo(list));
         }
-        return new ShardingDataSourceHolder(
-            new ShardingDataSourceEntity(muitipleDataSourceConfig.getJayTwoName(), null, dbList));
+        return new ShardingDataSourceHolder(new ShardingDatabaseInfo(shardingDataSourceConfig.getJayTwoName(),
+            shardingDataSourceConfig.getShardingTables(), dbList));
     }
 
     @Bean("jayTwoDataSource")
@@ -129,15 +147,15 @@ public class SqlSessionFactoryConfig {
     }
 
     @Bean("jayTwoSqlSessionFactory")
-    public SqlSessionFactory jayTwoSqlSessionFactory(@Qualifier("jayTwoDataSource") DataSource dataSource)
-        throws Exception {
-        return commonFactory(dataSource);
+    public SqlSessionFactory jayTwoSqlSessionFactory(@Qualifier("jayTwoDataSource") DataSource dataSource,
+        @Qualifier("shardingDataSourceHolderAll") ShardingDataSourceHolderAll allHolder) throws Exception {
+        return jayTwoFactory(dataSource, allHolder);
     }
 
     @Bean("jayThreeDataSource")
     public DataSource jayThreeDataSource() {
-        log.info("===jayThreeDataSource=" + muitipleDataSourceConfig.getJaythree().get(0).getMaster().getJdbcUrl());
-        return new HikariDataSource(muitipleDataSourceConfig.getJaythree().get(0).getMaster());
+        log.info("jayThreeDataSource" + shardingDataSourceConfig.getJaythree().get(0).getMaster().getJdbcUrl());
+        return new HikariDataSource(shardingDataSourceConfig.getJaythree().get(0).getMaster());
     }
 
     @Bean("jayThreeSqlSessionFactory")

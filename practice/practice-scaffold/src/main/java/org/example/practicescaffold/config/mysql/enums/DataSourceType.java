@@ -1,4 +1,4 @@
-package org.example.practicescaffold.config.mysql.sharding;
+package org.example.practicescaffold.config.mysql.enums;
 
 public enum DataSourceType {
     MASTER, // NL

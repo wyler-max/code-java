@@ -1,18 +1,22 @@
-package org.example.practicescaffold.config.mysql;
+package org.example.practicescaffold.config.mysql.aop;
 
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.example.practicescaffold.config.mysql.sharding.DataSourceType;
+import org.example.practicescaffold.config.mysql.configuration.ShardingDataSourceConfig;
+import org.example.practicescaffold.config.mysql.enums.DataSourceType;
 import org.example.practicescaffold.config.mysql.sharding.ShardingDataSourceHolderAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Aspect
 @Component
+@Slf4j
 public class MasterSlaveAspect {
     @Autowired
-    private MuitipleDataSourceConfig dataSourceConfig;
+    private ShardingDataSourceConfig dataSourceConfig;
 
     @Autowired
     private ShardingDataSourceHolderAll holder;
@@ -44,6 +48,7 @@ public class MasterSlaveAspect {
         + " || execution(* org.example.practicescaffold.db.jaytwo.dao..*.query*(..))"
         + " || execution(* org.example.practicescaffold.db.jaytwo.dao..*.count*(..))")
     public void setJayTwoSlaveDataSourceType() {
+        log.info("MasterSlaveAspect set slave");
         holder.setDataSourceType(dataSourceConfig.getJayTwoName(), DataSourceType.SLAVE);
     }
 
@@ -53,6 +58,7 @@ public class MasterSlaveAspect {
         + " || execution(* org.example.practicescaffold.db.jaytwo.dao..*.batchInsert*(..))"
         + " || execution(* org.example.practicescaffold.db.jaytwo.dao..*.logicalDelete*(..))")
     public void setJayTwoMasterSourceType() {
+        log.info("MasterSlaveAspect set master");
         holder.setDataSourceType(dataSourceConfig.getJayTwoName(), DataSourceType.MASTER);
     }
 

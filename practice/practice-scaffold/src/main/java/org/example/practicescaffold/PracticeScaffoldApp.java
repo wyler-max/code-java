@@ -2,6 +2,7 @@ package org.example.practicescaffold;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -9,7 +10,6 @@ import javax.annotation.Resource;
 import org.example.practicescaffold.common.utils.FileUtil;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.annotation.MapperScans;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -39,14 +39,14 @@ import com.google.common.collect.Lists;
         sqlSessionFactoryRef = "jayThreeSqlSessionFactory")})
 public class PracticeScaffoldApp {
 
-    //@Autowired
+    @Resource
     private JdbcTemplate jdbcTemplate;
 
     /**
      * 初始化数据库
      */
     @PostConstruct
-    public void initDataBase() throws IOException {
+    public void init() throws IOException {
         List<String> list = Lists.newArrayList();
         // 重置数据库
         List<String> databases = FileUtil.readTxtToList(ResourceUtils.getFile("classpath:db/databases.sql"));
@@ -92,7 +92,8 @@ public class PracticeScaffoldApp {
         list.addAll(jay_two_slave22);
         list.addAll(jay_three_master1);
         list.addAll(jay_three_master2);
-        // jdbcTemplate.batchUpdate(list.toArray(new String[list.size()]));
+        list = list.stream().map(x -> x.replace(";", "")).collect(Collectors.toList());
+        // jdbcTemplate.batchUpdate(list.toArray(new String[0]));
     }
 
     public static void main(String[] args) {
